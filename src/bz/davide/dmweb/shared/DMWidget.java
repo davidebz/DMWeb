@@ -1,0 +1,420 @@
+/*
+DMWeb - Java web framework - http://www.davide.bz/dmweb
+
+Copyright (C) 2013 Davide Montesin <d@vide.bz> - Bolzano/Bozen - Italy
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>
+*/
+
+package bz.davide.dmweb.shared;
+
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+
+import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.Element;
+import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.Window;
+
+/**
+ * @author Davide Montesin <d@vide.bz>
+ */
+public abstract class DMWidget
+{
+
+   public static boolean                 clientSide          = true;
+   public static int                     clientSideIdSeq     = 0;
+
+   private transient DMServerSideElement serverSideElement   = null;
+   String                                id                  = null;
+   private transient Element             clientSideElement__ = null;
+
+   ArrayList<DMAttachHandler>            attachHandlers      = null;
+   ArrayList<DMWidget>                   childs              = null;
+
+   int                                   eventBits           = 0;
+
+   ArrayList<DMClickHandler>             clickHandlers       = null;
+
+   protected DMWidget(String tagName)
+   {
+      this.attachHandlers = new ArrayList<DMAttachHandler>();
+      this.clickHandlers = new ArrayList<DMClickHandler>();
+      this.childs = new ArrayList<DMWidget>();
+
+      if (clientSide)
+      {
+         this.clientSideElement__ = DOM.createElement(tagName);
+         this.id = "E" + clientSideIdSeq;
+         clientSideIdSeq++;
+         this.clientSideElement__.setId(this.id);
+      }
+      else
+      {
+         this.serverSideElement = new DMServerSideElement(tagName);
+      }
+
+   }
+
+   protected DMWidget(Void void1)
+   {
+   }
+
+   public Element getElement()
+   {
+      if (!clientSide)
+      {
+         throw new IllegalStateException("Element can be requested only on client not on server");
+      }
+      if (this.clientSideElement__ == null && this.id != null)
+      {
+         this.clientSideElement__ = DOM.getElementById(this.id);
+      }
+      return this.clientSideElement__;
+   }
+
+   public void setStyleName(String name)
+   {
+      if (clientSide)
+      {
+         this.getElement().setClassName(name);
+      }
+      else
+      {
+         this.serverSideElement.setClassName(name);
+      }
+   }
+
+   public void addStyleName(String name)
+   {
+      if (clientSide)
+      {
+         this.getElement().addClassName(name);
+      }
+      else
+      {
+         this.serverSideElement.addClassName(name);
+      }
+
+   }
+
+   public void removeStyleName(String name)
+   {
+      if (clientSide)
+      {
+         this.getElement().removeClassName(name);
+      }
+      else
+      {
+         this.serverSideElement.removeClassName(name);
+      }
+   }
+
+   public void addAttachHandler(DMAttachHandler attachHandler)
+   {
+      this.attachHandlers.add(attachHandler);
+      if (clientSide && this.isAttacchedToDOM())
+      {
+         attachHandler.onAttachOrDetach(new DMAttachEvent(true));
+      }
+   }
+
+   public void addClickHandler(DMClickHandler clickHandler)
+   {
+      this.clickHandlers.add(clickHandler);
+      this.addSinkEvents(Event.ONCLICK);
+   }
+
+   public void clear()
+   {
+      ArrayList<DMWidget> tmp = new ArrayList<DMWidget>(this.childs);
+      for (DMWidget widget : tmp)
+      {
+         this.remove(widget);
+      }
+      // some elements may be not in childs (those that are static: no attachlistner or reference)
+      this.setElementInnerText("");
+   }
+
+   public void add(DMWidget widget)
+   {
+      this.childs.add(widget);
+      if (clientSide)
+      {
+         this.getElement().appendChild(widget.getElement());
+
+         if (this.isAttacchedToDOM())
+         {
+            this.notifyAttachRecursive(widget);
+         }
+      }
+   }
+
+   private void notifyAttachRecursive(DMWidget widget)
+   {
+      for (DMAttachHandler attachHandler : widget.attachHandlers)
+      {
+         attachHandler.onAttachOrDetach(new DMAttachEvent(true));
+      }
+      for (DMWidget child : widget.childs)
+      {
+         this.notifyAttachRecursive(child);
+      }
+   }
+
+   private void notifyDetachRecursive(DMWidget widget)
+   {
+      if (widget.isAttacchedToDOM()) // Child of an attached can be already unattached!
+      {
+         for (DMWidget child : widget.childs)
+         {
+            this.notifyDetachRecursive(child);
+         }
+         for (DMAttachHandler attachHandler : widget.attachHandlers)
+         {
+            attachHandler.onAttachOrDetach(new DMAttachEvent(false));
+         }
+      }
+
+   }
+
+   public void remove(DMWidget dmWidget)
+   {
+      for (int i = 0; i < this.childs.size(); i++)
+      {
+         if (this.childs.get(i) == dmWidget)
+         {
+            this.childs.remove(i);
+            if (clientSide)
+            {
+               if (this.isAttacchedToDOM())
+               {
+                  this.notifyDetachRecursive(dmWidget);
+               }
+               this.getElement().removeChild(dmWidget.getElement());
+            }
+            return;
+         }
+      }
+      throw new IllegalArgumentException("Child not found!");
+   }
+
+   private boolean isEventAttachHandlerAlreadyRegistered()
+   {
+      for (DMAttachHandler attachHandler : this.attachHandlers)
+      {
+         if (attachHandler instanceof DMWidgetEventAttachHandler)
+         {
+            return true;
+         }
+      }
+      return false;
+   }
+
+   protected void addSinkEvents(int addEventBits)
+   {
+      this.eventBits |= addEventBits;
+      if (!this.isEventAttachHandlerAlreadyRegistered())
+      {
+         this.addAttachHandler(new DMWidgetEventAttachHandler(this));
+      }
+      else if (this.isAttacchedToDOM())
+      {
+         DOM.sinkEvents(this.getElement(), this.eventBits);
+      }
+   }
+
+   protected void onBrowserEvent(Event event)
+   {
+      String eventType = event.getType();
+      if (eventType.equals("click"))
+      {
+         for (DMClickHandler clickHandler : this.clickHandlers)
+         {
+            clickHandler.onClick(new DMClickEvent(event));
+         }
+      }
+   }
+
+   boolean isAttacchedToDOM()
+   {
+      if (!clientSide)
+      {
+         throw new IllegalStateException("Only callable client side!");
+      }
+      Element elem = DOM.getElementById(this.id);
+      if (elem != null) // isAttached!
+      {
+         // Replace the current element with this new! In this case the parent node is updated
+         // even in case was attached not using gwt
+         this.clientSideElement__ = elem;
+         return true;
+      }
+      return false;
+
+   }
+
+   protected void setElementInnerText(String text)
+   {
+      if (clientSide)
+      {
+         this.getElement().setInnerText(text);
+      }
+      else
+      {
+         this.serverSideElement.innerHtml = DMWidget.escapeText4html(text);
+      }
+   }
+
+   protected void setElementInnerHtml(String html)
+   {
+      if (clientSide)
+      {
+         this.getElement().setInnerHTML(html);
+      }
+      else
+      {
+         this.serverSideElement.innerHtml = html;
+      }
+   }
+
+   protected void setElementAttribute(String name, String value)
+   {
+      if (clientSide)
+      {
+         this.getElement().setAttribute(name, value);
+      }
+      else
+      {
+         value = DMWidget.escapeText4html(value);
+         this.serverSideElement.attributes.put(name, value);
+      }
+   }
+
+   public static void generateServerSideHtml(DMWidgetSerializationData serializationData,
+                                             DMWidget widget,
+                                             StringBuffer out)
+   {
+      DMServerSideElement element = widget.serverSideElement;
+
+      out.append("<");
+      out.append(element.tagName);
+
+      String id = "E" + serializationData.idseq;
+      serializationData.idseq++;
+
+      out.append(" id=\"" + id + "\"");
+
+      widget.id = id;
+
+      if (element.styles.size() > 0)
+      {
+         out.append(" class=\"");
+         for (String c : element.styles.keySet())
+         {
+            out.append(c);
+            out.append(" ");
+         }
+         out.append("\"");
+      }
+
+      for (String k : element.attributes.keySet())
+      {
+         out.append(" ");
+         out.append(k);
+         out.append("=\"");
+         out.append(element.attributes.get(k));
+         out.append("\"");
+      }
+      out.append(">");
+
+      if (!element.tagName.equals("img"))
+      {
+
+         for (DMWidget child : widget.childs)
+         {
+            out.append("\n");
+            generateServerSideHtml(serializationData, child, out);
+            out.append("\n");
+         }
+
+         if (element.innerHtml != null)
+         {
+            out.append(element.innerHtml);
+         }
+
+         out.append("</");
+         out.append(element.tagName);
+         out.append(">");
+      }
+
+      serializationData.attachHandlers.addAll(widget.attachHandlers);
+
+   }
+
+   public static String escapeText4html(String title)
+   {
+      StringBuffer result = new StringBuffer();
+      for (int i = 0; i < title.length(); i++)
+      {
+         String singleChar = title.substring(i, i + 1);
+         if (!singleChar.matches("[a-zA-Z0-9 /.()_:-]"))
+         {
+            // short versions? amp, apos, etc...
+            int unicode = singleChar.charAt(0);
+            String hex = Integer.toHexString(unicode);
+            while (hex.length() < 4)
+            {
+               hex = "0" + hex;
+            }
+            singleChar = "&#x" + hex + ";";
+         }
+         result.append(singleChar);
+      }
+      return result.toString();
+   }
+
+   public static String escapeText4url(String title)
+   {
+      try
+      {
+         StringBuffer result = new StringBuffer();
+         for (int i = 0; i < title.length(); i++)
+         {
+            String singleChar = title.substring(i, i + 1);
+            if (!singleChar.matches("[a-zA-Z0-9]"))
+            {
+               byte[] utf8bytes = singleChar.getBytes("UTF-8"); // lower case does not work in gwt compiled code
+               singleChar = "%";
+               for (byte b : utf8bytes)
+               {
+                  String hexDigit = Integer.toHexString(b & 0xFF);
+                  while (hexDigit.length() < 2)
+                  {
+                     hexDigit = "0" + hexDigit;
+                  }
+                  singleChar += hexDigit;
+               }
+            }
+            result.append(singleChar);
+         }
+         return result.toString();
+      }
+      catch (UnsupportedEncodingException encodingException)
+      {
+         Window.alert("UnsupportedEncodingException");
+         throw new RuntimeException(encodingException);
+      }
+   }
+}
