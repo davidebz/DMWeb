@@ -288,6 +288,9 @@ public class SimpleXMLWebSiteEngine implements Filter
       {
          response.getOutputStream().write(html.toString().getBytes("utf-8"));
       }
+
+      //((I18NServerSide) I18N.singleton).dataByThread.remove();
+
    }
 
    @Override
