@@ -65,11 +65,6 @@ public class Map
 				latLng.@bz.davide.dmweb.client.leaflet.LatLng::jsLatLng, zoom);
    }-*/;
 
-   public native void showLabel(Label label)/*-{
-		this.@bz.davide.dmweb.client.leaflet.Map::jsMap
-				.showLabel(label.@bz.davide.dmweb.client.leaflet.Label::jsLabel);
-   }-*/;
-
    public native int getZoom()/*-{
 		return this.@bz.davide.dmweb.client.leaflet.Map::jsMap.getZoom();
    }-*/;

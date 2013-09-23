@@ -21,22 +21,17 @@ package bz.davide.dmweb.client.leaflet;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
-/**
- * @author Davide Montesin <d@vide.bz>
- */
-public class Label extends Layer
+public class MarkerOptions
 {
-   public Label(LatLng latLng, String text)
+   JavaScriptObject jsMarkerOptions;
+
+   public MarkerOptions()
    {
-      this.jsLayer = newLabel(latLng, text);
+      this.jsMarkerOptions = newMarkerOptions();
    }
 
-   static native JavaScriptObject newLabel(LatLng latLng, String text)/*-{
-		var label = new $wnd.L.Label()
-		label.setContent(text)
-		label
-				.setLatLng(latLng.@bz.davide.dmweb.client.leaflet.LatLng::jsLatLng)
-		return label;
+   static native JavaScriptObject newMarkerOptions()/*-{
+		return {};
    }-*/;
 
 }
