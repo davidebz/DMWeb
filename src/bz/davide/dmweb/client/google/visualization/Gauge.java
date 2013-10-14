@@ -17,33 +17,43 @@ You should have received a copy of the GNU Lesser General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>
 */
 
-package bz.davide.dmweb.client.leaflet;
+package bz.davide.dmweb.client.google.visualization;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.user.client.Element;
 
-public class Marker extends Layer
+public class Gauge
 {
-   public Marker(LatLng latLng)
+   JavaScriptObject jsGauge;
+
+   public Gauge(Element element, String title, int min_, int value, int max_)
    {
-      this(latLng, new MarkerOptions());
+      this.jsGauge = newGauge(element, title, min_, value, max_);
    }
 
-   public Marker(LatLng latLng, MarkerOptions markerOptions)
-   {
-      this.jsLayer = newMarker(latLng.jsLatLng, markerOptions.jsMarkerOptions);
-   }
+   static native JavaScriptObject newGauge(Element element, String title, int min_, int value, int max_)/*-{
 
-   static native JavaScriptObject newMarker(JavaScriptObject latLng, JavaScriptObject options) /*-{
-		return new $wnd.L.Marker(latLng, options);
-   }-*/;
+		var data = $wnd.google.visualization.arrayToDataTable([
+				[ 'Label', 'Value' ], [ title, value ] ]);
 
-   public native void addClickEventListener(EventListener eventListener)/*-{
-		this.@bz.davide.dmweb.client.leaflet.Layer::jsLayer
-				.addEventListener(
-						'click',
-						function(e) {
-							eventListener.@bz.davide.dmweb.client.leaflet.EventListener::onEvent()();
-						});
+		var options = {
+			width : 200,
+			height : 200,
+			redFrom : max_ * .9,
+			redTo : max_,
+			yellowFrom : max_ * .75,
+			yellowTo : max_ * .90,
+			minorTicks : 5,
+			min : min_,
+			max : max_
+
+		};
+
+		var chart = new $wnd.google.visualization.Gauge(element);
+		chart.draw(data, options);
+
+		return chart;
+
    }-*/;
 
 }

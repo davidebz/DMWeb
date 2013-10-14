@@ -30,6 +30,10 @@ public class MarkerOptions
       this.jsMarkerOptions = newMarkerOptions();
    }
 
+   public native void setIcon(Icon icon)/*-{
+		this.@bz.davide.dmweb.client.leaflet.MarkerOptions::jsMarkerOptions.icon = icon.@bz.davide.dmweb.client.leaflet.Icon::jsIcon;
+   }-*/;
+
    static native JavaScriptObject newMarkerOptions()/*-{
 		return {};
    }-*/;

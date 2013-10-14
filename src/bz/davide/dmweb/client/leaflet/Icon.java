@@ -21,29 +21,17 @@ package bz.davide.dmweb.client.leaflet;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
-public class Marker extends Layer
+public class Icon
 {
-   public Marker(LatLng latLng)
+   JavaScriptObject jsIcon;
+
+   public Icon(IconOptions iconOptions)
    {
-      this(latLng, new MarkerOptions());
+      this.jsIcon = newIcon(iconOptions.jsOptions);
    }
 
-   public Marker(LatLng latLng, MarkerOptions markerOptions)
-   {
-      this.jsLayer = newMarker(latLng.jsLatLng, markerOptions.jsMarkerOptions);
-   }
-
-   static native JavaScriptObject newMarker(JavaScriptObject latLng, JavaScriptObject options) /*-{
-		return new $wnd.L.Marker(latLng, options);
-   }-*/;
-
-   public native void addClickEventListener(EventListener eventListener)/*-{
-		this.@bz.davide.dmweb.client.leaflet.Layer::jsLayer
-				.addEventListener(
-						'click',
-						function(e) {
-							eventListener.@bz.davide.dmweb.client.leaflet.EventListener::onEvent()();
-						});
+   static native JavaScriptObject newIcon(JavaScriptObject options)/*-{
+		return new $wnd.L.Icon(options);
    }-*/;
 
 }

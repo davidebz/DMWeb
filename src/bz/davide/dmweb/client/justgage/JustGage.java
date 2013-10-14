@@ -17,33 +17,27 @@ You should have received a copy of the GNU Lesser General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>
 */
 
-package bz.davide.dmweb.client.leaflet;
+package bz.davide.dmweb.client.justgage;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
-public class Marker extends Layer
+public class JustGage
 {
-   public Marker(LatLng latLng)
+   JavaScriptObject jsJustGage;
+
+   public JustGage(String elementId, int min_, int max_, int value_, String title_)
    {
-      this(latLng, new MarkerOptions());
+      this.jsJustGage = newJustGage(elementId, min_, max_, value_, title_);
    }
 
-   public Marker(LatLng latLng, MarkerOptions markerOptions)
-   {
-      this.jsLayer = newMarker(latLng.jsLatLng, markerOptions.jsMarkerOptions);
-   }
-
-   static native JavaScriptObject newMarker(JavaScriptObject latLng, JavaScriptObject options) /*-{
-		return new $wnd.L.Marker(latLng, options);
-   }-*/;
-
-   public native void addClickEventListener(EventListener eventListener)/*-{
-		this.@bz.davide.dmweb.client.leaflet.Layer::jsLayer
-				.addEventListener(
-						'click',
-						function(e) {
-							eventListener.@bz.davide.dmweb.client.leaflet.EventListener::onEvent()();
-						});
+   static native JavaScriptObject newJustGage(String elementId, int min_, int max_, int value_, String title_)/*-{
+		return new $wnd.JustGage({
+			id : elementId,
+			value : value_,
+			min : min_,
+			max : max_,
+			title : title_
+		});
    }-*/;
 
 }

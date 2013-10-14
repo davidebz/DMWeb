@@ -46,7 +46,7 @@ public class Map
 			position : 'topleft',
 			imperial : false
 		});
-		map.addControl(scale);
+		//map.addControl(scale);
 		return map;
    }-*/;
 
