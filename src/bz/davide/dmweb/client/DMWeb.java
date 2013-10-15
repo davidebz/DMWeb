@@ -19,11 +19,11 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 
 package bz.davide.dmweb.client;
 
-import bz.davide.dmweb.shared.DMAttachEvent;
-import bz.davide.dmweb.shared.DMAttachHandler;
-import bz.davide.dmweb.shared.DMWidget;
-import bz.davide.dmweb.shared.DMWidgetSerializationData;
 import bz.davide.dmweb.shared.i18n.I18N;
+import bz.davide.dmweb.shared.view.AbstractHtmlElementView;
+import bz.davide.dmweb.shared.view.AttachEvent;
+import bz.davide.dmweb.shared.view.AttachListener;
+import bz.davide.dmweb.shared.view.DMWidgetSerializationData;
 import bz.davide.dmxmljson.unmarshalling.Unmarshaller;
 import bz.davide.dmxmljson.unmarshalling.json.gwt.GWTStructure;
 
@@ -56,16 +56,16 @@ public class DMWeb implements EntryPoint
 
          DMWidgetSerializationData serializationData = (DMWidgetSerializationData) widgetUnmarshaller.newInstance("DMWidgetSerializationData");
          widgetUnmarshaller.unmarschall(gwtStructure, serializationData);
-         DMWidget.clientSideIdSeq = serializationData.getIdseq();
+         AbstractHtmlElementView.clientSideIdSeq = serializationData.getIdseq();
          I18N.singleton = serializationData.getI18n();
 
-         for (DMAttachHandler attachHandler : serializationData.getDomReady())
+         for (AttachListener attachHandler : serializationData.getDomReady())
          {
-            attachHandler.onAttachOrDetach(new DMAttachEvent(true));
+            attachHandler.onAttachOrDetach(new AttachEvent(true));
          }
-         for (DMAttachHandler attachHandler : serializationData.getAttachHandlers())
+         for (AttachListener attachHandler : serializationData.getAttachHandlers())
          {
-            attachHandler.onAttachOrDetach(new DMAttachEvent(true));
+            attachHandler.onAttachOrDetach(new AttachEvent(true));
          }
       }
       catch (Exception e)

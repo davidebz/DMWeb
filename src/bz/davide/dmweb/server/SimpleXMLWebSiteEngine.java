@@ -38,11 +38,11 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bz.davide.dmweb.shared.DMWebPage;
-import bz.davide.dmweb.shared.DMWidget;
-import bz.davide.dmweb.shared.DMWidgetSerializationData;
 import bz.davide.dmweb.shared.i18n.I18N;
 import bz.davide.dmweb.shared.i18n.I18NData;
+import bz.davide.dmweb.shared.view.AbstractHtmlElementView;
+import bz.davide.dmweb.shared.view.DMWebPage;
+import bz.davide.dmweb.shared.view.DMWidgetSerializationData;
 import bz.davide.dmxmljson.marshalling.Marshaller;
 import bz.davide.dmxmljson.marshalling.json.JSONStructure;
 import bz.davide.dmxmljson.unmarshalling.Unmarshaller;
@@ -77,7 +77,7 @@ public class SimpleXMLWebSiteEngine implements Filter
          this.head = initConfig.getInitParameter("html-head");
          this.body = initConfig.getInitParameter("html-body");
 
-         DMWidget.clientSide = false;
+         AbstractHtmlElementView.clientSide = false;
          I18N.singleton = new I18NServerSide();
 
       }
@@ -252,7 +252,7 @@ public class SimpleXMLWebSiteEngine implements Filter
       html.append("<meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">\n");
       html.append("<meta name=\"gwt:property\" content=\"locale=" + language + "\">\n");
       html.append("<title>");
-      html.append(DMWidget.escapeText4html(webPage.getTitle()));
+      html.append(AbstractHtmlElementView.escapeText4html(webPage.getTitle()));
       html.append("</title>\n");
       html.append(this.head);
       html.append("\n</head>\n");
@@ -262,10 +262,10 @@ public class SimpleXMLWebSiteEngine implements Filter
 
       DMWidgetSerializationData serializationData = new DMWidgetSerializationData(webPage.getDomReady(),
                                                                                   i18nClientSide);
-      for (DMWidget widget : webPage.getBodyContent())
+      for (AbstractHtmlElementView widget : webPage.getBodyContent())
       {
          StringBuffer generatedHtml = new StringBuffer();
-         DMWidget.generateServerSideHtml(serializationData, widget, generatedHtml);
+         AbstractHtmlElementView.generateServerSideHtml(serializationData, widget, generatedHtml);
          html.append(generatedHtml.toString());
          html.append("\n\n");
       }
