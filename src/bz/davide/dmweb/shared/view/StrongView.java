@@ -22,10 +22,15 @@ package bz.davide.dmweb.shared.view;
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class StrongView extends AbstractHtmlElementView
+public class StrongView extends AbstractHtmlElementView implements DivViewChild
 {
    public StrongView()
    {
       super("strong");
+   }
+
+   public void appendChild(StrongViewChild node)
+   {
+      super.appendChild(node);
    }
 }

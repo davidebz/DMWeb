@@ -21,14 +21,13 @@ package bz.davide.dmweb.shared.view;
 
 import java.util.ArrayList;
 
-
 import com.google.gwt.dom.client.InputElement;
 import com.google.gwt.user.client.Event;
 
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class InputView extends AbstractHtmlElementView
+public class InputView extends AbstractHtmlElementView implements DivViewChild
 {
 
    ArrayList<DMKeyUpHandler> keyUpHandlers = new ArrayList<DMKeyUpHandler>();

@@ -22,10 +22,15 @@ package bz.davide.dmweb.shared.view;
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class BoldView extends AbstractHtmlElementView
+public class BoldView extends AbstractHtmlElementView implements DivViewChild
 {
    public BoldView()
    {
       super("b");
+   }
+
+   public void appendChild(BoldViewChild node)
+   {
+      super.appendChild(node);
    }
 }

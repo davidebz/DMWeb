@@ -21,9 +21,9 @@ package bz.davide.dmweb.shared.model;
 
 import java.util.ArrayList;
 
-import bz.davide.dmweb.shared.view.AbstractHtmlElementView;
 import bz.davide.dmweb.shared.view.BoldView;
 import bz.davide.dmweb.shared.view.BrView;
+import bz.davide.dmweb.shared.view.DivView;
 import bz.davide.dmweb.shared.view.SpanView;
 import bz.davide.dmweb.shared.view.StrongView;
 import bz.davide.dmxmljson.unmarshalling.xml.gwt.GWTXMLStructure;
@@ -56,7 +56,7 @@ public class AbstractHtmlElement implements Node
       html5Unmarshaller.unmarschall(xhtml, rootNode);
    }
 
-   public static void richText(AbstractHtmlElementView e, Node[] content)
+   public static void richText(DivView e, Node[] content)
    {
       for (Node node : content)
       {
@@ -84,6 +84,28 @@ public class AbstractHtmlElement implements Node
          else
          {
             throw new RuntimeException("Unknow tag: " + node.getClass().getName());
+         }
+      }
+   }
+
+   public static void richText(BoldView e, Node[] content)
+   {
+      for (Node node : content)
+      {
+         if (node instanceof TextNode)
+         {
+            e.appendChild(new SpanView(((TextNode) node).value));
+         }
+      }
+   }
+
+   public static void richText(StrongView e, Node[] content)
+   {
+      for (Node node : content)
+      {
+         if (node instanceof TextNode)
+         {
+            e.appendChild(new SpanView(((TextNode) node).value));
          }
       }
    }

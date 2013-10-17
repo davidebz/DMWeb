@@ -22,10 +22,7 @@ package bz.davide.dmweb.shared.view;
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class BrView extends AbstractHtmlElementView implements DivViewChild
+public interface DivViewChild extends Node
 {
-   public BrView()
-   {
-      super("br");
-   }
+
 }

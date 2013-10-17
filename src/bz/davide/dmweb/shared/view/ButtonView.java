@@ -19,11 +19,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 
 package bz.davide.dmweb.shared.view;
 
-
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class ButtonView extends AbstractHtmlElementView
+public class ButtonView extends AbstractHtmlElementView implements DivViewChild
 {
 
    public ButtonView(String label)

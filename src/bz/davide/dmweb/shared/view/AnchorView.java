@@ -19,11 +19,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 
 package bz.davide.dmweb.shared.view;
 
-
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class AnchorView extends AbstractHtmlElementView
+public class AnchorView extends AbstractHtmlElementView implements DivViewChild
 {
    public AnchorView(String href, String text, String target)
    {

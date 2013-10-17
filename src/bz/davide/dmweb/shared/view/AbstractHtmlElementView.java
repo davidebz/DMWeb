@@ -22,7 +22,6 @@ package bz.davide.dmweb.shared.view;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
-
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Event;
@@ -31,7 +30,7 @@ import com.google.gwt.user.client.Window;
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public abstract class AbstractHtmlElementView
+public abstract class AbstractHtmlElementView implements Node
 {
 
    public static boolean                 clientSide          = true;
@@ -41,8 +40,8 @@ public abstract class AbstractHtmlElementView
    String                                id                  = null;
    private transient Element             clientSideElement__ = null;
 
-   ArrayList<AttachListener>            attachHandlers      = null;
-   ArrayList<AbstractHtmlElementView>                   childs              = null;
+   ArrayList<AttachListener>             attachHandlers      = null;
+   ArrayList<AbstractHtmlElementView>    childs              = null;
 
    int                                   eventBits           = 0;
 
@@ -148,8 +147,9 @@ public abstract class AbstractHtmlElementView
       this.setElementInnerText("");
    }
 
-   public void appendChild(AbstractHtmlElementView widget)
+   protected void appendChild(Node node)
    {
+      AbstractHtmlElementView widget = (AbstractHtmlElementView) node;
       this.childs.add(widget);
       if (clientSide)
       {

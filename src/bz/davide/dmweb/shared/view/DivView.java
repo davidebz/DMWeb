@@ -22,7 +22,7 @@ package bz.davide.dmweb.shared.view;
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class DivView extends AbstractHtmlElementView
+public class DivView extends AbstractHtmlElementView implements DivViewChild
 {
 
    public DivView()
@@ -44,4 +44,8 @@ public class DivView extends AbstractHtmlElementView
       super(void1);
    }
 
+   public void appendChild(DivViewChild widget)
+   {
+      super.appendChild(widget);
+   }
 }

@@ -19,11 +19,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 
 package bz.davide.dmweb.shared.view;
 
-
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class SpanView extends AbstractHtmlElementView
+public class SpanView extends AbstractHtmlElementView implements DivViewChild, BoldViewChild, StrongViewChild
 {
 
    public SpanView()
