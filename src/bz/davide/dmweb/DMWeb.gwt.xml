@@ -21,6 +21,7 @@
 
   <!-- Specify the app entry point class.                         -->
   <inherits name="com.google.gwt.json.JSON"/>
+  <inherits name="com.google.gwt.xml.XML" />
   <inherits name="bz.davide.dmxmljson.DMXmlJson"/>
   <entry-point class='bz.davide.dmweb.client.DMWeb'/>
 
