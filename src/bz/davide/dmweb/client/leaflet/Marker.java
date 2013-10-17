@@ -21,6 +21,9 @@ package bz.davide.dmweb.client.leaflet;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
+/**
+ * @author Davide Montesin <d@vide.bz>
+ */
 public class Marker extends Layer
 {
    public Marker(LatLng latLng)

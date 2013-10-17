@@ -19,6 +19,9 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 
 package bz.davide.dmweb.shared.model;
 
+/**
+ * @author Davide Montesin <d@vide.bz>
+ */
 public interface DivChild extends Node
 {
 

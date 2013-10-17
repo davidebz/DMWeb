@@ -21,6 +21,9 @@ package bz.davide.dmweb.client.justgage;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
+/**
+ * @author Davide Montesin <d@vide.bz>
+ */
 public class JustGage
 {
    JavaScriptObject jsJustGage;

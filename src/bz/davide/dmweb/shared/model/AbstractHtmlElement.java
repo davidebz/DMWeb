@@ -28,6 +28,9 @@ import bz.davide.dmweb.shared.view.SpanView;
 import bz.davide.dmweb.shared.view.StrongView;
 import bz.davide.dmxmljson.unmarshalling.xml.gwt.GWTXMLStructure;
 
+/**
+ * @author Davide Montesin <d@vide.bz>
+ */
 public class AbstractHtmlElement implements Node
 {
    String                    tagName;

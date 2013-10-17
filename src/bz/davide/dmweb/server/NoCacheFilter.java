@@ -30,6 +30,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * @author Davide Montesin <d@vide.bz>
+ */
 public class NoCacheFilter implements Filter
 {
    @Override
