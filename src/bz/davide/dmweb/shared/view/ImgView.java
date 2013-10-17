@@ -38,7 +38,7 @@ public class ImgView extends AbstractHtmlElementView
    public ImgView(String url, String altText)
    {
       super("img");
-      this.setUrl(url);
+      this.setSrc(url);
       this.setAltText(altText);
    }
 
@@ -47,7 +47,7 @@ public class ImgView extends AbstractHtmlElementView
       super(void1);
    }
 
-   public void setUrl(String url)
+   public void setSrc(String url)
    {
       this.setElementAttribute("src", url);
    }

@@ -62,24 +62,24 @@ public class AbstractHtmlElement implements Node
       {
          if (node instanceof TextNode)
          {
-            e.add(new SpanView(((TextNode) node).value));
+            e.appendChild(new SpanView(((TextNode) node).value));
          }
          else if (node instanceof B)
          {
             BoldView boldView = new BoldView();
-            e.add(boldView);
+            e.appendChild(boldView);
             richText(boldView, ((B) node).getChildNodes());
          }
          else if (node instanceof Strong)
          {
             StrongView strongView = new StrongView();
-            e.add(strongView);
+            e.appendChild(strongView);
             richText(strongView, ((Strong) node).getChildNodes());
          }
          else if (node instanceof Br)
          {
             BrView brView = new BrView();
-            e.add(brView);
+            e.appendChild(brView);
          }
          else
          {

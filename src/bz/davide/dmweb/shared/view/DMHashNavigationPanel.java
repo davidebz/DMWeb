@@ -60,7 +60,7 @@ public class DMHashNavigationPanel extends DivView
       this.remove(currPage);
       AbstractHtmlElementView newPage = this.pages.get(toIndex);
       tmpChangeHandler = this.changeHandlers.get(toIndex);
-      this.add(newPage);
+      this.appendChild(newPage);
       if (tmpChangeHandler != null)
       {
          tmpChangeHandler.pageShow();
@@ -109,7 +109,7 @@ public class DMHashNavigationPanel extends DivView
       }
       this.pages.add(widget);
       this.changeHandlers.add(changeHandler);
-      this.add(widget);
+      this.appendChild(widget);
       if (changeHandler != null)
       {
          changeHandler.pageShow();

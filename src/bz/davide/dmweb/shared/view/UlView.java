@@ -40,7 +40,7 @@ public class UlView extends AbstractHtmlElementView
       this.clear();
       for (LiView item : listItems)
       {
-         this.add(item);
+         this.appendChild(item);
       }
    }
 }

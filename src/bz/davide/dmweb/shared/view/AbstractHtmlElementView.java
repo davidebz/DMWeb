@@ -148,7 +148,7 @@ public abstract class AbstractHtmlElementView
       this.setElementInnerText("");
    }
 
-   public void add(AbstractHtmlElementView widget)
+   public void appendChild(AbstractHtmlElementView widget)
    {
       this.childs.add(widget);
       if (clientSide)
