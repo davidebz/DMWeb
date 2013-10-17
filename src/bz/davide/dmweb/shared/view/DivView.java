@@ -19,21 +19,24 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 
 package bz.davide.dmweb.shared.view;
 
-
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class DivView extends DMComplexPanel
+public class DivView extends AbstractHtmlElementView
 {
 
    public DivView()
    {
-      this("");
+      this((String) null);
    }
 
    public DivView(String styleName)
    {
-      super("div", styleName);
+      super("div");
+      if (styleName != null)
+      {
+         this.setStyleName(styleName);
+      }
    }
 
    protected DivView(Void void1)

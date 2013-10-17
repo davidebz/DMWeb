@@ -19,15 +19,14 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 
 package bz.davide.dmweb.shared.view;
 
-
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class LiView extends DMComplexPanel
+public class LiView extends AbstractHtmlElementView
 {
    public LiView()
    {
-      super("li", "");
+      super("li");
    }
 
    public LiView(Void void1)
