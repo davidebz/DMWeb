@@ -22,29 +22,7 @@ package bz.davide.dmweb.shared.view;
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class ButtonView extends AbstractHtmlElementView implements DivViewChild
+public interface ButtonViewChild extends Node
 {
-
-   public ButtonView(String label)
-   {
-      super("button");
-      this.setLabel(label);
-   }
-
-   protected ButtonView(Void void1)
-   {
-      super(void1);
-   }
-
-   public void setLabel(String text)
-   {
-      this.clear();
-      this.appendChild(new TextNode(text));
-   }
-
-   public void appendChild(ButtonViewChild node)
-   {
-      super.appendChildInternal(node);
-   }
 
 }

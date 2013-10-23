@@ -22,6 +22,7 @@ package bz.davide.dmweb.shared.view;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Event;
@@ -30,7 +31,7 @@ import com.google.gwt.user.client.Window;
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public abstract class AbstractHtmlElementView implements Node
+public abstract class AbstractHtmlElementView implements HtmlElementView
 {
 
    public static boolean                 clientSide          = true;
@@ -41,7 +42,11 @@ public abstract class AbstractHtmlElementView implements Node
    private transient Element             clientSideElement__ = null;
 
    ArrayList<AttachListener>             attachHandlers      = null;
-   ArrayList<AbstractHtmlElementView>    childs              = null;
+   /* 
+    * This list will not contains all the childs nodes. Normally contains only child elements that
+    * need to be informed about attach. Server side can contain temporary text node.
+    */
+   ArrayList<Node>                       childs              = null;
 
    int                                   eventBits           = 0;
 
@@ -51,7 +56,7 @@ public abstract class AbstractHtmlElementView implements Node
    {
       this.attachHandlers = new ArrayList<AttachListener>();
       this.clickHandlers = new ArrayList<DMClickHandler>();
-      this.childs = new ArrayList<AbstractHtmlElementView>();
+      this.childs = new ArrayList<Node>();
 
       if (clientSide)
       {
@@ -71,6 +76,7 @@ public abstract class AbstractHtmlElementView implements Node
    {
    }
 
+   @Override
    public Element getElement()
    {
       if (!clientSide)
@@ -138,17 +144,36 @@ public abstract class AbstractHtmlElementView implements Node
 
    public void clear()
    {
-      ArrayList<AbstractHtmlElementView> tmp = new ArrayList<AbstractHtmlElementView>(this.childs);
-      for (AbstractHtmlElementView widget : tmp)
+      ArrayList<Node> tmp = new ArrayList<Node>(this.childs);
+      for (Node node : tmp)
       {
-         this.remove(widget);
+         if (node instanceof AbstractHtmlElementView)
+         {
+            this.remove((AbstractHtmlElementView) node);
+         }
       }
       // some elements may be not in childs (those that are static: no attachlistner or reference)
-      this.setElementInnerText("");
+      this.childs.clear();
+      if (clientSide)
+      {
+         this.getElement().setInnerText("");
+      }
    }
 
-   protected void appendChild(Node node)
+   protected void appendChildInternal(Node node)
    {
+      if (node instanceof TextNode)
+      {
+         if (clientSide)
+         {
+            this.getElement().appendChild(Document.get().createTextNode(((TextNode) node).value));
+         }
+         else
+         {
+            this.childs.add(node);
+         }
+         return;
+      }
       AbstractHtmlElementView widget = (AbstractHtmlElementView) node;
       this.childs.add(widget);
       if (clientSide)
@@ -168,9 +193,12 @@ public abstract class AbstractHtmlElementView implements Node
       {
          attachHandler.onAttachOrDetach(new AttachEvent(true));
       }
-      for (AbstractHtmlElementView child : widget.childs)
+      for (Node child : widget.childs)
       {
-         this.notifyAttachRecursive(child);
+         if (child instanceof AbstractHtmlElementView)
+         {
+            this.notifyAttachRecursive((AbstractHtmlElementView) child);
+         }
       }
    }
 
@@ -178,9 +206,12 @@ public abstract class AbstractHtmlElementView implements Node
    {
       if (widget.isAttacchedToDOM()) // Child of an attached can be already unattached!
       {
-         for (AbstractHtmlElementView child : widget.childs)
+         for (Node child : widget.childs)
          {
-            this.notifyDetachRecursive(child);
+            if (child instanceof AbstractHtmlElementView)
+            {
+               this.notifyDetachRecursive((AbstractHtmlElementView) child);
+            }
          }
          for (AttachListener attachHandler : widget.attachHandlers)
          {
@@ -266,30 +297,6 @@ public abstract class AbstractHtmlElementView implements Node
 
    }
 
-   protected void setElementInnerText(String text)
-   {
-      if (clientSide)
-      {
-         this.getElement().setInnerText(text);
-      }
-      else
-      {
-         this.serverSideElement.innerHtml = AbstractHtmlElementView.escapeText4html(text);
-      }
-   }
-
-   protected void setElementInnerHtml(String html)
-   {
-      if (clientSide)
-      {
-         this.getElement().setInnerHTML(html);
-      }
-      else
-      {
-         this.serverSideElement.innerHtml = html;
-      }
-   }
-
    protected void setElementAttribute(String name, String value)
    {
       if (clientSide)
@@ -343,16 +350,21 @@ public abstract class AbstractHtmlElementView implements Node
       if (!element.tagName.equals("img"))
       {
 
-         for (AbstractHtmlElementView child : widget.childs)
+         for (int i = 0; i < widget.childs.size(); /* increment is in else statement */)
          {
-            out.append("\n");
-            generateServerSideHtml(serializationData, child, out);
-            out.append("\n");
-         }
-
-         if (element.innerHtml != null)
-         {
-            out.append(element.innerHtml);
+            Node child = widget.childs.get(i);
+            if (child instanceof TextNode)
+            {
+               out.append(escapeText4html(((TextNode) child).value));
+               widget.childs.remove(i);
+            }
+            else
+            {
+               out.append("\n");
+               generateServerSideHtml(serializationData, (AbstractHtmlElementView) child, out);
+               out.append("\n");
+               i++;
+            }
          }
 
          out.append("</");

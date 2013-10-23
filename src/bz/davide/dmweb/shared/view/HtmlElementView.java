@@ -19,32 +19,12 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 
 package bz.davide.dmweb.shared.view;
 
+import com.google.gwt.user.client.Element;
+
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class ButtonView extends AbstractHtmlElementView implements DivViewChild
+public interface HtmlElementView extends Node
 {
-
-   public ButtonView(String label)
-   {
-      super("button");
-      this.setLabel(label);
-   }
-
-   protected ButtonView(Void void1)
-   {
-      super(void1);
-   }
-
-   public void setLabel(String text)
-   {
-      this.clear();
-      this.appendChild(new TextNode(text));
-   }
-
-   public void appendChild(ButtonViewChild node)
-   {
-      super.appendChildInternal(node);
-   }
-
+   public Element getElement();
 }

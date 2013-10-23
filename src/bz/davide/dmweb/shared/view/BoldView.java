@@ -31,6 +31,6 @@ public class BoldView extends AbstractHtmlElementView implements DivViewChild
 
    public void appendChild(BoldViewChild node)
    {
-      super.appendChild(node);
+      super.appendChildInternal(node);
    }
 }

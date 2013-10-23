@@ -43,7 +43,12 @@ public class SpanView extends AbstractHtmlElementView implements DivViewChild, B
 
    public void setText(String text)
    {
-      this.setElementInnerText(text);
+      this.clear();
+      this.appendChild(new TextNode(text));
    }
 
+   public void appendChild(SpanViewChild node)
+   {
+      super.appendChildInternal(node);
+   }
 }

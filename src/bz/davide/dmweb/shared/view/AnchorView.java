@@ -57,11 +57,17 @@ public class AnchorView extends AbstractHtmlElementView implements DivViewChild
 
    public void setText(String text)
    {
-      this.setElementInnerText(text);
+      this.clear();
+      this.appendChild(new TextNode(text));
    }
 
    public void setTarget(String target)
    {
       this.setElementAttribute("target", target);
+   }
+
+   public void appendChild(AnchorViewChild node)
+   {
+      super.appendChildInternal(node);
    }
 }

@@ -22,29 +22,15 @@ package bz.davide.dmweb.shared.view;
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class ButtonView extends AbstractHtmlElementView implements DivViewChild
+public class TextNode implements Node, ButtonViewChild, SpanViewChild, AnchorViewChild
 {
+   String value;
 
-   public ButtonView(String label)
+   public TextNode(String value)
    {
-      super("button");
-      this.setLabel(label);
+      super();
+      this.value = value;
    }
 
-   protected ButtonView(Void void1)
-   {
-      super(void1);
-   }
-
-   public void setLabel(String text)
-   {
-      this.clear();
-      this.appendChild(new TextNode(text));
-   }
-
-   public void appendChild(ButtonViewChild node)
-   {
-      super.appendChildInternal(node);
-   }
-
+   // The set method is intentionally missing: because is not possible to reference a TextNode, is not possible to change it!
 }

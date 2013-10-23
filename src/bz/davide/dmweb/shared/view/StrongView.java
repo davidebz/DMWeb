@@ -31,6 +31,6 @@ public class StrongView extends AbstractHtmlElementView implements DivViewChild
 
    public void appendChild(StrongViewChild node)
    {
-      super.appendChild(node);
+      super.appendChildInternal(node);
    }
 }

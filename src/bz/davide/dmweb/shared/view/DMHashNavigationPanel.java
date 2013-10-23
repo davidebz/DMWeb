@@ -21,7 +21,6 @@ package bz.davide.dmweb.shared.view;
 
 import java.util.ArrayList;
 
-
 import com.google.gwt.user.client.History;
 
 /**
@@ -29,11 +28,11 @@ import com.google.gwt.user.client.History;
  */
 public class DMHashNavigationPanel extends DivView
 {
-   ArrayList<AbstractHtmlElementView>          pages          = new ArrayList<AbstractHtmlElementView>();
-   ArrayList<PageChangeHandler> changeHandlers = new ArrayList<PageChangeHandler>();
-   int                          index          = -1;
+   ArrayList<DivViewChildElement> pages          = new ArrayList<DivViewChildElement>();
+   ArrayList<PageChangeHandler>   changeHandlers = new ArrayList<PageChangeHandler>();
+   int                            index          = -1;
 
-   public DMHashNavigationPanel(String styleName, AbstractHtmlElementView initialContent)
+   public DMHashNavigationPanel(String styleName, DivViewChildElement initialContent)
    {
       super(styleName);
       this.addAttachHandler(new DMHashNavigationPanelAttachHandler(this));
@@ -51,14 +50,14 @@ public class DMHashNavigationPanel extends DivView
       {
          return;
       }
-      AbstractHtmlElementView currPage = this.pages.get(this.index);
+      DivViewChildElement currPage = this.pages.get(this.index);
       PageChangeHandler tmpChangeHandler = this.changeHandlers.get(this.index);
       if (tmpChangeHandler != null)
       {
          tmpChangeHandler.pageHide();
       }
-      this.remove(currPage);
-      AbstractHtmlElementView newPage = this.pages.get(toIndex);
+      this.remove((AbstractHtmlElementView) currPage);
+      DivViewChild newPage = this.pages.get(toIndex);
       tmpChangeHandler = this.changeHandlers.get(toIndex);
       this.appendChild(newPage);
       if (tmpChangeHandler != null)
@@ -68,12 +67,12 @@ public class DMHashNavigationPanel extends DivView
       this.index = toIndex;
    }
 
-   public void newPage(AbstractHtmlElementView widget)
+   public void newPage(DivViewChildElement widget)
    {
       this.newPage(widget, true);
    }
 
-   void newPage(AbstractHtmlElementView widget, boolean history)
+   void newPage(DivViewChildElement widget, boolean history)
    {
       PageChangeHandler changeHandler = null;
       if (widget instanceof PageChangeHandler)
@@ -83,12 +82,12 @@ public class DMHashNavigationPanel extends DivView
       this.newPage(widget, changeHandler, history);
    }
 
-   public void newPage(AbstractHtmlElementView widget, PageChangeHandler changeHandler)
+   public void newPage(DivViewChildElement widget, PageChangeHandler changeHandler)
    {
       this.newPage(widget, changeHandler, true);
    }
 
-   void newPage(AbstractHtmlElementView widget, PageChangeHandler changeHandler, boolean history)
+   void newPage(DivViewChildElement widget, PageChangeHandler changeHandler, boolean history)
    {
       // Remove all the pages after the current index
       while (this.pages.size() - 1 > this.index)
@@ -99,8 +98,8 @@ public class DMHashNavigationPanel extends DivView
       if (this.pages.size() > 0)
       {
          int idx = this.pages.size() - 1;
-         AbstractHtmlElementView currPage = this.pages.get(idx);
-         this.remove(currPage);
+         DivViewChildElement currPage = this.pages.get(idx);
+         this.remove((AbstractHtmlElementView) currPage);
          PageChangeHandler tmpChangeHandler = this.changeHandlers.get(idx);
          if (tmpChangeHandler != null)
          {

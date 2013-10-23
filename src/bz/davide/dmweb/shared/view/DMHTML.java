@@ -19,11 +19,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 
 package bz.davide.dmweb.shared.view;
 
-
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class DMHTML extends AbstractHtmlElementView
+public class DMHTML extends AbstractHtmlElementView implements DivViewChild
 {
 
    public DMHTML()
@@ -44,7 +43,7 @@ public class DMHTML extends AbstractHtmlElementView
 
    public void setText(String text)
    {
-      this.setElementInnerHtml(text);
+      //this.setElementInnerHtml(text);
    }
 
 }

@@ -30,7 +30,6 @@ public class DMServerSideElement
 
    HashMap<String, String> attributes = null;
    HashMap<String, Void>   styles     = null;
-   String                  innerHtml  = null;
 
    public DMServerSideElement(String tagName)
    {

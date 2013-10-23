@@ -19,15 +19,14 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 
 package bz.davide.dmweb.shared.view;
 
-
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class DMGwtWidgetHost extends AbstractHtmlElementView
+public class DMGwtWidgetHost extends DivView
 {
    public DMGwtWidgetHost()
    {
-      super("div");
+      super();
 
    }
 

@@ -19,7 +19,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 
 package bz.davide.dmweb.shared.view;
 
-
 /**
  * @author Davide Montesin <d@vide.bz>
  */
@@ -35,12 +34,4 @@ public class UlView extends AbstractHtmlElementView
       super(void1);
    }
 
-   public void setItem(LiView... listItems)
-   {
-      this.clear();
-      for (LiView item : listItems)
-      {
-         this.appendChild(item);
-      }
-   }
 }
