@@ -22,33 +22,16 @@ package bz.davide.dmweb.shared.view;
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class SpanView extends AbstractHtmlElementView implements DivViewChild, BoldViewChild, StrongViewChild
+public class TextNodeView implements Node, ButtonViewChild, SpanViewChild, AnchorViewChild, DivViewChild,
+                     LiViewChild
 {
+   String value;
 
-   public SpanView()
+   public TextNodeView(String value)
    {
-      this("");
+      super();
+      this.value = value;
    }
 
-   public SpanView(String text)
-   {
-      super("span");
-      this.setText(text);
-   }
-
-   SpanView(Void void1)
-   {
-      super(void1);
-   }
-
-   public void setText(String text)
-   {
-      this.clear();
-      this.appendChild(new TextNodeView(text));
-   }
-
-   public void appendChild(SpanViewChild node)
-   {
-      super.appendChildInternal(node);
-   }
+   // The set method is intentionally missing: because is not possible to reference a TextNode, is not possible to change it!
 }

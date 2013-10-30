@@ -22,7 +22,7 @@ package bz.davide.dmweb.shared.view;
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class LiView extends AbstractHtmlElementView
+public class LiView extends AbstractHtmlElementView implements UlViewChild
 {
    public LiView()
    {
@@ -32,6 +32,11 @@ public class LiView extends AbstractHtmlElementView
    public LiView(Void void1)
    {
       super(void1);
+   }
+
+   public void appendChild(LiViewChild node)
+   {
+      super.appendChildInternal(node);
    }
 
 }

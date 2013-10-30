@@ -39,7 +39,7 @@ public class ButtonView extends AbstractHtmlElementView implements DivViewChild
    public void setLabel(String text)
    {
       this.clear();
-      this.appendChild(new TextNode(text));
+      this.appendChild(new TextNodeView(text));
    }
 
    public void appendChild(ButtonViewChild node)

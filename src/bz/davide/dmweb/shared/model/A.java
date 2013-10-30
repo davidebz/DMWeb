@@ -24,6 +24,8 @@ package bz.davide.dmweb.shared.model;
  */
 public class A extends AbstractHtmlElement
 {
+   String href;
+
    public A()
    {
       super("a");
@@ -32,5 +34,10 @@ public class A extends AbstractHtmlElement
    protected A(Void void1)
    {
       super(void1);
+   }
+
+   public String getHref()
+   {
+      return this.href;
    }
 }

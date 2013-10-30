@@ -22,28 +22,7 @@ package bz.davide.dmweb.shared.view;
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class DMHTML extends AbstractHtmlElementView implements DivViewChild
+public interface LiViewChild extends Node
 {
-
-   public DMHTML()
-   {
-      this("");
-   }
-
-   public DMHTML(String text)
-   {
-      super("div");
-      this.setText(text);
-   }
-
-   DMHTML(Void void1)
-   {
-      super(void1);
-   }
-
-   public void setText(String text)
-   {
-      //this.setElementInnerHtml(text);
-   }
 
 }

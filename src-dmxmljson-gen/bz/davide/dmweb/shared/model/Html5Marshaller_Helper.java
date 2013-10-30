@@ -205,6 +205,14 @@ public class Html5Marshaller_Helper extends bz.davide.dmxmljson.marshalling.Mars
             }
             internalMarschall(obj, "bz.davide.dmweb.shared.model.AbstractHtmlElement", "N/A",structure, identities, seq, true);
             Object value;
+            // href
+            value = ((bz.davide.dmweb.shared.model.A)obj).href;
+            if (value == null)
+               structure.property("href").nullValue();
+            else
+            {
+                    structure.property("href").string((String)value);                          
+            }
             if (!superClass)
                structure.close();
          }
@@ -295,6 +303,20 @@ public class Html5Marshaller_Helper extends bz.davide.dmxmljson.marshalling.Mars
          }
       });
       this.putClassMarshaller("bz.davide.dmweb.shared.model.Code", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
+         @Override public void marshall(Object obj, String compileTimeClassName, bz.davide.dmxmljson.marshalling.Structure structure, java.util.IdentityHashMap<Object, bz.davide.dmxmljson.marshalling.Structure> identities, long[] seq, boolean superClass) throws Exception {
+            if (!superClass) {
+               if (isReference(structure, obj, identities, seq))
+                  return;
+               identities.put(obj, structure);
+               structure.open(shortName(compileTimeClassName), shortName(obj.getClass().getName()), null);
+            }
+            internalMarschall(obj, "bz.davide.dmweb.shared.model.AbstractHtmlElement", "N/A",structure, identities, seq, true);
+            Object value;
+            if (!superClass)
+               structure.close();
+         }
+      });
+      this.putClassMarshaller("bz.davide.dmweb.shared.model.Span", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
          @Override public void marshall(Object obj, String compileTimeClassName, bz.davide.dmxmljson.marshalling.Structure structure, java.util.IdentityHashMap<Object, bz.davide.dmxmljson.marshalling.Structure> identities, long[] seq, boolean superClass) throws Exception {
             if (!superClass) {
                if (isReference(structure, obj, identities, seq))

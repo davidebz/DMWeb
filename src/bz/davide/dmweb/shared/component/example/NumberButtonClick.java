@@ -17,38 +17,36 @@ You should have received a copy of the GNU Lesser General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>
 */
 
-package bz.davide.dmweb.shared.view;
+package bz.davide.dmweb.shared.component.example;
+
+import bz.davide.dmweb.shared.view.DMClickEvent;
+import bz.davide.dmweb.shared.view.DMClickHandler;
 
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class SpanView extends AbstractHtmlElementView implements DivViewChild, BoldViewChild, StrongViewChild
+public class NumberButtonClick implements DMClickHandler
 {
+   int        num;
 
-   public SpanView()
+   Calculator calculator;
+
+   public NumberButtonClick(int num, Calculator calculator)
    {
-      this("");
+      super();
+      this.num = num;
+      this.calculator = calculator;
    }
 
-   public SpanView(String text)
+   protected NumberButtonClick(Void void1)
    {
-      super("span");
-      this.setText(text);
    }
 
-   SpanView(Void void1)
+   @Override
+   public void onClick(DMClickEvent event)
    {
-      super(void1);
-   }
-
-   public void setText(String text)
-   {
-      this.clear();
-      this.appendChild(new TextNodeView(text));
-   }
-
-   public void appendChild(SpanViewChild node)
-   {
-      super.appendChildInternal(node);
+      String currVal = this.calculator.inputView.getValue();
+      currVal += String.valueOf(this.num);
+      this.calculator.inputView.setText(currVal);
    }
 }

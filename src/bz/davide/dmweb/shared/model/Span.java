@@ -17,38 +17,15 @@ You should have received a copy of the GNU Lesser General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>
 */
 
-package bz.davide.dmweb.shared.view;
+package bz.davide.dmweb.shared.model;
 
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class SpanView extends AbstractHtmlElementView implements DivViewChild, BoldViewChild, StrongViewChild
+public class Span extends AbstractHtmlElement
 {
-
-   public SpanView()
-   {
-      this("");
-   }
-
-   public SpanView(String text)
-   {
-      super("span");
-      this.setText(text);
-   }
-
-   SpanView(Void void1)
+   protected Span(Void void1)
    {
       super(void1);
-   }
-
-   public void setText(String text)
-   {
-      this.clear();
-      this.appendChild(new TextNodeView(text));
-   }
-
-   public void appendChild(SpanViewChild node)
-   {
-      super.appendChildInternal(node);
    }
 }

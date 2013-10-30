@@ -39,6 +39,11 @@ public class InputView extends AbstractHtmlElementView implements DivViewChild
       this.setText(initialText);
    }
 
+   protected InputView(Void void1)
+   {
+      super(void1);
+   }
+
    @Override
    protected void onBrowserEvent(Event event)
    {

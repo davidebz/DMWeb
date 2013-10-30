@@ -17,20 +17,35 @@ You should have received a copy of the GNU Lesser General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>
 */
 
-package bz.davide.dmweb.shared.view;
+package bz.davide.dmweb.shared.component.example;
+
+import bz.davide.dmweb.shared.view.AttachEvent;
+import bz.davide.dmweb.shared.view.AttachListener;
 
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class TextNode implements Node, ButtonViewChild, SpanViewChild, AnchorViewChild
+public class PhotoGalleryAttachListener implements AttachListener
 {
-   String value;
+   PhotoGallery gallery;
 
-   public TextNode(String value)
+   public PhotoGalleryAttachListener(PhotoGallery gallery)
    {
       super();
-      this.value = value;
+      this.gallery = gallery;
    }
 
-   // The set method is intentionally missing: because is not possible to reference a TextNode, is not possible to change it!
+   protected PhotoGalleryAttachListener(Void void1)
+   {
+   }
+
+   @Override
+   public void onAttachOrDetach(AttachEvent event)
+   {
+      if (event.isAttached())
+      {
+         this.gallery.start();
+      }
+
+   }
 }

@@ -234,6 +234,14 @@ public class Html5Unmarshaller_Helper extends bz.davide.dmxmljson.unmarshalling.
             if (id != null)
                identities.put(id, obj);
             bz.davide.dmxmljson.unmarshalling.Value value;
+            // href
+            if ((value = structure.property("href")) != null)
+               if (value.isNull())
+                  ((A)obj).href = null;
+               else
+               {
+                  ((A)obj).href = value.string();
+               }
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.TextNode", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
@@ -333,6 +341,21 @@ public class Html5Unmarshaller_Helper extends bz.davide.dmxmljson.unmarshalling.
       });
 
       this.putClassUnmarshaller("bz.davide.dmweb.shared.model.Code", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
+         @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
+            internalUnmarschall(structure, "bz.davide.dmweb.shared.model.AbstractHtmlElement", obj, identities);
+            String id = structure.getId();
+            if (id != null)
+               identities.put(id, obj);
+            bz.davide.dmxmljson.unmarshalling.Value value;
+         }
+      });
+      this.putInstanceFactory("bz.davide.dmweb.shared.model.Span", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
+         @Override public Object newInstance() throws Exception {
+            return new bz.davide.dmweb.shared.model.Span((Void)null);
+         }
+      });
+
+      this.putClassUnmarshaller("bz.davide.dmweb.shared.model.Span", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
             internalUnmarschall(structure, "bz.davide.dmweb.shared.model.AbstractHtmlElement", obj, identities);
             String id = structure.getId();

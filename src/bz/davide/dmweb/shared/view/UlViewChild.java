@@ -22,33 +22,7 @@ package bz.davide.dmweb.shared.view;
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class SpanView extends AbstractHtmlElementView implements DivViewChild, BoldViewChild, StrongViewChild
+public interface UlViewChild extends HtmlElementView
 {
 
-   public SpanView()
-   {
-      this("");
-   }
-
-   public SpanView(String text)
-   {
-      super("span");
-      this.setText(text);
-   }
-
-   SpanView(Void void1)
-   {
-      super(void1);
-   }
-
-   public void setText(String text)
-   {
-      this.clear();
-      this.appendChild(new TextNodeView(text));
-   }
-
-   public void appendChild(SpanViewChild node)
-   {
-      super.appendChildInternal(node);
-   }
 }

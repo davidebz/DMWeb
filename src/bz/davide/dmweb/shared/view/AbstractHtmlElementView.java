@@ -162,11 +162,11 @@ public abstract class AbstractHtmlElementView implements HtmlElementView
 
    protected void appendChildInternal(Node node)
    {
-      if (node instanceof TextNode)
+      if (node instanceof TextNodeView)
       {
          if (clientSide)
          {
-            this.getElement().appendChild(Document.get().createTextNode(((TextNode) node).value));
+            this.getElement().appendChild(Document.get().createTextNode(((TextNodeView) node).value));
          }
          else
          {
@@ -353,9 +353,9 @@ public abstract class AbstractHtmlElementView implements HtmlElementView
          for (int i = 0; i < widget.childs.size(); /* increment is in else statement */)
          {
             Node child = widget.childs.get(i);
-            if (child instanceof TextNode)
+            if (child instanceof TextNodeView)
             {
-               out.append(escapeText4html(((TextNode) child).value));
+               out.append(escapeText4html(((TextNodeView) child).value));
                widget.childs.remove(i);
             }
             else
