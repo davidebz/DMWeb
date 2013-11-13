@@ -182,12 +182,12 @@ public abstract class AbstractHtmlElementView implements HtmlElementView
 
          if (this.isAttacchedToDOM())
          {
-            this.notifyAttachRecursive(widget);
+            AbstractHtmlElementView.notifyAttachRecursive(widget);
          }
       }
    }
 
-   private void notifyAttachRecursive(AbstractHtmlElementView widget)
+   public static void notifyAttachRecursive(AbstractHtmlElementView widget)
    {
       for (AttachListener attachHandler : widget.attachHandlers)
       {
@@ -197,12 +197,12 @@ public abstract class AbstractHtmlElementView implements HtmlElementView
       {
          if (child instanceof AbstractHtmlElementView)
          {
-            this.notifyAttachRecursive((AbstractHtmlElementView) child);
+            notifyAttachRecursive((AbstractHtmlElementView) child);
          }
       }
    }
 
-   private void notifyDetachRecursive(AbstractHtmlElementView widget)
+   public static void notifyDetachRecursive(AbstractHtmlElementView widget)
    {
       if (widget.isAttacchedToDOM()) // Child of an attached can be already unattached!
       {
@@ -210,7 +210,7 @@ public abstract class AbstractHtmlElementView implements HtmlElementView
          {
             if (child instanceof AbstractHtmlElementView)
             {
-               this.notifyDetachRecursive((AbstractHtmlElementView) child);
+               notifyDetachRecursive((AbstractHtmlElementView) child);
             }
          }
          for (AttachListener attachHandler : widget.attachHandlers)
@@ -232,7 +232,7 @@ public abstract class AbstractHtmlElementView implements HtmlElementView
             {
                if (this.isAttacchedToDOM())
                {
-                  this.notifyDetachRecursive(dmWidget);
+                  AbstractHtmlElementView.notifyDetachRecursive(dmWidget);
                }
                this.getElement().removeChild(dmWidget.getElement());
             }

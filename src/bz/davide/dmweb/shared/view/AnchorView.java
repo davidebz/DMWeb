@@ -22,7 +22,7 @@ package bz.davide.dmweb.shared.view;
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class AnchorView extends AbstractHtmlElementView implements DivViewChild
+public class AnchorView extends AbstractHtmlElementView implements DivViewChildElement, LiViewChild
 {
    public AnchorView(String href, String text, String target)
    {
