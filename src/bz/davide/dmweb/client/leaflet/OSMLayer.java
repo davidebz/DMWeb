@@ -28,11 +28,16 @@ public class OSMLayer extends Layer
 {
    public OSMLayer()
    {
-      this.jsLayer = newOSMLayer(4, 18);
+      this("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");
    }
 
-   static native JavaScriptObject newOSMLayer(int minZoom, int maxZoom)/*-{
-		var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+   public OSMLayer(String tilesUrl)
+   {
+      this.jsLayer = newOSMLayer(4, 18, tilesUrl);
+   }
+
+   static native JavaScriptObject newOSMLayer(int minZoom, int maxZoom, String tilesUrl)/*-{
+		var osmUrl = tilesUrl;
 		var osmAttrib = 'Map data © OpenStreetMap contributors';
 		var osm = new $wnd.L.TileLayer(osmUrl, {
 			minZoom : minZoom,

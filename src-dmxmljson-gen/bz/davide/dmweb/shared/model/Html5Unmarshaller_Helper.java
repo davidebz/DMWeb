@@ -383,18 +383,19 @@ public class Html5Unmarshaller_Helper extends bz.davide.dmxmljson.unmarshalling.
                else
                {
                   bz.davide.dmxmljson.unmarshalling.Array arr = value.array();        
-                  java.util.ArrayList arrayList = new java.util.ArrayList();       
+                  java.util.ArrayList arrayList = new java.util.ArrayList(arr.length());       
                   while ((value = arr.nextItem()) != null) {                       
                      if (value.isNull())                                           
                         arrayList.add(null);                                       
                      else                                                          
                      {                                                                   
-                        String refid = value.structure().getRefId();    
+                        bz.davide.dmxmljson.unmarshalling.Structure tmpStructure = value.structure();
+                        String refid = tmpStructure.getRefId();    
                         if (refid != null)                              
                            arrayList.add(identities.get(refid));                                                
                         else {
-                           Object o = newInstance(value.structure().getRuntimeClassName("Node"));              
-                           internalUnmarschall(value.structure(), o.getClass().getName(), o, identities); 
+                           Object o = newInstance(tmpStructure.getRuntimeClassName("Node"));              
+                           internalUnmarschall(tmpStructure, o.getClass().getName(), o, identities); 
                            arrayList.add(o);                                                
                         }
                      }                                                                   
