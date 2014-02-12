@@ -29,7 +29,7 @@ public class DistanceCalculator
       double latBrad = toRad(latB);
       double lonBrad = toRad(lonB);
 
-      double R = 6371; // or 6.372,795 ?
+      double R = 6371000; // or 6.372,795 ?
 
       double AB = R *
                   Math.acos(Math.sin(latArad) *
