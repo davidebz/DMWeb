@@ -19,14 +19,23 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 
 package bz.davide.dmweb.shared.view;
 
+
 /**
  * @author Davide Montesin <d@vide.bz>
  */
 public class StrongView extends AbstractHtmlElementView implements DivViewChild
 {
-   public StrongView()
+   public static class InitParameters extends AbstractHtmlElementView.InitParameters
    {
-      super("strong");
+      public InitParameters()
+      {
+         super("strong");
+      }
+   }
+
+   public StrongView(InitParameters initParameters)
+   {
+      super(initParameters);
    }
 
    public void appendChild(StrongViewChild node)

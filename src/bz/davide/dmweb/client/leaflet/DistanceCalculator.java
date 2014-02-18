@@ -21,6 +21,7 @@ package bz.davide.dmweb.client.leaflet;
 
 public class DistanceCalculator
 {
+   final static double R = 6371000; // or 6.372,795 ?
 
    public static double distanceMeter(double latA, double lonA, double latB, double lonB)
    {
@@ -29,19 +30,60 @@ public class DistanceCalculator
       double latBrad = toRad(latB);
       double lonBrad = toRad(lonB);
 
-      double R = 6371000; // or 6.372,795 ?
+      double v1 = Math.sin(latArad) *
+                  Math.sin(latBrad) +
+                  Math.cos(latArad) *
+                  Math.cos(latBrad) *
+                  Math.cos(lonArad - lonBrad);
 
-      double AB = R *
-                  Math.acos(Math.sin(latArad) *
-                            Math.sin(latBrad) +
-                            Math.cos(latArad) *
-                            Math.cos(latBrad) *
-                            Math.cos(lonArad - lonBrad));
-      return AB;
+      double ab = R * Math.acos(v1);
+      return ab;
    }
 
    static double toRad(double latLon)
    {
       return latLon * Math.PI / 180D;
+   }
+
+   static double toDegree(double latLon)
+   {
+      return latLon * 180D / Math.PI;
+   }
+
+   public static double calculateLongitude(double latA, double lonA, double distanceMeter)
+   {
+      double latArad = toRad(latA);
+      double lonArad = toRad(lonA);
+
+      double latBrad = latArad;
+
+      double ab = distanceMeter;
+
+      double v1 = Math.cos(ab / R);
+
+      double v2 = (v1 - Math.sin(latArad) * Math.sin(latBrad)) / (Math.cos(latArad) * Math.cos(latBrad));
+
+      double lonArad_lonBrad = Math.acos(v2);
+
+      double lonBrad = -lonArad_lonBrad + lonArad;
+
+      double d = toDegree(lonBrad);
+
+      return d;
+
+   }
+
+   public static double calculateLatitude(double latA, double distanceMeter)
+   {
+      double latArad = toRad(latA);
+
+      double delta = distanceMeter / R;
+
+      double latBrad = latArad + delta;
+
+      double d = toDegree(latBrad);
+
+      return d;
+
    }
 }

@@ -24,26 +24,46 @@ package bz.davide.dmweb.shared.view;
  */
 public class ImgView extends AbstractHtmlElementView implements DivViewChild
 {
-   public ImgView()
+
+   public static class InitParameters extends AbstractHtmlElementView.InitParameters
    {
-      this("missing-url.png");
+      private String url;
+      private String altText;
+
+      public InitParameters()
+      {
+         this("missing-url.png");
+      }
+
+      public InitParameters(String url)
+      {
+         this(url, null);
+      }
+
+      public InitParameters(String url, String altText)
+      {
+         super("img");
+         this.url = url;
+         this.altText = altText;
+      }
+
    }
 
-   public ImgView(String url)
+   public ImgView(InitParameters initParameters)
    {
-      this(url, "");
+      super(initParameters);
+      if (initParameters.url != null)
+      {
+         this.setSrc(initParameters.url);
+      }
+      if (initParameters.altText != null)
+      {
+         this.setAltText(initParameters.altText);
+      }
    }
 
-   public ImgView(String url, String altText)
+   protected ImgView()
    {
-      super("img");
-      this.setSrc(url);
-      this.setAltText(altText);
-   }
-
-   protected ImgView(Void void1)
-   {
-      super(void1);
    }
 
    public void setSrc(String url)

@@ -24,30 +24,52 @@ package bz.davide.dmweb.shared.view;
  */
 public class AnchorView extends AbstractHtmlElementView implements DivViewChildElement, LiViewChild
 {
-   public AnchorView(String href, String text, String target)
+
+   public static class InitParameters extends AbstractHtmlElementView.InitParameters
    {
-      super("a");
-      this.setHref(href);
-      this.setText(text);
-      if (target != null)
+      private String href;
+      private String text;
+      private String target;
+
+      public InitParameters()
       {
-         this.setTarget(target);
+         this("#", "-Link-", null);
+      }
+
+      public InitParameters(String href, String text)
+      {
+         this(href, text, null);
+      }
+
+      public InitParameters(String href, String text, String target)
+      {
+         super("a");
+         this.href = href;
+         this.text = text;
+         this.target = target;
+      }
+
+   }
+
+   public AnchorView(InitParameters initParameters)
+   {
+      super(initParameters);
+      if (initParameters.href != null)
+      {
+         this.setHref(initParameters.href);
+      }
+      if (initParameters.text != null)
+      {
+         this.setText(initParameters.text);
+      }
+      if (initParameters.target != null)
+      {
+         this.setTarget(initParameters.target);
       }
    }
 
-   public AnchorView(String href, String text)
+   protected AnchorView()
    {
-      this(href, text, null);
-   }
-
-   public AnchorView()
-   {
-      this("#", "-Link-");
-   }
-
-   protected AnchorView(Void void1)
-   {
-      super(void1);
    }
 
    public void setHref(String href)

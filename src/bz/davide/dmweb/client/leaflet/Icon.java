@@ -28,6 +28,10 @@ public class Icon
 {
    JavaScriptObject jsIcon;
 
+   public Icon()
+   {
+   }
+
    public Icon(IconOptions iconOptions)
    {
       this.jsIcon = newIcon(iconOptions.jsOptions);

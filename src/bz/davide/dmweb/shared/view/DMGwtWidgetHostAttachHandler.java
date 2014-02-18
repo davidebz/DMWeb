@@ -19,7 +19,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 
 package bz.davide.dmweb.shared.view;
 
-
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -27,12 +26,12 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class DMGwtWidgetHostAttachHandler implements AttachListener
+public final class DMGwtWidgetHostAttachHandler implements AttachListener
 {
-   AbstractHtmlElementView               widget;
-   DMGwtWidgetHostFactory factory;
-   transient HTMLPanel    htmlPanel;
-   transient Widget       gwtWidget = null;
+   AbstractHtmlElementView widget;
+   DMGwtWidgetHostFactory  factory;
+   transient HTMLPanel     htmlPanel;
+   transient Widget        gwtWidget = null;
 
    public DMGwtWidgetHostAttachHandler(AbstractHtmlElementView widget, DMGwtWidgetHostFactory factory)
    {
@@ -41,7 +40,7 @@ public class DMGwtWidgetHostAttachHandler implements AttachListener
       this.factory = factory;
    }
 
-   DMGwtWidgetHostAttachHandler(Void void1)
+   DMGwtWidgetHostAttachHandler()
    {
    }
 

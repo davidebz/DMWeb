@@ -346,7 +346,7 @@ public class Html5Marshaller_Helper extends bz.davide.dmxmljson.marshalling.Mars
             else
             {
                java.util.ArrayList arrayList = (java.util.ArrayList)value;                        
-               bz.davide.dmxmljson.marshalling.Array array = structure.property("childNodes").array();        
+               bz.davide.dmxmljson.marshalling.Array array = structure.property("childNodes").array(arrayList.size());        
                for (Object o: arrayList) {                                    
                   if (o == null)                                              
                      array.item().nullValue();                                

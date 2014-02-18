@@ -26,21 +26,22 @@ import bz.davide.dmweb.shared.i18n.I18NData;
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class DMWidgetSerializationData
+public final class DMWidgetSerializationData
 {
    ArrayList<AttachListener> domReady;
-   ArrayList<AttachListener> attachHandlers = new ArrayList<AttachListener>();
-   int                        idseq          = 0;
+   ArrayList<AttachListener> attachHandlers;
+   int                       idseq = 0;
 
-   I18NData                   i18n           = null;
+   I18NData                  i18n  = null;
 
    public DMWidgetSerializationData(ArrayList<AttachListener> domReady, I18NData i18n)
    {
       this.domReady = domReady;
       this.i18n = i18n;
+      this.attachHandlers = new ArrayList<AttachListener>();
    }
 
-   DMWidgetSerializationData(Void void1)
+   DMWidgetSerializationData()
    {
    }
 

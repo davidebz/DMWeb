@@ -270,7 +270,7 @@ public class SimpleXMLWebSiteEngine implements Filter
          html.append("\n\n");
       }
 
-      JSONStructure jsonStructure = new JSONStructure();
+      JSONStructure jsonStructure = new JSONStructure(1);
       this.widgetMarshaller.marschall(serializationData, jsonStructure);
       html.append("<script>\nvar bz_davide_dm_widgets = ");
       html.append(jsonStructure.toString());

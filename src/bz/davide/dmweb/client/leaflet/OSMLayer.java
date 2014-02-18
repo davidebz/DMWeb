@@ -28,12 +28,12 @@ public class OSMLayer extends Layer
 {
    public OSMLayer()
    {
-      this("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");
+      this("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",1,18);
    }
 
-   public OSMLayer(String tilesUrl)
+   public OSMLayer(String tilesUrl, int minZoom, int maxZoom)
    {
-      this.jsLayer = newOSMLayer(4, 18, tilesUrl);
+      this.jsLayer = newOSMLayer(minZoom, maxZoom, tilesUrl);
    }
 
    static native JavaScriptObject newOSMLayer(int minZoom, int maxZoom, String tilesUrl)/*-{

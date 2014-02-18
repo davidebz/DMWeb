@@ -24,7 +24,7 @@ import java.util.ArrayList;
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class AbstractHtmlElement implements Node
+public abstract class AbstractHtmlElement implements Node
 {
    String                    tagName;
 

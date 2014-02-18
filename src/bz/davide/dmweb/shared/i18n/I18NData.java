@@ -27,7 +27,7 @@ import java.util.HashMap;
 public class I18NData extends I18N
 {
    String                  language;
-   HashMap<String, String> map = new HashMap<String, String>();
+   HashMap<String, String> map;
 
    public I18NData(String language, HashMap<String, String> map)
    {
@@ -36,9 +36,9 @@ public class I18NData extends I18N
       this.map = map;
    };
 
-   protected I18NData(Void void1)
+   protected I18NData()
    {
-      super(void1);
+      super();
    }
 
    @Override

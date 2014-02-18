@@ -19,7 +19,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 
 package bz.davide.dmweb.shared.view;
 
-
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
@@ -27,7 +26,7 @@ import com.google.gwt.user.client.EventListener;
 /**
  * @author Davide Montesin <d@vide.bz>
  */
-public class DMWidgetEventAttachHandler implements AttachListener
+public final class DMWidgetEventAttachHandler implements AttachListener
 {
    AbstractHtmlElementView widget;
 
@@ -37,7 +36,7 @@ public class DMWidgetEventAttachHandler implements AttachListener
       this.widget = widget;
    }
 
-   DMWidgetEventAttachHandler(Void void1)
+   DMWidgetEventAttachHandler()
    {
    }
 

@@ -11,15 +11,29 @@ public class Html5Unmarshaller_Helper extends bz.davide.dmxmljson.unmarshalling.
 {
    protected Html5Unmarshaller_Helper()
    {
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.model.Html", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.model.Html>() {
+         @Override public void check(bz.davide.dmweb.shared.model.Html  ret){
+            // body
+            if (ret.body != null)
+               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.model.Html.body");
+            // head
+            if (ret.head != null)
+               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.model.Html.head");
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.AbstractHtmlElement").check(ret);
+         }
+      });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.Html", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
-            return new bz.davide.dmweb.shared.model.Html((Void)null);
+            bz.davide.dmweb.shared.model.Html ret = new bz.davide.dmweb.shared.model.Html();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.Html").check(ret);
+            return ret;
          }
       });
 
       this.putClassUnmarshaller("bz.davide.dmweb.shared.model.Html", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
             internalUnmarschall(structure, "bz.davide.dmweb.shared.model.AbstractHtmlElement", obj, identities);
+            structure.open();
             String id = structure.getId();
             if (id != null)
                identities.put(id, obj);
@@ -54,182 +68,293 @@ public class Html5Unmarshaller_Helper extends bz.davide.dmxmljson.unmarshalling.
                      ((Html)obj).head = (bz.davide.dmweb.shared.model.Head)o;
                   }
                }
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.model.Meta", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.model.Meta>() {
+         @Override public void check(bz.davide.dmweb.shared.model.Meta  ret){
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.AbstractHtmlElement").check(ret);
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.Meta", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
-            return new bz.davide.dmweb.shared.model.Meta((Void)null);
+            bz.davide.dmweb.shared.model.Meta ret = new bz.davide.dmweb.shared.model.Meta();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.Meta").check(ret);
+            return ret;
          }
       });
 
       this.putClassUnmarshaller("bz.davide.dmweb.shared.model.Meta", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
             internalUnmarschall(structure, "bz.davide.dmweb.shared.model.AbstractHtmlElement", obj, identities);
+            structure.open();
             String id = structure.getId();
             if (id != null)
                identities.put(id, obj);
             bz.davide.dmxmljson.unmarshalling.Value value;
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.model.Link", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.model.Link>() {
+         @Override public void check(bz.davide.dmweb.shared.model.Link  ret){
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.AbstractHtmlElement").check(ret);
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.Link", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
-            return new bz.davide.dmweb.shared.model.Link((Void)null);
+            bz.davide.dmweb.shared.model.Link ret = new bz.davide.dmweb.shared.model.Link();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.Link").check(ret);
+            return ret;
          }
       });
 
       this.putClassUnmarshaller("bz.davide.dmweb.shared.model.Link", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
             internalUnmarschall(structure, "bz.davide.dmweb.shared.model.AbstractHtmlElement", obj, identities);
+            structure.open();
             String id = structure.getId();
             if (id != null)
                identities.put(id, obj);
             bz.davide.dmxmljson.unmarshalling.Value value;
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.model.Title", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.model.Title>() {
+         @Override public void check(bz.davide.dmweb.shared.model.Title  ret){
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.AbstractHtmlElement").check(ret);
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.Title", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
-            return new bz.davide.dmweb.shared.model.Title((Void)null);
+            bz.davide.dmweb.shared.model.Title ret = new bz.davide.dmweb.shared.model.Title();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.Title").check(ret);
+            return ret;
          }
       });
 
       this.putClassUnmarshaller("bz.davide.dmweb.shared.model.Title", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
             internalUnmarschall(structure, "bz.davide.dmweb.shared.model.AbstractHtmlElement", obj, identities);
+            structure.open();
             String id = structure.getId();
             if (id != null)
                identities.put(id, obj);
             bz.davide.dmxmljson.unmarshalling.Value value;
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.model.Script", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.model.Script>() {
+         @Override public void check(bz.davide.dmweb.shared.model.Script  ret){
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.AbstractHtmlElement").check(ret);
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.Script", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
-            return new bz.davide.dmweb.shared.model.Script((Void)null);
+            bz.davide.dmweb.shared.model.Script ret = new bz.davide.dmweb.shared.model.Script();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.Script").check(ret);
+            return ret;
          }
       });
 
       this.putClassUnmarshaller("bz.davide.dmweb.shared.model.Script", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
             internalUnmarschall(structure, "bz.davide.dmweb.shared.model.AbstractHtmlElement", obj, identities);
+            structure.open();
             String id = structure.getId();
             if (id != null)
                identities.put(id, obj);
             bz.davide.dmxmljson.unmarshalling.Value value;
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.model.Section", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.model.Section>() {
+         @Override public void check(bz.davide.dmweb.shared.model.Section  ret){
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.AbstractHtmlElement").check(ret);
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.Section", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
-            return new bz.davide.dmweb.shared.model.Section((Void)null);
+            bz.davide.dmweb.shared.model.Section ret = new bz.davide.dmweb.shared.model.Section();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.Section").check(ret);
+            return ret;
          }
       });
 
       this.putClassUnmarshaller("bz.davide.dmweb.shared.model.Section", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
             internalUnmarschall(structure, "bz.davide.dmweb.shared.model.AbstractHtmlElement", obj, identities);
+            structure.open();
             String id = structure.getId();
             if (id != null)
                identities.put(id, obj);
             bz.davide.dmxmljson.unmarshalling.Value value;
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.model.Ul", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.model.Ul>() {
+         @Override public void check(bz.davide.dmweb.shared.model.Ul  ret){
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.AbstractHtmlElement").check(ret);
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.Ul", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
-            return new bz.davide.dmweb.shared.model.Ul((Void)null);
+            bz.davide.dmweb.shared.model.Ul ret = new bz.davide.dmweb.shared.model.Ul();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.Ul").check(ret);
+            return ret;
          }
       });
 
       this.putClassUnmarshaller("bz.davide.dmweb.shared.model.Ul", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
             internalUnmarschall(structure, "bz.davide.dmweb.shared.model.AbstractHtmlElement", obj, identities);
+            structure.open();
             String id = structure.getId();
             if (id != null)
                identities.put(id, obj);
             bz.davide.dmxmljson.unmarshalling.Value value;
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.model.Li", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.model.Li>() {
+         @Override public void check(bz.davide.dmweb.shared.model.Li  ret){
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.AbstractHtmlElement").check(ret);
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.Li", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
-            return new bz.davide.dmweb.shared.model.Li((Void)null);
+            bz.davide.dmweb.shared.model.Li ret = new bz.davide.dmweb.shared.model.Li();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.Li").check(ret);
+            return ret;
          }
       });
 
       this.putClassUnmarshaller("bz.davide.dmweb.shared.model.Li", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
             internalUnmarschall(structure, "bz.davide.dmweb.shared.model.AbstractHtmlElement", obj, identities);
+            structure.open();
             String id = structure.getId();
             if (id != null)
                identities.put(id, obj);
             bz.davide.dmxmljson.unmarshalling.Value value;
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.model.H2", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.model.H2>() {
+         @Override public void check(bz.davide.dmweb.shared.model.H2  ret){
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.AbstractHtmlElement").check(ret);
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.H2", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
-            return new bz.davide.dmweb.shared.model.H2((Void)null);
+            bz.davide.dmweb.shared.model.H2 ret = new bz.davide.dmweb.shared.model.H2();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.H2").check(ret);
+            return ret;
          }
       });
 
       this.putClassUnmarshaller("bz.davide.dmweb.shared.model.H2", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
             internalUnmarschall(structure, "bz.davide.dmweb.shared.model.AbstractHtmlElement", obj, identities);
+            structure.open();
             String id = structure.getId();
             if (id != null)
                identities.put(id, obj);
             bz.davide.dmxmljson.unmarshalling.Value value;
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.model.Iframe", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.model.Iframe>() {
+         @Override public void check(bz.davide.dmweb.shared.model.Iframe  ret){
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.AbstractHtmlElement").check(ret);
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.Iframe", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
-            return new bz.davide.dmweb.shared.model.Iframe((Void)null);
+            bz.davide.dmweb.shared.model.Iframe ret = new bz.davide.dmweb.shared.model.Iframe();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.Iframe").check(ret);
+            return ret;
          }
       });
 
       this.putClassUnmarshaller("bz.davide.dmweb.shared.model.Iframe", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
             internalUnmarschall(structure, "bz.davide.dmweb.shared.model.AbstractHtmlElement", obj, identities);
+            structure.open();
             String id = structure.getId();
             if (id != null)
                identities.put(id, obj);
             bz.davide.dmxmljson.unmarshalling.Value value;
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.model.Div", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.model.Div>() {
+         @Override public void check(bz.davide.dmweb.shared.model.Div  ret){
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.AbstractHtmlElement").check(ret);
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.Div", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
-            return new bz.davide.dmweb.shared.model.Div((Void)null);
+            bz.davide.dmweb.shared.model.Div ret = new bz.davide.dmweb.shared.model.Div();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.Div").check(ret);
+            return ret;
          }
       });
 
       this.putClassUnmarshaller("bz.davide.dmweb.shared.model.Div", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
             internalUnmarschall(structure, "bz.davide.dmweb.shared.model.AbstractHtmlElement", obj, identities);
+            structure.open();
             String id = structure.getId();
             if (id != null)
                identities.put(id, obj);
             bz.davide.dmxmljson.unmarshalling.Value value;
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.model.B", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.model.B>() {
+         @Override public void check(bz.davide.dmweb.shared.model.B  ret){
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.AbstractHtmlElement").check(ret);
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.B", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
-            return new bz.davide.dmweb.shared.model.B((Void)null);
+            bz.davide.dmweb.shared.model.B ret = new bz.davide.dmweb.shared.model.B();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.B").check(ret);
+            return ret;
          }
       });
 
       this.putClassUnmarshaller("bz.davide.dmweb.shared.model.B", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
             internalUnmarschall(structure, "bz.davide.dmweb.shared.model.AbstractHtmlElement", obj, identities);
+            structure.open();
             String id = structure.getId();
             if (id != null)
                identities.put(id, obj);
             bz.davide.dmxmljson.unmarshalling.Value value;
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.model.A", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.model.A>() {
+         @Override public void check(bz.davide.dmweb.shared.model.A  ret){
+            // href
+            if (ret.href != null)
+               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.model.A.href");
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.AbstractHtmlElement").check(ret);
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.A", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
-            return new bz.davide.dmweb.shared.model.A((Void)null);
+            bz.davide.dmweb.shared.model.A ret = new bz.davide.dmweb.shared.model.A();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.A").check(ret);
+            return ret;
          }
       });
 
       this.putClassUnmarshaller("bz.davide.dmweb.shared.model.A", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
             internalUnmarschall(structure, "bz.davide.dmweb.shared.model.AbstractHtmlElement", obj, identities);
+            structure.open();
             String id = structure.getId();
             if (id != null)
                identities.put(id, obj);
@@ -242,16 +367,27 @@ public class Html5Unmarshaller_Helper extends bz.davide.dmxmljson.unmarshalling.
                {
                   ((A)obj).href = value.string();
                }
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.model.TextNode", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.model.TextNode>() {
+         @Override public void check(bz.davide.dmweb.shared.model.TextNode  ret){
+            // value
+            if (ret.value != null)
+               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.model.TextNode.value");
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.TextNode", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
-            return new bz.davide.dmweb.shared.model.TextNode((Void)null);
+            bz.davide.dmweb.shared.model.TextNode ret = new bz.davide.dmweb.shared.model.TextNode();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.TextNode").check(ret);
+            return ret;
          }
       });
 
       this.putClassUnmarshaller("bz.davide.dmweb.shared.model.TextNode", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
+            structure.open();
             String id = structure.getId();
             if (id != null)
                identities.put(id, obj);
@@ -264,47 +400,77 @@ public class Html5Unmarshaller_Helper extends bz.davide.dmxmljson.unmarshalling.
                {
                   ((TextNode)obj).value = value.string();
                }
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.model.Br", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.model.Br>() {
+         @Override public void check(bz.davide.dmweb.shared.model.Br  ret){
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.AbstractHtmlElement").check(ret);
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.Br", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
-            return new bz.davide.dmweb.shared.model.Br((Void)null);
+            bz.davide.dmweb.shared.model.Br ret = new bz.davide.dmweb.shared.model.Br();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.Br").check(ret);
+            return ret;
          }
       });
 
       this.putClassUnmarshaller("bz.davide.dmweb.shared.model.Br", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
             internalUnmarschall(structure, "bz.davide.dmweb.shared.model.AbstractHtmlElement", obj, identities);
+            structure.open();
             String id = structure.getId();
             if (id != null)
                identities.put(id, obj);
             bz.davide.dmxmljson.unmarshalling.Value value;
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.model.Strong", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.model.Strong>() {
+         @Override public void check(bz.davide.dmweb.shared.model.Strong  ret){
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.AbstractHtmlElement").check(ret);
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.Strong", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
-            return new bz.davide.dmweb.shared.model.Strong((Void)null);
+            bz.davide.dmweb.shared.model.Strong ret = new bz.davide.dmweb.shared.model.Strong();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.Strong").check(ret);
+            return ret;
          }
       });
 
       this.putClassUnmarshaller("bz.davide.dmweb.shared.model.Strong", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
             internalUnmarschall(structure, "bz.davide.dmweb.shared.model.AbstractHtmlElement", obj, identities);
+            structure.open();
             String id = structure.getId();
             if (id != null)
                identities.put(id, obj);
             bz.davide.dmxmljson.unmarshalling.Value value;
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.model.Img", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.model.Img>() {
+         @Override public void check(bz.davide.dmweb.shared.model.Img  ret){
+            // src
+            if (ret.src != null)
+               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.model.Img.src");
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.AbstractHtmlElement").check(ret);
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.Img", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
-            return new bz.davide.dmweb.shared.model.Img((Void)null);
+            bz.davide.dmweb.shared.model.Img ret = new bz.davide.dmweb.shared.model.Img();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.Img").check(ret);
+            return ret;
          }
       });
 
       this.putClassUnmarshaller("bz.davide.dmweb.shared.model.Img", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
             internalUnmarschall(structure, "bz.davide.dmweb.shared.model.AbstractHtmlElement", obj, identities);
+            structure.open();
             String id = structure.getId();
             if (id != null)
                identities.put(id, obj);
@@ -317,61 +483,100 @@ public class Html5Unmarshaller_Helper extends bz.davide.dmxmljson.unmarshalling.
                {
                   ((Img)obj).src = value.string();
                }
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.model.Pre", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.model.Pre>() {
+         @Override public void check(bz.davide.dmweb.shared.model.Pre  ret){
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.AbstractHtmlElement").check(ret);
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.Pre", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
-            return new bz.davide.dmweb.shared.model.Pre((Void)null);
+            bz.davide.dmweb.shared.model.Pre ret = new bz.davide.dmweb.shared.model.Pre();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.Pre").check(ret);
+            return ret;
          }
       });
 
       this.putClassUnmarshaller("bz.davide.dmweb.shared.model.Pre", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
             internalUnmarschall(structure, "bz.davide.dmweb.shared.model.AbstractHtmlElement", obj, identities);
+            structure.open();
             String id = structure.getId();
             if (id != null)
                identities.put(id, obj);
             bz.davide.dmxmljson.unmarshalling.Value value;
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.model.Code", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.model.Code>() {
+         @Override public void check(bz.davide.dmweb.shared.model.Code  ret){
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.AbstractHtmlElement").check(ret);
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.Code", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
-            return new bz.davide.dmweb.shared.model.Code((Void)null);
+            bz.davide.dmweb.shared.model.Code ret = new bz.davide.dmweb.shared.model.Code();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.Code").check(ret);
+            return ret;
          }
       });
 
       this.putClassUnmarshaller("bz.davide.dmweb.shared.model.Code", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
             internalUnmarschall(structure, "bz.davide.dmweb.shared.model.AbstractHtmlElement", obj, identities);
+            structure.open();
             String id = structure.getId();
             if (id != null)
                identities.put(id, obj);
             bz.davide.dmxmljson.unmarshalling.Value value;
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.model.Span", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.model.Span>() {
+         @Override public void check(bz.davide.dmweb.shared.model.Span  ret){
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.AbstractHtmlElement").check(ret);
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.Span", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
-            return new bz.davide.dmweb.shared.model.Span((Void)null);
+            bz.davide.dmweb.shared.model.Span ret = new bz.davide.dmweb.shared.model.Span();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.Span").check(ret);
+            return ret;
          }
       });
 
       this.putClassUnmarshaller("bz.davide.dmweb.shared.model.Span", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
             internalUnmarschall(structure, "bz.davide.dmweb.shared.model.AbstractHtmlElement", obj, identities);
+            structure.open();
             String id = structure.getId();
             if (id != null)
                identities.put(id, obj);
             bz.davide.dmxmljson.unmarshalling.Value value;
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.model.AbstractHtmlElement", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.model.AbstractHtmlElement>() {
+         @Override public void check(bz.davide.dmweb.shared.model.AbstractHtmlElement  ret){
+            // childNodes
+            if (ret.childNodes != null)
+               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.model.AbstractHtmlElement.childNodes");
+            // tagName
+            if (ret.tagName != null)
+               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.model.AbstractHtmlElement.tagName");
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.AbstractHtmlElement", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
-            return new bz.davide.dmweb.shared.model.AbstractHtmlElement((Void)null);
+            return null;
          }
       });
 
       this.putClassUnmarshaller("bz.davide.dmweb.shared.model.AbstractHtmlElement", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
+            structure.open();
             String id = structure.getId();
             if (id != null)
                identities.put(id, obj);
@@ -383,6 +588,7 @@ public class Html5Unmarshaller_Helper extends bz.davide.dmxmljson.unmarshalling.
                else
                {
                   bz.davide.dmxmljson.unmarshalling.Array arr = value.array();        
+                  arr.open();        
                   java.util.ArrayList arrayList = new java.util.ArrayList(arr.length());       
                   while ((value = arr.nextItem()) != null) {                       
                      if (value.isNull())                                           
@@ -400,6 +606,7 @@ public class Html5Unmarshaller_Helper extends bz.davide.dmxmljson.unmarshalling.
                         }
                      }                                                                   
                   }                                                                   
+                  arr.close();        
                   ((AbstractHtmlElement)obj).childNodes = arrayList;
                }
             // tagName
@@ -410,32 +617,53 @@ public class Html5Unmarshaller_Helper extends bz.davide.dmxmljson.unmarshalling.
                {
                   ((AbstractHtmlElement)obj).tagName = value.string();
                }
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.model.Body", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.model.Body>() {
+         @Override public void check(bz.davide.dmweb.shared.model.Body  ret){
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.AbstractHtmlElement").check(ret);
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.Body", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
-            return new bz.davide.dmweb.shared.model.Body((Void)null);
+            bz.davide.dmweb.shared.model.Body ret = new bz.davide.dmweb.shared.model.Body();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.Body").check(ret);
+            return ret;
          }
       });
 
       this.putClassUnmarshaller("bz.davide.dmweb.shared.model.Body", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
             internalUnmarschall(structure, "bz.davide.dmweb.shared.model.AbstractHtmlElement", obj, identities);
+            structure.open();
             String id = structure.getId();
             if (id != null)
                identities.put(id, obj);
             bz.davide.dmxmljson.unmarshalling.Value value;
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.model.Head", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.model.Head>() {
+         @Override public void check(bz.davide.dmweb.shared.model.Head  ret){
+            // title
+            if (ret.title != null)
+               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.model.Head.title");
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.AbstractHtmlElement").check(ret);
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.Head", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
-            return new bz.davide.dmweb.shared.model.Head((Void)null);
+            bz.davide.dmweb.shared.model.Head ret = new bz.davide.dmweb.shared.model.Head();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.model.Head").check(ret);
+            return ret;
          }
       });
 
       this.putClassUnmarshaller("bz.davide.dmweb.shared.model.Head", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
             internalUnmarschall(structure, "bz.davide.dmweb.shared.model.AbstractHtmlElement", obj, identities);
+            structure.open();
             String id = structure.getId();
             if (id != null)
                identities.put(id, obj);
@@ -448,6 +676,7 @@ public class Html5Unmarshaller_Helper extends bz.davide.dmxmljson.unmarshalling.
                {
                   ((Head)obj).title = value.string();
                }
+            structure.close();
          }
       });
 

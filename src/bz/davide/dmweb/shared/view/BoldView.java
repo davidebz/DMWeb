@@ -24,9 +24,18 @@ package bz.davide.dmweb.shared.view;
  */
 public class BoldView extends AbstractHtmlElementView implements DivViewChild
 {
-   public BoldView()
+
+   public static class InitParameters extends AbstractHtmlElementView.InitParameters
    {
-      super("b");
+      public InitParameters()
+      {
+         super("b");
+      }
+   }
+
+   public BoldView(InitParameters initParameters)
+   {
+      super(initParameters);
    }
 
    public void appendChild(BoldViewChild node)

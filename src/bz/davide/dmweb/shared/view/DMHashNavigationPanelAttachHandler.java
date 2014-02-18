@@ -19,7 +19,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 
 package bz.davide.dmweb.shared.view;
 
-
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.History;
@@ -37,7 +36,7 @@ public class DMHashNavigationPanelAttachHandler implements AttachListener
       this.navigationPanel = navigationPanel;
    }
 
-   protected DMHashNavigationPanelAttachHandler(Void void1)
+   protected DMHashNavigationPanelAttachHandler()
    {
 
    }

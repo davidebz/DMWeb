@@ -52,7 +52,17 @@ public abstract class AbstractHtmlElementView implements HtmlElementView
 
    ArrayList<DMClickHandler>             clickHandlers       = null;
 
-   protected AbstractHtmlElementView(String tagName)
+   public static class InitParameters
+   {
+      private String tagName;
+
+      public InitParameters(String tagName)
+      {
+         this.tagName = tagName;
+      }
+   }
+
+   protected AbstractHtmlElementView(InitParameters parameters)
    {
       this.attachHandlers = new ArrayList<AttachListener>();
       this.clickHandlers = new ArrayList<DMClickHandler>();
@@ -60,19 +70,18 @@ public abstract class AbstractHtmlElementView implements HtmlElementView
 
       if (clientSide)
       {
-         this.clientSideElement__ = DOM.createElement(tagName);
+         this.clientSideElement__ = DOM.createElement(parameters.tagName);
          this.id = "E" + clientSideIdSeq;
          clientSideIdSeq++;
          this.clientSideElement__.setId(this.id);
       }
       else
       {
-         this.serverSideElement = new DMServerSideElement(tagName);
+         this.serverSideElement = new DMServerSideElement(parameters.tagName);
       }
-
    }
 
-   protected AbstractHtmlElementView(Void void1)
+   protected AbstractHtmlElementView()
    {
    }
 

@@ -32,9 +32,13 @@ public class DMDateBox extends DMGwtWidgetHost
    long              timestamp = 0;
    String            format    = "yyyy-MM-dd HH:mm:ss";
 
-   public DMDateBox()
+   public static class InitParameters extends DMGwtWidgetHost.InitParameters
    {
-      super();
+   }
+
+   public DMDateBox(InitParameters initParameters)
+   {
+      super(initParameters);
       this.setStyleName("dm-date-box");
       this.addDMGwtWidgetHostFactory(new DMDateBoxFactory(this));
    }

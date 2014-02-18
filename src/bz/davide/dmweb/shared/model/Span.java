@@ -24,8 +24,8 @@ package bz.davide.dmweb.shared.model;
  */
 public class Span extends AbstractHtmlElement
 {
-   protected Span(Void void1)
+   public Span()
    {
-      super(void1);
+      super("span");
    }
 }

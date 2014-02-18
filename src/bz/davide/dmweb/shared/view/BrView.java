@@ -19,13 +19,22 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 
 package bz.davide.dmweb.shared.view;
 
+
 /**
  * @author Davide Montesin <d@vide.bz>
  */
 public class BrView extends AbstractHtmlElementView implements DivViewChild
 {
-   public BrView()
+   public static class InitParameters extends AbstractHtmlElementView.InitParameters
    {
-      super("br");
+      public InitParameters()
+      {
+         super("br");
+      }
+   }
+
+   public BrView(InitParameters initParameters)
+   {
+      super(initParameters);
    }
 }

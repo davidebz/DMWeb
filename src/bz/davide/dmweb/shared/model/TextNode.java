@@ -26,10 +26,6 @@ public class TextNode implements Node
 {
    String value;
 
-   protected TextNode(Void void1)
-   {
-   }
-
    public String getValue()
    {
       return this.value;

@@ -30,18 +30,33 @@ import com.google.gwt.user.client.Event;
 public class InputView extends AbstractHtmlElementView implements DivViewChild
 {
 
+   public static class InitParameters extends AbstractHtmlElementView.InitParameters
+   {
+      private String text;
+
+      public InitParameters()
+      {
+         this(null);
+      }
+
+      public InitParameters(String text)
+      {
+         super("input");
+         this.text = text;
+      }
+
+   }
+
    ArrayList<DMKeyUpHandler> keyUpHandlers = new ArrayList<DMKeyUpHandler>();
    ArrayList<DMFocusHandler> focusHandlers = new ArrayList<DMFocusHandler>();
 
-   public InputView(String initialText)
+   public InputView(InitParameters initParameters)
    {
-      super("input");
-      this.setText(initialText);
-   }
-
-   protected InputView(Void void1)
-   {
-      super(void1);
+      super(initParameters);
+      if (initParameters.text != null)
+      {
+         this.setText(initParameters.text);
+      }
    }
 
    @Override

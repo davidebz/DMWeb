@@ -25,23 +25,34 @@ package bz.davide.dmweb.shared.view;
 public class DivView extends AbstractHtmlElementView implements DivViewChildElement
 {
 
-   public DivView()
+   public static class InitParameters extends AbstractHtmlElementView.InitParameters
    {
-      this((String) null);
+      private String styleName;
+
+      public InitParameters()
+      {
+         this(null);
+      }
+
+      public InitParameters(String styleName)
+      {
+         super("div");
+         this.styleName = styleName;
+      }
+
    }
 
-   public DivView(String styleName)
+   public DivView(InitParameters initParameters)
    {
-      super("div");
-      if (styleName != null)
+      super(initParameters);
+      if (initParameters.styleName != null)
       {
-         this.setStyleName(styleName);
+         this.setStyleName(initParameters.styleName);
       }
    }
 
-   protected DivView(Void void1)
+   protected DivView()
    {
-      super(void1);
    }
 
    public void appendChild(DivViewChild widget)

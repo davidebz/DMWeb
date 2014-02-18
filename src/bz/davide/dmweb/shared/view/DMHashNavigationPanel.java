@@ -28,20 +28,35 @@ import com.google.gwt.user.client.History;
  */
 public class DMHashNavigationPanel extends DivView
 {
-   ArrayList<DivViewChildElement> pages          = new ArrayList<DivViewChildElement>();
-   ArrayList<PageChangeHandler>   changeHandlers = new ArrayList<PageChangeHandler>();
-   int                            index          = -1;
+   ArrayList<DivViewChildElement> pages;
+   ArrayList<PageChangeHandler>   changeHandlers;
+   int                            index;
 
-   public DMHashNavigationPanel(String styleName, DivViewChildElement initialContent)
+   public static class InitParameters extends DivView.InitParameters
    {
-      super(styleName);
-      this.addAttachHandler(new DMHashNavigationPanelAttachHandler(this));
-      this.newPage(initialContent, false);
+      DivViewChildElement initialContent;
+
+      public InitParameters(String styleName, DivViewChildElement initialContent)
+      {
+         super(styleName);
+         this.initialContent = initialContent;
+      }
+
    }
 
-   protected DMHashNavigationPanel(Void void1)
+   public DMHashNavigationPanel(InitParameters initParameters)
    {
-      super(void1);
+      super(initParameters);
+
+      this.pages = new ArrayList<DivViewChildElement>();
+      this.changeHandlers = new ArrayList<PageChangeHandler>();
+      this.index = -1;
+      this.addAttachHandler(new DMHashNavigationPanelAttachHandler(this));
+      this.newPage(initParameters.initialContent, false);
+   }
+
+   protected DMHashNavigationPanel()
+   {
    }
 
    public void navigate(int toIndex)

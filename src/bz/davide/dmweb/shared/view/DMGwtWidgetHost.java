@@ -24,10 +24,13 @@ package bz.davide.dmweb.shared.view;
  */
 public class DMGwtWidgetHost extends DivView
 {
-   public DMGwtWidgetHost()
+   public static class InitParameters extends DivView.InitParameters
    {
-      super();
+   }
 
+   public DMGwtWidgetHost(InitParameters initParameters)
+   {
+      super(initParameters);
    }
 
    public void addDMGwtWidgetHostFactory(DMGwtWidgetHostFactory factory)

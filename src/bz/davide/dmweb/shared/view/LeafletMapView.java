@@ -27,17 +27,20 @@ import bz.davide.dmweb.client.leaflet.Map;
 public class LeafletMapView extends DivView
 {
 
-   transient Map leafletMap = null;
-
-   public LeafletMapView()
+   public static class InitParameters extends DivView.InitParameters
    {
-      this.setStyleName("leaflet-map-widget");
-      this.addAttachHandler(new LeafletMapAttachListener(this));
+      public InitParameters()
+      {
+         super("leaflet-map-widget");
+      }
    }
 
-   protected LeafletMapView(Void void1)
+   transient Map leafletMap = null;
+
+   public LeafletMapView(InitParameters initParameters)
    {
-      super(void1);
+      super(initParameters);
+      this.addAttachHandler(new LeafletMapAttachListener(this));
    }
 
    public Map getLeafletMap()
