@@ -33,6 +33,10 @@ public class Polygon extends Path
 
    public Polygon(LatLng[] vertex, PathOptions polylineOptions)
    {
+      if (vertex == null || vertex.length == 0)
+      {
+         throw new IllegalArgumentException("vertex null or with zero points!");
+      }
       JavaScriptObject jsArray = jsArray();
       for (LatLng latLng : vertex)
       {
