@@ -27,7 +27,7 @@ public class DivView extends AbstractHtmlElementView implements DivViewChildElem
 
    public static class InitParameters extends AbstractHtmlElementView.InitParameters
    {
-      private String styleName;
+      String styleName;
 
       public InitParameters()
       {

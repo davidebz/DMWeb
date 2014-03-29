@@ -21,7 +21,6 @@ package bz.davide.dmweb.shared.view;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
@@ -52,9 +51,11 @@ public abstract class AbstractHtmlElementView implements HtmlElementView
 
    ArrayList<DMClickHandler>             clickHandlers       = null;
 
-   public static class InitParameters
+   final static String                   ELEMENTID_PREFIX    = "dmweb_";
+
+   public static abstract class InitParameters
    {
-      private String tagName;
+      transient private String tagName;
 
       public InitParameters(String tagName)
       {
@@ -71,7 +72,7 @@ public abstract class AbstractHtmlElementView implements HtmlElementView
       if (clientSide)
       {
          this.clientSideElement__ = DOM.createElement(parameters.tagName);
-         this.id = "E" + clientSideIdSeq;
+         this.id = ELEMENTID_PREFIX + clientSideIdSeq;
          clientSideIdSeq++;
          this.clientSideElement__.setId(this.id);
       }
@@ -328,7 +329,7 @@ public abstract class AbstractHtmlElementView implements HtmlElementView
       out.append("<");
       out.append(element.tagName);
 
-      String id = "E" + serializationData.idseq;
+      String id = ELEMENTID_PREFIX + serializationData.idseq;
       serializationData.idseq++;
 
       out.append(" id=\"" + id + "\"");

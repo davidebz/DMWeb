@@ -17,38 +17,11 @@ You should have received a copy of the GNU Lesser General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>
 */
 
-package bz.davide.dmweb.shared.view;
+package bz.davide.dmweb.shared.view.example;
 
-import bz.davide.dmweb.client.leaflet.Map;
-
-/**
- * @author Davide Montesin <d@vide.bz>
- */
-public class LeafletMapView extends DivView
+public class POI
 {
-
-   public static class InitParameters extends DivView.InitParameters
-   {
-      public InitParameters()
-      {
-         super("leaflet-map-widget");
-      }
-   }
-
-   transient Map leafletMap = null;
-
-   public LeafletMapView(InitParameters initParameters)
-   {
-      super(initParameters);
-      this.addAttachHandler(new LeafletMapAttachListener(this));
-   }
-
-   protected LeafletMapView()
-   {
-   }
-
-   public Map getLeafletMap()
-   {
-      return this.leafletMap;
-   }
+   String name;
+   double lat;
+   double lon;
 }

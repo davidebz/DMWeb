@@ -17,38 +17,37 @@ You should have received a copy of the GNU Lesser General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>
 */
 
-package bz.davide.dmweb.shared.view;
+package bz.davide.dmweb.shared.view.example;
 
-import bz.davide.dmweb.client.leaflet.LatLng;
-import bz.davide.dmweb.client.leaflet.Map;
-import bz.davide.dmweb.client.leaflet.OSMLayer;
+import bz.davide.dmweb.shared.view.LeafletMapView;
 
-/**
- * @author Davide Montesin <d@vide.bz>
- */
-public class LeafletMapAttachListener implements AttachListener
+public class LeafletMapExample extends LeafletMapView
 {
-   LeafletMapView mapWidget;
 
-   public LeafletMapAttachListener(LeafletMapView mapWidget)
+   public static class InitParameters extends LeafletMapView.InitParameters
    {
-      super();
-      this.mapWidget = mapWidget;
+      int   width;
+      int   height;
+      POI[] pois;
    }
 
-   protected LeafletMapAttachListener(Void void1)
+   public LeafletMapExample(InitParameters initParameters)
+   {
+      super(initParameters);
+      POI[] pois = initParameters.pois;
+      this.setElementAttribute("style", "width:"
+                                        + initParameters.width
+                                        + "px;height:"
+                                        + initParameters.height
+                                        + "px");
+      if (pois != null)
+      {
+
+      }
+   }
+
+   protected LeafletMapExample()
    {
    }
 
-   protected LeafletMapAttachListener()
-   {
-   }
-
-   @Override
-   public void onAttachOrDetach(AttachEvent event)
-   {
-      this.mapWidget.leafletMap = new Map(this.mapWidget.getElement());
-      this.mapWidget.leafletMap.addLayer(new OSMLayer());
-      this.mapWidget.leafletMap.setView(new LatLng(46.06, 11.12), 10);
-   };
 }

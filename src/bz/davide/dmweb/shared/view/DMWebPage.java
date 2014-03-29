@@ -21,15 +21,24 @@ package bz.davide.dmweb.shared.view;
 
 import java.util.ArrayList;
 
-
 /**
  * @author Davide Montesin <d@vide.bz>
  */
 public class DMWebPage
 {
-   String                     title       = "";
-   AbstractHtmlElementView[]                 bodyContent = new AbstractHtmlElementView[0];
+   String                    title       = "";
+   AbstractHtmlElementView[] bodyContent = new AbstractHtmlElementView[0];
    ArrayList<AttachListener> domReady    = new ArrayList<AttachListener>();
+
+   public static class InitParameters
+   {
+      String title = "";
+   }
+
+   public DMWebPage(InitParameters initParameters)
+   {
+      this.title = initParameters.title;
+   }
 
    public void setTitle(String title)
    {
