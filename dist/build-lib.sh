@@ -1,5 +1,5 @@
 
-LIB_VERSION="dm-web-lib-1.0.0.jar"
+LIB_VERSION="dm-web-lib-1.0."$(date '+%Y%m%d')".jar"
 
 cd $(dirname "$0")
 DIST_DIR=$(pwd -P)

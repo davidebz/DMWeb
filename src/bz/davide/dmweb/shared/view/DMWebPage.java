@@ -35,6 +35,11 @@ public class DMWebPage
       String title = "";
    }
 
+   DMWebPage()
+   {
+      // Only temporary for SASAbusHTML5
+   }
+
    public DMWebPage(InitParameters initParameters)
    {
       this.title = initParameters.title;
