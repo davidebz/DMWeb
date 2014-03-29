@@ -21,13 +21,13 @@ public class LeafletMapExampleMarshaller_Helper extends bz.davide.dmweb.shared.i
             }
             internalMarschall(obj, "bz.davide.dmweb.shared.view.DivView$InitParameters", "N/A",structure, identities, seq, true);
             Object value;
-            // height
-            value = ((bz.davide.dmweb.shared.view.example.LeafletMapExample.InitParameters)obj).height;
+            // map
+            value = ((bz.davide.dmweb.shared.view.example.LeafletMapExample.InitParameters)obj).map;
             if (value == null)
-               structure.property("height").nullValue();
+               structure.property("map").nullValue();
             else
             {
-                    structure.property("height").integer((Integer)value);                          
+                     internalMarschall(value, value.getClass().getName(),"bz.davide.dmweb.shared.view.LeafletMapView$InitParameters", structure.property("map").structure(), identities, seq, false);
             }
             // pois
             value = ((bz.davide.dmweb.shared.view.example.LeafletMapExample.InitParameters)obj).pois;
@@ -51,14 +51,6 @@ public class LeafletMapExampleMarshaller_Helper extends bz.davide.dmweb.shared.i
             {
                     structure.property("title").string((String)value);                          
             }
-            // width
-            value = ((bz.davide.dmweb.shared.view.example.LeafletMapExample.InitParameters)obj).width;
-            if (value == null)
-               structure.property("width").nullValue();
-            else
-            {
-                    structure.property("width").integer((Integer)value);                          
-            }
             if (!superClass)
                structure.close();
          }
@@ -73,6 +65,41 @@ public class LeafletMapExampleMarshaller_Helper extends bz.davide.dmweb.shared.i
             }
             internalMarschall(obj, "bz.davide.dmweb.shared.view.DivView", "N/A",structure, identities, seq, true);
             Object value;
+            if (!superClass)
+               structure.close();
+         }
+      });
+      this.putClassMarshaller("bz.davide.dmweb.shared.view.example.LeafletMapExampleAttachListener", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
+         @Override public void marshall(Object obj, String compileTimeClassName, bz.davide.dmxmljson.marshalling.Structure structure, java.util.IdentityHashMap<Object, bz.davide.dmxmljson.marshalling.Structure> identities, long[] seq, boolean superClass) throws Exception {
+            if (!superClass) {
+               if (isReference(structure, obj, identities, seq))
+                  return;
+               identities.put(obj, structure);
+               structure.open(shortName(compileTimeClassName), shortName(obj.getClass().getName()), null);
+            }
+            Object value;
+            // leafletMap
+            value = ((bz.davide.dmweb.shared.view.example.LeafletMapExampleAttachListener)obj).leafletMap;
+            if (value == null)
+               structure.property("leafletMap").nullValue();
+            else
+            {
+                     internalMarschall(value, value.getClass().getName(),"bz.davide.dmweb.shared.view.LeafletMapView", structure.property("leafletMap").structure(), identities, seq, false);
+            }
+            // pois
+            value = ((bz.davide.dmweb.shared.view.example.LeafletMapExampleAttachListener)obj).pois;
+            if (value == null)
+               structure.property("pois").nullValue();
+            else
+            {
+               bz.davide.dmweb.shared.view.example.POI[] rawarray = (bz.davide.dmweb.shared.view.example.POI[])value;                        
+               bz.davide.dmxmljson.marshalling.Array array = structure.property("pois").array(rawarray.length);        
+               for (Object o: rawarray) {                                    
+                  if (o == null)                                              
+                     array.item().nullValue();                                
+                     internalMarschall(o, o.getClass().getName(), "bz.davide.dmweb.shared.view.example.POI", array.item().structure(), identities, seq, false);
+               }                                                              
+            }
             if (!superClass)
                structure.close();
          }

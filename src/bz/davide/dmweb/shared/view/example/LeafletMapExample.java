@@ -28,22 +28,21 @@ public class LeafletMapExample extends DivView
 
    public static class InitParameters extends DivView.InitParameters
    {
-      int    width;
-      int    height;
-      String title;
-      POI[]  pois;
+
+      String                        title;
+      LeafletMapView.InitParameters map;
+      POI[]                         pois;
    }
 
    public LeafletMapExample(InitParameters initParameters)
    {
       super(initParameters);
       this.setStyleName("leaflet-map-example");
-      if (initParameters.width != 0)
+      if (initParameters.map.getWidth() != 0)
       {
-         this.setElementAttribute("style", "width:" + initParameters.width + "px;");
+         this.setElementAttribute("style", "width:" + initParameters.map.getWidth() + "px;");
       }
-      LeafletMapView leafletMapView = new LeafletMapView(new LeafletMapView.InitParameters(initParameters.width,
-                                                                                           initParameters.height));
+      LeafletMapView leafletMapView = new LeafletMapView(initParameters.map);
       String title = "";
       if (initParameters.title != null)
       {
@@ -52,11 +51,8 @@ public class LeafletMapExample extends DivView
       this.appendChild(new SpanView(new SpanView.InitParameters(title, "title")));
       this.appendChild(leafletMapView);
 
-      POI[] pois = initParameters.pois;
-      if (pois != null)
-      {
+      this.addAttachHandler(new LeafletMapExampleAttachListener(leafletMapView, initParameters.pois));
 
-      }
    }
 
    protected LeafletMapExample()

@@ -199,6 +199,85 @@ public class LeafletMapExampleUnmarshaller_Helper extends bz.davide.dmxmljson.un
             structure.close();
          }
       });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.view.LeafletMapView$InitParameters", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.view.LeafletMapView.InitParameters>() {
+         @Override public void check(bz.davide.dmweb.shared.view.LeafletMapView.InitParameters  ret){
+            // height
+            if (ret.height != 0)
+               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.view.LeafletMapView$InitParameters.height");
+            // initialLat
+            if (ret.initialLat != 0)
+               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.view.LeafletMapView$InitParameters.initialLat");
+            // initialLon
+            if (ret.initialLon != 0)
+               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.view.LeafletMapView$InitParameters.initialLon");
+            // initialZoom
+            if (ret.initialZoom != 0)
+               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.view.LeafletMapView$InitParameters.initialZoom");
+            // width
+            if (ret.width != 0)
+               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.view.LeafletMapView$InitParameters.width");
+            emptyObjectCheck.get("bz.davide.dmweb.shared.view.DivView$InitParameters").check(ret);
+         }
+      });
+      this.putInstanceFactory("bz.davide.dmweb.shared.view.LeafletMapView$InitParameters", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
+         @Override public Object newInstance() throws Exception {
+            bz.davide.dmweb.shared.view.LeafletMapView.InitParameters ret = new bz.davide.dmweb.shared.view.LeafletMapView.InitParameters();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.view.LeafletMapView$InitParameters").check(ret);
+            return ret;
+         }
+      });
+
+      this.putClassUnmarshaller("bz.davide.dmweb.shared.view.LeafletMapView$InitParameters", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
+         @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
+            internalUnmarschall(structure, "bz.davide.dmweb.shared.view.DivView$InitParameters", obj, identities);
+            structure.open();
+            String id = structure.getId();
+            if (id != null)
+               identities.put(id, obj);
+            bz.davide.dmxmljson.unmarshalling.Value value;
+            // height
+            if ((value = structure.property("height")) != null)
+               if (value.isNull())
+                  new RuntimeException("Impossibile value for primitive type");
+               else
+               {
+                  ((bz.davide.dmweb.shared.view.LeafletMapView.InitParameters)obj).height = (int)value.integer();
+               }
+            // initialLat
+            if ((value = structure.property("initialLat")) != null)
+               if (value.isNull())
+                  new RuntimeException("Impossibile value for primitive type");
+               else
+               {
+                  ((bz.davide.dmweb.shared.view.LeafletMapView.InitParameters)obj).initialLat = value.decimal();
+               }
+            // initialLon
+            if ((value = structure.property("initialLon")) != null)
+               if (value.isNull())
+                  new RuntimeException("Impossibile value for primitive type");
+               else
+               {
+                  ((bz.davide.dmweb.shared.view.LeafletMapView.InitParameters)obj).initialLon = value.decimal();
+               }
+            // initialZoom
+            if ((value = structure.property("initialZoom")) != null)
+               if (value.isNull())
+                  new RuntimeException("Impossibile value for primitive type");
+               else
+               {
+                  ((bz.davide.dmweb.shared.view.LeafletMapView.InitParameters)obj).initialZoom = (int)value.integer();
+               }
+            // width
+            if ((value = structure.property("width")) != null)
+               if (value.isNull())
+                  new RuntimeException("Impossibile value for primitive type");
+               else
+               {
+                  ((bz.davide.dmweb.shared.view.LeafletMapView.InitParameters)obj).width = (int)value.integer();
+               }
+            structure.close();
+         }
+      });
       this.emptyObjectCheck.put("bz.davide.dmweb.shared.view.DivView", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.view.DivView>() {
          @Override public void check(bz.davide.dmweb.shared.view.DivView  ret){
             emptyObjectCheck.get("bz.davide.dmweb.shared.view.AbstractHtmlElementView").check(ret);
@@ -225,6 +304,9 @@ public class LeafletMapExampleUnmarshaller_Helper extends bz.davide.dmxmljson.un
       });
       this.emptyObjectCheck.put("bz.davide.dmweb.shared.view.LeafletMapView", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.view.LeafletMapView>() {
          @Override public void check(bz.davide.dmweb.shared.view.LeafletMapView  ret){
+            // initParameters
+            if (ret.initParameters != null)
+               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.view.LeafletMapView.initParameters");
             emptyObjectCheck.get("bz.davide.dmweb.shared.view.DivView").check(ret);
          }
       });
@@ -244,6 +326,21 @@ public class LeafletMapExampleUnmarshaller_Helper extends bz.davide.dmxmljson.un
             if (id != null)
                identities.put(id, obj);
             bz.davide.dmxmljson.unmarshalling.Value value;
+            // initParameters
+            if ((value = structure.property("initParameters")) != null)
+               if (value.isNull())
+                  ((bz.davide.dmweb.shared.view.LeafletMapView)obj).initParameters = null;
+               else
+               {
+                  String refid = value.structure().getRefId();    
+                  if (refid != null)                              
+                     ((bz.davide.dmweb.shared.view.LeafletMapView)obj).initParameters = (bz.davide.dmweb.shared.view.LeafletMapView.InitParameters)identities.get(refid);
+                  else {
+                     Object o = newInstance(value.structure().getRuntimeClassName("LeafletMapView$InitParameters"));              
+                     internalUnmarschall(value.structure(), o.getClass().getName(), o, identities); 
+                     ((bz.davide.dmweb.shared.view.LeafletMapView)obj).initParameters = (bz.davide.dmweb.shared.view.LeafletMapView.InitParameters)o;
+                  }
+               }
             structure.close();
          }
       });

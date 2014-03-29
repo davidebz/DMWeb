@@ -26,22 +26,35 @@ import bz.davide.dmweb.client.leaflet.Map;
  */
 public class LeafletMapView extends DivView
 {
+   InitParameters initParameters;
 
    public static class InitParameters extends DivView.InitParameters
    {
-      int width;
-      int height;
+      int    width;
+      int    height;
+
+      double initialLat;
+      double initialLon;
+      int    initialZoom;
 
       public InitParameters()
       {
-         this(0, 0);
       }
 
       public InitParameters(int width, int height)
       {
-         super("leaflet-map-widget");
          this.width = width;
          this.height = height;
+      }
+
+      public int getWidth()
+      {
+         return this.width;
+      }
+
+      public int getHeight()
+      {
+         return this.height;
       }
    }
 
@@ -50,6 +63,8 @@ public class LeafletMapView extends DivView
    public LeafletMapView(InitParameters initParameters)
    {
       super(initParameters);
+      this.initParameters = initParameters;
+      this.setStyleName("leaflet-map-widget");
       if (initParameters.width != 0 && initParameters.height != 0)
       {
          this.setElementAttribute("style", "width:"

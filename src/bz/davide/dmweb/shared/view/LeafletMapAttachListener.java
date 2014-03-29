@@ -49,6 +49,8 @@ public class LeafletMapAttachListener implements AttachListener
    {
       this.mapWidget.leafletMap = new Map(this.mapWidget.getElement());
       this.mapWidget.leafletMap.addLayer(new OSMLayer());
-      this.mapWidget.leafletMap.setView(new LatLng(46.06, 11.12), 10);
+      this.mapWidget.leafletMap.setView(new LatLng(this.mapWidget.initParameters.initialLat,
+                                                   this.mapWidget.initParameters.initialLon),
+                                        this.mapWidget.initParameters.initialZoom);
    };
 }

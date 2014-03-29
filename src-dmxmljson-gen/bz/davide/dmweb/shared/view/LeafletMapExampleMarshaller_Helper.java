@@ -113,6 +113,60 @@ public class LeafletMapExampleMarshaller_Helper extends bz.davide.dmxmljson.mars
                structure.close();
          }
       });
+      this.putClassMarshaller("bz.davide.dmweb.shared.view.LeafletMapView$InitParameters", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
+         @Override public void marshall(Object obj, String compileTimeClassName, bz.davide.dmxmljson.marshalling.Structure structure, java.util.IdentityHashMap<Object, bz.davide.dmxmljson.marshalling.Structure> identities, long[] seq, boolean superClass) throws Exception {
+            if (!superClass) {
+               if (isReference(structure, obj, identities, seq))
+                  return;
+               identities.put(obj, structure);
+               structure.open(shortName(compileTimeClassName), shortName(obj.getClass().getName()), null);
+            }
+            internalMarschall(obj, "bz.davide.dmweb.shared.view.DivView$InitParameters", "N/A",structure, identities, seq, true);
+            Object value;
+            // height
+            value = ((bz.davide.dmweb.shared.view.LeafletMapView.InitParameters)obj).height;
+            if (value == null)
+               structure.property("height").nullValue();
+            else
+            {
+                    structure.property("height").integer((Integer)value);                          
+            }
+            // initialLat
+            value = ((bz.davide.dmweb.shared.view.LeafletMapView.InitParameters)obj).initialLat;
+            if (value == null)
+               structure.property("initialLat").nullValue();
+            else
+            {
+                    structure.property("initialLat").decimal((Double)value);                          
+            }
+            // initialLon
+            value = ((bz.davide.dmweb.shared.view.LeafletMapView.InitParameters)obj).initialLon;
+            if (value == null)
+               structure.property("initialLon").nullValue();
+            else
+            {
+                    structure.property("initialLon").decimal((Double)value);                          
+            }
+            // initialZoom
+            value = ((bz.davide.dmweb.shared.view.LeafletMapView.InitParameters)obj).initialZoom;
+            if (value == null)
+               structure.property("initialZoom").nullValue();
+            else
+            {
+                    structure.property("initialZoom").integer((Integer)value);                          
+            }
+            // width
+            value = ((bz.davide.dmweb.shared.view.LeafletMapView.InitParameters)obj).width;
+            if (value == null)
+               structure.property("width").nullValue();
+            else
+            {
+                    structure.property("width").integer((Integer)value);                          
+            }
+            if (!superClass)
+               structure.close();
+         }
+      });
       this.putClassMarshaller("bz.davide.dmweb.shared.view.DivView", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
          @Override public void marshall(Object obj, String compileTimeClassName, bz.davide.dmxmljson.marshalling.Structure structure, java.util.IdentityHashMap<Object, bz.davide.dmxmljson.marshalling.Structure> identities, long[] seq, boolean superClass) throws Exception {
             if (!superClass) {
@@ -137,6 +191,14 @@ public class LeafletMapExampleMarshaller_Helper extends bz.davide.dmxmljson.mars
             }
             internalMarschall(obj, "bz.davide.dmweb.shared.view.DivView", "N/A",structure, identities, seq, true);
             Object value;
+            // initParameters
+            value = ((bz.davide.dmweb.shared.view.LeafletMapView)obj).initParameters;
+            if (value == null)
+               structure.property("initParameters").nullValue();
+            else
+            {
+                     internalMarschall(value, value.getClass().getName(),"bz.davide.dmweb.shared.view.LeafletMapView$InitParameters", structure.property("initParameters").structure(), identities, seq, false);
+            }
             if (!superClass)
                structure.close();
          }

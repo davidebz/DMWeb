@@ -23,12 +23,32 @@
 	
 	<dmweb:fragment viewclass="bz.davide.dmweb.shared.view.example.LeafletMapExample">
 		<initParameters> 
-			<title>map with bus stops</title> 
-			<width>300</width> 
-			<height>200</height>
+			<title>map with bus stops</title>
+			<map>
+				<width>400</width> 
+				<height>300</height>
+				<initialLat>46.05</initialLat>
+				<initialLon>11</initialLon>
+				<initialZoom>10</initialZoom>
+			</map>
+			<pois>
+			   <name>S. Geltrude</name>
+			   <lat>46</lat>
+			   <lon>11</lon>
+			</pois>
+			<pois>
+			   <name>S. Geltrude 2</name>
+			   <lat>46.1</lat>
+			   <lon>11.05</lon>
+			</pois>
+			<pois>
+			   <name>Claudia A.</name>
+			   <lat>46.03</lat>
+			   <lon>11.02</lon>
+			</pois>
 		</initParameters>
 	</dmweb:fragment>
-	
+
 	<!-- OPTIONAL: include this if you want history support -->
 	<iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1' style="position: absolute; width: 0; height: 0; border: 0"></iframe>
 </dmweb:body>
