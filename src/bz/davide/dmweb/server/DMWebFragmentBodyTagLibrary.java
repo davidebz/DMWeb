@@ -20,12 +20,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 package bz.davide.dmweb.server;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.BodyContent;
 import javax.servlet.jsp.tagext.BodyTagSupport;
-import bz.davide.dmweb.shared.i18n.I18NData;
 import bz.davide.dmweb.shared.view.AbstractHtmlElementView;
 import bz.davide.dmweb.shared.view.AttachListener;
 import bz.davide.dmweb.shared.view.DMWidgetSerializationData;
@@ -59,8 +57,7 @@ public class DMWebFragmentBodyTagLibrary extends BodyTagSupport
          AbstractHtmlElementView.clientSide = false;
 
          ArrayList<AttachListener> domReady = new ArrayList<AttachListener>();
-         I18NData i18nData = new I18NData("en", new HashMap<String, String>());
-         this.serializationData = new DMWidgetSerializationData(domReady, i18nData);
+         this.serializationData = new DMWidgetSerializationData(domReady);
 
          this.unmarshaller = (Unmarshaller) Class.forName(this.marshallerUnmarshallerPrefix + "Unmarshaller").newInstance();
          this.marshaller = (Marshaller) Class.forName(this.marshallerUnmarshallerPrefix + "Marshaller").newInstance();

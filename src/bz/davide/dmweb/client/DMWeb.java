@@ -19,7 +19,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 
 package bz.davide.dmweb.client;
 
-import bz.davide.dmweb.shared.i18n.I18N;
 import bz.davide.dmweb.shared.view.AbstractHtmlElementView;
 import bz.davide.dmweb.shared.view.AttachEvent;
 import bz.davide.dmweb.shared.view.AttachListener;
@@ -58,7 +57,6 @@ public class DMWeb implements EntryPoint
          DMWidgetSerializationData serializationData = (DMWidgetSerializationData) widgetUnmarshaller.newInstance("DMWidgetSerializationData");
          widgetUnmarshaller.unmarschall(gwtStructure, serializationData);
          AbstractHtmlElementView.clientSideIdSeq = serializationData.getIdseq();
-         I18N.singleton = serializationData.getI18n();
 
          for (AttachListener attachHandler : serializationData.getDomReady())
          {

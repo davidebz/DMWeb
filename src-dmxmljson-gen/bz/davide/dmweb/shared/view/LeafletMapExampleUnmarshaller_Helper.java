@@ -19,9 +19,6 @@ public class LeafletMapExampleUnmarshaller_Helper extends bz.davide.dmxmljson.un
             // domReady
             if (ret.domReady != null)
                throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.view.DMWidgetSerializationData.domReady");
-            // i18n
-            if (ret.i18n != null)
-               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.view.DMWidgetSerializationData.i18n");
             // idseq
             if (ret.idseq != 0)
                throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.view.DMWidgetSerializationData.idseq");
@@ -97,21 +94,6 @@ public class LeafletMapExampleUnmarshaller_Helper extends bz.davide.dmxmljson.un
                   }                                                                   
                   arr.close();        
                   ((bz.davide.dmweb.shared.view.DMWidgetSerializationData)obj).domReady = arrayList;
-               }
-            // i18n
-            if ((value = structure.property("i18n")) != null)
-               if (value.isNull())
-                  ((bz.davide.dmweb.shared.view.DMWidgetSerializationData)obj).i18n = null;
-               else
-               {
-                  String refid = value.structure().getRefId();    
-                  if (refid != null)                              
-                     ((bz.davide.dmweb.shared.view.DMWidgetSerializationData)obj).i18n = (bz.davide.dmweb.shared.i18n.I18NData)identities.get(refid);
-                  else {
-                     Object o = newInstance(value.structure().getRuntimeClassName("I18NData"));              
-                     internalUnmarschall(value.structure(), o.getClass().getName(), o, identities); 
-                     ((bz.davide.dmweb.shared.view.DMWidgetSerializationData)obj).i18n = (bz.davide.dmweb.shared.i18n.I18NData)o;
-                  }
                }
             // idseq
             if ((value = structure.property("idseq")) != null)

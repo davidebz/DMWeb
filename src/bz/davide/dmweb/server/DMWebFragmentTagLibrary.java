@@ -21,6 +21,7 @@ package bz.davide.dmweb.server;
 
 import java.io.ByteArrayInputStream;
 import java.lang.reflect.Constructor;
+import java.util.ArrayList;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.BodyContent;
 import javax.servlet.jsp.tagext.BodyTagSupport;
@@ -68,10 +69,22 @@ public class DMWebFragmentTagLibrary extends BodyTagSupport
          W3CXMLStructure w3cxmlStructure = new W3CXMLStructure(new ByteArrayInputStream(body.getBytes("UTF-8")));
          container.unmarshaller.unmarschall(w3cxmlStructure, initParameters);
 
-         AbstractHtmlElementView view = (AbstractHtmlElementView) initConstructor.newInstance(initParameters);
+         Object viewObject = initConstructor.newInstance(initParameters);
+         AbstractHtmlElementView[] views;
+         if (viewObject instanceof ArrayList)
+         {
+            views = ((ArrayList<AbstractHtmlElementView>) viewObject).toArray(new AbstractHtmlElementView[0]);
+         }
+         else
+         {
+            views = new AbstractHtmlElementView[] { (AbstractHtmlElementView) viewObject };
+         }
 
          StringBuffer generatedHtml = new StringBuffer();
-         AbstractHtmlElementView.generateServerSideHtml(container.serializationData, view, generatedHtml);
+         for (AbstractHtmlElementView view : views)
+         {
+            AbstractHtmlElementView.generateServerSideHtml(container.serializationData, view, generatedHtml);
+         }
 
          this.pageContext.getOut().print(generatedHtml.toString());
          return BodyTagSupport.EVAL_PAGE;

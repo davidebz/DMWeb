@@ -21,8 +21,6 @@ package bz.davide.dmweb.shared.view;
 
 import java.util.ArrayList;
 
-import bz.davide.dmweb.shared.i18n.I18NData;
-
 /**
  * @author Davide Montesin <d@vide.bz>
  */
@@ -32,22 +30,14 @@ public final class DMWidgetSerializationData
    ArrayList<AttachListener> attachHandlers;
    int                       idseq = 0;
 
-   I18NData                  i18n  = null;
-
-   public DMWidgetSerializationData(ArrayList<AttachListener> domReady, I18NData i18n)
+   public DMWidgetSerializationData(ArrayList<AttachListener> domReady)
    {
       this.domReady = domReady;
-      this.i18n = i18n;
       this.attachHandlers = new ArrayList<AttachListener>();
    }
 
    DMWidgetSerializationData()
    {
-   }
-
-   public I18NData getI18n()
-   {
-      return this.i18n;
    }
 
    public int getIdseq()

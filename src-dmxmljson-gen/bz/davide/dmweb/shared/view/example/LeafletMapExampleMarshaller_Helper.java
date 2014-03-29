@@ -7,7 +7,7 @@
 package bz.davide.dmweb.shared.view.example;
 
 
-public class LeafletMapExampleMarshaller_Helper extends bz.davide.dmweb.shared.i18n.LeafletMapExampleMarshaller_Helper
+public class LeafletMapExampleMarshaller_Helper extends bz.davide.dmweb.shared.view.LeafletMapExampleMarshaller_Helper
 {
    protected LeafletMapExampleMarshaller_Helper()
    {

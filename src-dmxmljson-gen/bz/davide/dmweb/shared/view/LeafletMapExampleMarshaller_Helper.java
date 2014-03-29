@@ -50,14 +50,6 @@ public class LeafletMapExampleMarshaller_Helper extends bz.davide.dmxmljson.mars
                      internalMarschall(o, o.getClass().getName(), "bz.davide.dmweb.shared.view.AttachListener", array.item().structure(), identities, seq, false);
                }                                                              
             }
-            // i18n
-            value = ((bz.davide.dmweb.shared.view.DMWidgetSerializationData)obj).i18n;
-            if (value == null)
-               structure.property("i18n").nullValue();
-            else
-            {
-                     internalMarschall(value, value.getClass().getName(),"bz.davide.dmweb.shared.i18n.I18NData", structure.property("i18n").structure(), identities, seq, false);
-            }
             // idseq
             value = ((bz.davide.dmweb.shared.view.DMWidgetSerializationData)obj).idseq;
             if (value == null)
