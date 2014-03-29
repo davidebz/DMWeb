@@ -19,27 +19,40 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 
 package bz.davide.dmweb.shared.view.example;
 
+import bz.davide.dmweb.shared.view.DivView;
 import bz.davide.dmweb.shared.view.LeafletMapView;
+import bz.davide.dmweb.shared.view.SpanView;
 
-public class LeafletMapExample extends LeafletMapView
+public class LeafletMapExample extends DivView
 {
 
-   public static class InitParameters extends LeafletMapView.InitParameters
+   public static class InitParameters extends DivView.InitParameters
    {
-      int   width;
-      int   height;
-      POI[] pois;
+      int    width;
+      int    height;
+      String title;
+      POI[]  pois;
    }
 
    public LeafletMapExample(InitParameters initParameters)
    {
       super(initParameters);
+      this.setStyleName("leaflet-map-example");
+      if (initParameters.width != 0)
+      {
+         this.setElementAttribute("style", "width:" + initParameters.width + "px;");
+      }
+      LeafletMapView leafletMapView = new LeafletMapView(new LeafletMapView.InitParameters(initParameters.width,
+                                                                                           initParameters.height));
+      String title = "";
+      if (initParameters.title != null)
+      {
+         title = initParameters.title;
+      }
+      this.appendChild(new SpanView(new SpanView.InitParameters(title, "title")));
+      this.appendChild(leafletMapView);
+
       POI[] pois = initParameters.pois;
-      this.setElementAttribute("style", "width:"
-                                        + initParameters.width
-                                        + "px;height:"
-                                        + initParameters.height
-                                        + "px");
       if (pois != null)
       {
 

@@ -27,17 +27,24 @@ public class SpanView extends AbstractHtmlElementView implements DivViewChild, B
 
    public static class InitParameters extends AbstractHtmlElementView.InitParameters
    {
-      private String text;
+      String text;
+      String className;
 
       public InitParameters()
       {
-         this(null);
+         this(null, null);
       }
 
       public InitParameters(String text)
       {
+         this(text, null);
+      }
+
+      public InitParameters(String text, String className)
+      {
          super("span");
          this.text = text;
+         this.className = className;
       }
 
    }
@@ -48,6 +55,10 @@ public class SpanView extends AbstractHtmlElementView implements DivViewChild, B
       if (initParameters.text != null)
       {
          this.setText(initParameters.text);
+      }
+      if (initParameters.className != null)
+      {
+         this.setStyleName(initParameters.className);
       }
    }
 

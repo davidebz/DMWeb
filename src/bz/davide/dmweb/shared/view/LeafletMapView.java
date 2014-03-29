@@ -29,9 +29,19 @@ public class LeafletMapView extends DivView
 
    public static class InitParameters extends DivView.InitParameters
    {
+      int width;
+      int height;
+
       public InitParameters()
       {
+         this(0, 0);
+      }
+
+      public InitParameters(int width, int height)
+      {
          super("leaflet-map-widget");
+         this.width = width;
+         this.height = height;
       }
    }
 
@@ -40,6 +50,14 @@ public class LeafletMapView extends DivView
    public LeafletMapView(InitParameters initParameters)
    {
       super(initParameters);
+      if (initParameters.width != 0 && initParameters.height != 0)
+      {
+         this.setElementAttribute("style", "width:"
+                                           + initParameters.width
+                                           + "px;height:"
+                                           + initParameters.height
+                                           + "px");
+      }
       this.addAttachHandler(new LeafletMapAttachListener(this));
    }
 

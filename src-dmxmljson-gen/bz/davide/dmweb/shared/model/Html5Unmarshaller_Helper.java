@@ -41,31 +41,31 @@ public class Html5Unmarshaller_Helper extends bz.davide.dmxmljson.unmarshalling.
             // body
             if ((value = structure.property("body")) != null)
                if (value.isNull())
-                  ((Html)obj).body = null;
+                  ((bz.davide.dmweb.shared.model.Html)obj).body = null;
                else
                {
                   String refid = value.structure().getRefId();    
                   if (refid != null)                              
-                     ((Html)obj).body = (bz.davide.dmweb.shared.model.Body)identities.get(refid);
+                     ((bz.davide.dmweb.shared.model.Html)obj).body = (bz.davide.dmweb.shared.model.Body)identities.get(refid);
                   else {
                      Object o = newInstance(value.structure().getRuntimeClassName("Body"));              
                      internalUnmarschall(value.structure(), o.getClass().getName(), o, identities); 
-                     ((Html)obj).body = (bz.davide.dmweb.shared.model.Body)o;
+                     ((bz.davide.dmweb.shared.model.Html)obj).body = (bz.davide.dmweb.shared.model.Body)o;
                   }
                }
             // head
             if ((value = structure.property("head")) != null)
                if (value.isNull())
-                  ((Html)obj).head = null;
+                  ((bz.davide.dmweb.shared.model.Html)obj).head = null;
                else
                {
                   String refid = value.structure().getRefId();    
                   if (refid != null)                              
-                     ((Html)obj).head = (bz.davide.dmweb.shared.model.Head)identities.get(refid);
+                     ((bz.davide.dmweb.shared.model.Html)obj).head = (bz.davide.dmweb.shared.model.Head)identities.get(refid);
                   else {
                      Object o = newInstance(value.structure().getRuntimeClassName("Head"));              
                      internalUnmarschall(value.structure(), o.getClass().getName(), o, identities); 
-                     ((Html)obj).head = (bz.davide.dmweb.shared.model.Head)o;
+                     ((bz.davide.dmweb.shared.model.Html)obj).head = (bz.davide.dmweb.shared.model.Head)o;
                   }
                }
             structure.close();
@@ -362,10 +362,10 @@ public class Html5Unmarshaller_Helper extends bz.davide.dmxmljson.unmarshalling.
             // href
             if ((value = structure.property("href")) != null)
                if (value.isNull())
-                  ((A)obj).href = null;
+                  ((bz.davide.dmweb.shared.model.A)obj).href = null;
                else
                {
-                  ((A)obj).href = value.string();
+                  ((bz.davide.dmweb.shared.model.A)obj).href = value.string();
                }
             structure.close();
          }
@@ -395,10 +395,10 @@ public class Html5Unmarshaller_Helper extends bz.davide.dmxmljson.unmarshalling.
             // value
             if ((value = structure.property("value")) != null)
                if (value.isNull())
-                  ((TextNode)obj).value = null;
+                  ((bz.davide.dmweb.shared.model.TextNode)obj).value = null;
                else
                {
-                  ((TextNode)obj).value = value.string();
+                  ((bz.davide.dmweb.shared.model.TextNode)obj).value = value.string();
                }
             structure.close();
          }
@@ -478,10 +478,10 @@ public class Html5Unmarshaller_Helper extends bz.davide.dmxmljson.unmarshalling.
             // src
             if ((value = structure.property("src")) != null)
                if (value.isNull())
-                  ((Img)obj).src = null;
+                  ((bz.davide.dmweb.shared.model.Img)obj).src = null;
                else
                {
-                  ((Img)obj).src = value.string();
+                  ((bz.davide.dmweb.shared.model.Img)obj).src = value.string();
                }
             structure.close();
          }
@@ -584,7 +584,7 @@ public class Html5Unmarshaller_Helper extends bz.davide.dmxmljson.unmarshalling.
             // childNodes
             if ((value = structure.property("childNodes")) != null)
                if (value.isNull())
-                  ((AbstractHtmlElement)obj).childNodes = null;
+                  ((bz.davide.dmweb.shared.model.AbstractHtmlElement)obj).childNodes = null;
                else
                {
                   bz.davide.dmxmljson.unmarshalling.Array arr = value.array();        
@@ -607,15 +607,15 @@ public class Html5Unmarshaller_Helper extends bz.davide.dmxmljson.unmarshalling.
                      }                                                                   
                   }                                                                   
                   arr.close();        
-                  ((AbstractHtmlElement)obj).childNodes = arrayList;
+                  ((bz.davide.dmweb.shared.model.AbstractHtmlElement)obj).childNodes = arrayList;
                }
             // tagName
             if ((value = structure.property("tagName")) != null)
                if (value.isNull())
-                  ((AbstractHtmlElement)obj).tagName = null;
+                  ((bz.davide.dmweb.shared.model.AbstractHtmlElement)obj).tagName = null;
                else
                {
-                  ((AbstractHtmlElement)obj).tagName = value.string();
+                  ((bz.davide.dmweb.shared.model.AbstractHtmlElement)obj).tagName = value.string();
                }
             structure.close();
          }
@@ -671,10 +671,10 @@ public class Html5Unmarshaller_Helper extends bz.davide.dmxmljson.unmarshalling.
             // title
             if ((value = structure.property("title")) != null)
                if (value.isNull())
-                  ((Head)obj).title = null;
+                  ((bz.davide.dmweb.shared.model.Head)obj).title = null;
                else
                {
-                  ((Head)obj).title = value.string();
+                  ((bz.davide.dmweb.shared.model.Head)obj).title = value.string();
                }
             structure.close();
          }

@@ -24,9 +24,9 @@ import bz.davide.dmweb.shared.view.AbstractHtmlElementView;
 import bz.davide.dmweb.shared.view.AttachEvent;
 import bz.davide.dmweb.shared.view.AttachListener;
 import bz.davide.dmweb.shared.view.DMWidgetSerializationData;
+import bz.davide.dmweb.shared.view.example.LeafletMapExampleUnmarshaller;
 import bz.davide.dmxmljson.unmarshalling.Unmarshaller;
 import bz.davide.dmxmljson.unmarshalling.json.gwt.GWTStructure;
-
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.json.client.JSONObject;
@@ -45,6 +45,7 @@ public class DMWeb implements EntryPoint
    @Override
    public void onModuleLoad()
    {
+      start(new LeafletMapExampleUnmarshaller());
    }
 
    public static void start(Unmarshaller widgetUnmarshaller)
