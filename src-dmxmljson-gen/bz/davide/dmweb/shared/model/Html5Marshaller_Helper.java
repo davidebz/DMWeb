@@ -354,14 +354,6 @@ public class Html5Marshaller_Helper extends bz.davide.dmxmljson.marshalling.Mars
                      internalMarschall(o, o.getClass().getName(), "bz.davide.dmweb.shared.model.Node", array.item().structure(), identities, seq, false);
                }                                                              
             }
-            // tagName
-            value = ((bz.davide.dmweb.shared.model.AbstractHtmlElement)obj).tagName;
-            if (value == null)
-               structure.property("tagName").nullValue();
-            else
-            {
-                    structure.property("tagName").string((String)value);                          
-            }
             if (!superClass)
                structure.close();
          }

@@ -20,7 +20,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 package bz.davide.dmweb.shared.view;
 
 import java.util.ArrayList;
-
 import com.google.gwt.dom.client.InputElement;
 import com.google.gwt.user.client.Event;
 
@@ -102,6 +101,11 @@ public class InputView extends AbstractHtmlElementView implements DivViewChild
       {
          this.setElementAttribute("value", value);
       }
+   }
+
+   public void setType(String type)
+   {
+      this.setElementAttribute("type", type);
    }
 
    public String getValue()

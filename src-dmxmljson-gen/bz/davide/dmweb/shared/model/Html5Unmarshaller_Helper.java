@@ -563,9 +563,6 @@ public class Html5Unmarshaller_Helper extends bz.davide.dmxmljson.unmarshalling.
             // childNodes
             if (ret.childNodes != null)
                throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.model.AbstractHtmlElement.childNodes");
-            // tagName
-            if (ret.tagName != null)
-               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.model.AbstractHtmlElement.tagName");
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.model.AbstractHtmlElement", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
@@ -608,14 +605,6 @@ public class Html5Unmarshaller_Helper extends bz.davide.dmxmljson.unmarshalling.
                   }                                                                   
                   arr.close();        
                   ((bz.davide.dmweb.shared.model.AbstractHtmlElement)obj).childNodes = arrayList;
-               }
-            // tagName
-            if ((value = structure.property("tagName")) != null)
-               if (value.isNull())
-                  ((bz.davide.dmweb.shared.model.AbstractHtmlElement)obj).tagName = null;
-               else
-               {
-                  ((bz.davide.dmweb.shared.model.AbstractHtmlElement)obj).tagName = value.string();
                }
             structure.close();
          }

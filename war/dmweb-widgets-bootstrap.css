@@ -1,0 +1,12 @@
+.basic-widgets-example > *
+{
+	xxdisplay:block;
+}
+
+.form-signin
+{
+	width:300px;
+	padding:10px;
+	background-color:#EEEEEE;
+	margin:2px;
+}
