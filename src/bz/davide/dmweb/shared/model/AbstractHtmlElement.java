@@ -26,9 +26,9 @@ import java.util.ArrayList;
  */
 public abstract class AbstractHtmlElement implements Node
 {
-   String                    tagName;
+   transient String          tagName;
 
-   protected ArrayList<Node> childNodes = new ArrayList<Node>();
+   protected ArrayList<Node> childNodes;
 
    public AbstractHtmlElement(String tagName)
    {
@@ -41,6 +41,10 @@ public abstract class AbstractHtmlElement implements Node
 
    public Node[] getChildNodes()
    {
+      if (this.childNodes == null)
+      {
+         return new Node[0];
+      }
       return this.childNodes.toArray(new Node[0]);
    }
 
