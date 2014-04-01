@@ -52,6 +52,6 @@ public class SignInViewOnLoginClick implements DMClickHandler
       event.stopPropagation();
       Window.alert("Logged with: " + this.signInView.getUser() + ":" + this.signInView.getPassword());
       this.mainDiv.clear();
-
+      this.mainDiv.appendChild(new ComplexForm(new ComplexForm.InitParameters()));
    }
 }

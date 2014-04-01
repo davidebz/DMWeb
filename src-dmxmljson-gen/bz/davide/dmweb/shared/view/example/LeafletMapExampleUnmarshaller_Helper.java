@@ -298,6 +298,30 @@ public class LeafletMapExampleUnmarshaller_Helper extends bz.davide.dmweb.shared
             structure.close();
          }
       });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.view.example.ComplexForm", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.view.example.ComplexForm>() {
+         @Override public void check(bz.davide.dmweb.shared.view.example.ComplexForm  ret){
+            emptyObjectCheck.get("bz.davide.dmweb.shared.view.DivView").check(ret);
+         }
+      });
+      this.putInstanceFactory("bz.davide.dmweb.shared.view.example.ComplexForm", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
+         @Override public Object newInstance() throws Exception {
+            bz.davide.dmweb.shared.view.example.ComplexForm ret = new bz.davide.dmweb.shared.view.example.ComplexForm();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.view.example.ComplexForm").check(ret);
+            return ret;
+         }
+      });
+
+      this.putClassUnmarshaller("bz.davide.dmweb.shared.view.example.ComplexForm", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
+         @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
+            internalUnmarschall(structure, "bz.davide.dmweb.shared.view.DivView", obj, identities);
+            structure.open();
+            String id = structure.getId();
+            if (id != null)
+               identities.put(id, obj);
+            bz.davide.dmxmljson.unmarshalling.Value value;
+            structure.close();
+         }
+      });
       this.emptyObjectCheck.put("bz.davide.dmweb.shared.view.example.POI", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.view.example.POI>() {
          @Override public void check(bz.davide.dmweb.shared.view.example.POI  ret){
             // lat

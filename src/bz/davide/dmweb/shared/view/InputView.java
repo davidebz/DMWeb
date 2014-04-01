@@ -32,6 +32,7 @@ public class InputView extends AbstractHtmlElementView implements DivViewChild
    public static class InitParameters extends AbstractHtmlElementView.InitParameters
    {
       private String text;
+      String         styleName;
 
       public InitParameters()
       {
@@ -42,6 +43,14 @@ public class InputView extends AbstractHtmlElementView implements DivViewChild
       {
          super("input");
          this.text = text;
+         this.styleName = null;
+      }
+
+      public InitParameters(String text, String styleName)
+      {
+         super("input");
+         this.text = text;
+         this.styleName = styleName;
       }
 
    }
@@ -54,6 +63,10 @@ public class InputView extends AbstractHtmlElementView implements DivViewChild
       super(initParameters);
       this.keyUpHandlers = new ArrayList<DMKeyUpHandler>();
       this.focusHandlers = new ArrayList<DMFocusHandler>();
+      if (initParameters.styleName != null)
+      {
+         this.setStyleName(initParameters.styleName);
+      }
       if (initParameters.text != null)
       {
          this.setText(initParameters.text);
