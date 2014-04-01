@@ -19,22 +19,39 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 
 package bz.davide.dmweb.shared.view.example;
 
-public class POI
+import bz.davide.dmweb.shared.view.DMClickEvent;
+import bz.davide.dmweb.shared.view.DMClickHandler;
+import bz.davide.dmweb.shared.view.DivView;
+import com.google.gwt.user.client.Window;
+
+public class SignInViewOnLoginClick implements DMClickHandler
 {
-   String name;
-   double lat;
-   double lon;
 
-   public POI()
-   {
-   }
+   DivView    mainDiv;
+   SignInView signInView;
 
-   public POI(String name, double lat, double lon)
+   public SignInViewOnLoginClick(DivView mainDiv)
    {
       super();
-      this.name = name;
-      this.lat = lat;
-      this.lon = lon;
+      this.mainDiv = mainDiv;
    }
 
+   SignInViewOnLoginClick()
+   {
+   }
+
+   public void setSignInView(SignInView signInView)
+   {
+      this.signInView = signInView;
+   }
+
+   @Override
+   public void onClick(DMClickEvent event)
+   {
+      event.preventDefault();
+      event.stopPropagation();
+      Window.alert("Logged with: " + this.signInView.getUser() + ":" + this.signInView.getPassword());
+      this.mainDiv.clear();
+
+   }
 }

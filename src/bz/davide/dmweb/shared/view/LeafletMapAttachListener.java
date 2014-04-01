@@ -47,10 +47,13 @@ public class LeafletMapAttachListener implements AttachListener
    @Override
    public void onAttachOrDetach(AttachEvent event)
    {
-      this.mapWidget.leafletMap = new Map(this.mapWidget.getElement());
-      this.mapWidget.leafletMap.addLayer(new OSMLayer());
-      this.mapWidget.leafletMap.setView(new LatLng(this.mapWidget.initParameters.initialLat,
-                                                   this.mapWidget.initParameters.initialLon),
-                                        this.mapWidget.initParameters.initialZoom);
+      if (event.isAttached())
+      {
+         this.mapWidget.leafletMap = new Map(this.mapWidget.getElement());
+         this.mapWidget.leafletMap.addLayer(new OSMLayer());
+         this.mapWidget.leafletMap.setView(new LatLng(this.mapWidget.initParameters.initialLat,
+                                                      this.mapWidget.initParameters.initialLon),
+                                           this.mapWidget.initParameters.initialZoom);
+      }
    };
 }

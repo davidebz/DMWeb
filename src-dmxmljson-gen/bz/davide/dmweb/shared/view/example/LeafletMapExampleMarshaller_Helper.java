@@ -132,6 +132,35 @@ public class LeafletMapExampleMarshaller_Helper extends bz.davide.dmweb.shared.v
                structure.close();
          }
       });
+      this.putClassMarshaller("bz.davide.dmweb.shared.view.example.SignInViewOnLoginClick", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
+         @Override public void marshall(Object obj, String compileTimeClassName, bz.davide.dmxmljson.marshalling.Structure structure, java.util.IdentityHashMap<Object, bz.davide.dmxmljson.marshalling.Structure> identities, long[] seq, boolean superClass) throws Exception {
+            if (!superClass) {
+               if (isReference(structure, obj, identities, seq))
+                  return;
+               identities.put(obj, structure);
+               structure.open(shortName(compileTimeClassName), shortName(obj.getClass().getName()), null);
+            }
+            Object value;
+            // mainDiv
+            value = ((bz.davide.dmweb.shared.view.example.SignInViewOnLoginClick)obj).mainDiv;
+            if (value == null)
+               structure.property("mainDiv").nullValue();
+            else
+            {
+                     internalMarschall(value, value.getClass().getName(),"bz.davide.dmweb.shared.view.DivView", structure.property("mainDiv").structure(), identities, seq, false);
+            }
+            // signInView
+            value = ((bz.davide.dmweb.shared.view.example.SignInViewOnLoginClick)obj).signInView;
+            if (value == null)
+               structure.property("signInView").nullValue();
+            else
+            {
+                     internalMarschall(value, value.getClass().getName(),"bz.davide.dmweb.shared.view.example.SignInView", structure.property("signInView").structure(), identities, seq, false);
+            }
+            if (!superClass)
+               structure.close();
+         }
+      });
       this.putClassMarshaller("bz.davide.dmweb.shared.view.example.POI", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
          @Override public void marshall(Object obj, String compileTimeClassName, bz.davide.dmxmljson.marshalling.Structure structure, java.util.IdentityHashMap<Object, bz.davide.dmxmljson.marshalling.Structure> identities, long[] seq, boolean superClass) throws Exception {
             if (!superClass) {
@@ -164,6 +193,36 @@ public class LeafletMapExampleMarshaller_Helper extends bz.davide.dmweb.shared.v
             else
             {
                     structure.property("name").string((String)value);                          
+            }
+            if (!superClass)
+               structure.close();
+         }
+      });
+      this.putClassMarshaller("bz.davide.dmweb.shared.view.example.SignInView", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
+         @Override public void marshall(Object obj, String compileTimeClassName, bz.davide.dmxmljson.marshalling.Structure structure, java.util.IdentityHashMap<Object, bz.davide.dmxmljson.marshalling.Structure> identities, long[] seq, boolean superClass) throws Exception {
+            if (!superClass) {
+               if (isReference(structure, obj, identities, seq))
+                  return;
+               identities.put(obj, structure);
+               structure.open(shortName(compileTimeClassName), shortName(obj.getClass().getName()), null);
+            }
+            internalMarschall(obj, "bz.davide.dmweb.shared.view.FormView", "N/A",structure, identities, seq, true);
+            Object value;
+            // pass
+            value = ((bz.davide.dmweb.shared.view.example.SignInView)obj).pass;
+            if (value == null)
+               structure.property("pass").nullValue();
+            else
+            {
+                     internalMarschall(value, value.getClass().getName(),"bz.davide.dmweb.shared.view.InputView", structure.property("pass").structure(), identities, seq, false);
+            }
+            // user
+            value = ((bz.davide.dmweb.shared.view.example.SignInView)obj).user;
+            if (value == null)
+               structure.property("user").nullValue();
+            else
+            {
+                     internalMarschall(value, value.getClass().getName(),"bz.davide.dmweb.shared.view.InputView", structure.property("user").structure(), identities, seq, false);
             }
             if (!superClass)
                structure.close();

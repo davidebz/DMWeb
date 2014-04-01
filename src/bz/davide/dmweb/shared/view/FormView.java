@@ -38,6 +38,10 @@ public class FormView extends AbstractHtmlElementView implements DivViewChild
       super(initParameters);
    }
 
+   protected FormView()
+   {
+   }
+
    public void appendChild(DivViewChild node)
    {
       super.appendChildInternal(node);

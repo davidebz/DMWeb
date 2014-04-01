@@ -46,16 +46,22 @@ public class InputView extends AbstractHtmlElementView implements DivViewChild
 
    }
 
-   ArrayList<DMKeyUpHandler> keyUpHandlers = new ArrayList<DMKeyUpHandler>();
-   ArrayList<DMFocusHandler> focusHandlers = new ArrayList<DMFocusHandler>();
+   ArrayList<DMKeyUpHandler> keyUpHandlers;
+   ArrayList<DMFocusHandler> focusHandlers;
 
    public InputView(InitParameters initParameters)
    {
       super(initParameters);
+      this.keyUpHandlers = new ArrayList<DMKeyUpHandler>();
+      this.focusHandlers = new ArrayList<DMFocusHandler>();
       if (initParameters.text != null)
       {
          this.setText(initParameters.text);
       }
+   }
+
+   protected InputView()
+   {
    }
 
    @Override

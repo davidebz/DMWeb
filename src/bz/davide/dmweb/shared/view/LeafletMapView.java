@@ -56,6 +56,32 @@ public class LeafletMapView extends DivView
       {
          return this.height;
       }
+
+      public void setWidth(int width)
+      {
+         this.width = width;
+      }
+
+      public void setHeight(int height)
+      {
+         this.height = height;
+      }
+
+      public void setInitialLat(double initialLat)
+      {
+         this.initialLat = initialLat;
+      }
+
+      public void setInitialLon(double initialLon)
+      {
+         this.initialLon = initialLon;
+      }
+
+      public void setInitialZoom(int initialZoom)
+      {
+         this.initialZoom = initialZoom;
+      }
+
    }
 
    transient Map leafletMap = null;

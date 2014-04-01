@@ -20,6 +20,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 package bz.davide.dmweb.shared.view.example;
 
 import bz.davide.dmweb.shared.view.ButtonView;
+import bz.davide.dmweb.shared.view.DMClickHandler;
 import bz.davide.dmweb.shared.view.FormView;
 import bz.davide.dmweb.shared.view.InputView;
 import bz.davide.dmweb.shared.view.LabelView;
@@ -27,9 +28,23 @@ import bz.davide.dmweb.shared.view.SpanView;
 
 public class SignInView extends FormView
 {
+   InputView user;
+   InputView pass;
 
    public static class InitParameters extends FormView.InitParameters
    {
+      DMClickHandler onclick;
+
+      public InitParameters()
+      {
+         this(null);
+      }
+
+      public InitParameters(DMClickHandler onclick)
+      {
+         super();
+         this.onclick = onclick;
+      }
 
    }
 
@@ -39,19 +54,38 @@ public class SignInView extends FormView
       this.setStyleName("form-signin");
       SpanView heading = new SpanView(new SpanView.InitParameters("Please log in"));
       this.appendChild(heading);
-      InputView user = new InputView(new InputView.InitParameters());
-      user.setStyleName("form-control");
-      InputView pass = new InputView(new InputView.InitParameters());
-      pass.setStyleName("form-control");
+      this.user = new InputView(new InputView.InitParameters());
+      this.user.setStyleName("form-control");
+      this.pass = new InputView(new InputView.InitParameters());
+      this.pass.setStyleName("form-control");
       LabelView labelView = new LabelView(new LabelView.InitParameters("Remember me", "checkbox"));
       InputView remember = new InputView(new InputView.InitParameters());
       remember.setType("checkbox");
       labelView.appendChild(remember);
       ButtonView login = new ButtonView(new ButtonView.InitParameters("Login"));
       login.setStyleName("btn btn-lg btn-primary btn-block");
-      this.appendChild(user);
-      this.appendChild(pass);
+      if (initParameters.onclick != null)
+      {
+         login.addClickHandler(initParameters.onclick);
+      }
+      this.appendChild(this.user);
+      this.appendChild(this.pass);
       this.appendChild(labelView);
       this.appendChild(login);
    }
+
+   protected SignInView()
+   {
+   }
+
+   public String getUser()
+   {
+      return this.user.getValue();
+   }
+
+   public String getPassword()
+   {
+      return this.pass.getValue();
+   }
+
 }

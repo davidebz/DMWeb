@@ -83,6 +83,69 @@ public class LeafletMapExampleMarshaller_Helper extends bz.davide.dmxmljson.mars
                structure.close();
          }
       });
+      this.putClassMarshaller("bz.davide.dmweb.shared.view.DMWidgetEventAttachHandler", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
+         @Override public void marshall(Object obj, String compileTimeClassName, bz.davide.dmxmljson.marshalling.Structure structure, java.util.IdentityHashMap<Object, bz.davide.dmxmljson.marshalling.Structure> identities, long[] seq, boolean superClass) throws Exception {
+            if (!superClass) {
+               if (isReference(structure, obj, identities, seq))
+                  return;
+               identities.put(obj, structure);
+               structure.open(shortName(compileTimeClassName), shortName(obj.getClass().getName()), null);
+            }
+            Object value;
+            // widget
+            value = ((bz.davide.dmweb.shared.view.DMWidgetEventAttachHandler)obj).widget;
+            if (value == null)
+               structure.property("widget").nullValue();
+            else
+            {
+                     internalMarschall(value, value.getClass().getName(),"bz.davide.dmweb.shared.view.AbstractHtmlElementView", structure.property("widget").structure(), identities, seq, false);
+            }
+            if (!superClass)
+               structure.close();
+         }
+      });
+      this.putClassMarshaller("bz.davide.dmweb.shared.view.ButtonView", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
+         @Override public void marshall(Object obj, String compileTimeClassName, bz.davide.dmxmljson.marshalling.Structure structure, java.util.IdentityHashMap<Object, bz.davide.dmxmljson.marshalling.Structure> identities, long[] seq, boolean superClass) throws Exception {
+            if (!superClass) {
+               if (isReference(structure, obj, identities, seq))
+                  return;
+               identities.put(obj, structure);
+               structure.open(shortName(compileTimeClassName), shortName(obj.getClass().getName()), null);
+            }
+            internalMarschall(obj, "bz.davide.dmweb.shared.view.AbstractHtmlElementView", "N/A",structure, identities, seq, true);
+            Object value;
+            if (!superClass)
+               structure.close();
+         }
+      });
+      this.putClassMarshaller("bz.davide.dmweb.shared.view.SpanView", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
+         @Override public void marshall(Object obj, String compileTimeClassName, bz.davide.dmxmljson.marshalling.Structure structure, java.util.IdentityHashMap<Object, bz.davide.dmxmljson.marshalling.Structure> identities, long[] seq, boolean superClass) throws Exception {
+            if (!superClass) {
+               if (isReference(structure, obj, identities, seq))
+                  return;
+               identities.put(obj, structure);
+               structure.open(shortName(compileTimeClassName), shortName(obj.getClass().getName()), null);
+            }
+            internalMarschall(obj, "bz.davide.dmweb.shared.view.AbstractHtmlElementView", "N/A",structure, identities, seq, true);
+            Object value;
+            if (!superClass)
+               structure.close();
+         }
+      });
+      this.putClassMarshaller("bz.davide.dmweb.shared.view.LabelView", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
+         @Override public void marshall(Object obj, String compileTimeClassName, bz.davide.dmxmljson.marshalling.Structure structure, java.util.IdentityHashMap<Object, bz.davide.dmxmljson.marshalling.Structure> identities, long[] seq, boolean superClass) throws Exception {
+            if (!superClass) {
+               if (isReference(structure, obj, identities, seq))
+                  return;
+               identities.put(obj, structure);
+               structure.open(shortName(compileTimeClassName), shortName(obj.getClass().getName()), null);
+            }
+            internalMarschall(obj, "bz.davide.dmweb.shared.view.AbstractHtmlElementView", "N/A",structure, identities, seq, true);
+            Object value;
+            if (!superClass)
+               structure.close();
+         }
+      });
       this.putClassMarshaller("bz.davide.dmweb.shared.view.DivView$InitParameters", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
          @Override public void marshall(Object obj, String compileTimeClassName, bz.davide.dmxmljson.marshalling.Structure structure, java.util.IdentityHashMap<Object, bz.davide.dmxmljson.marshalling.Structure> identities, long[] seq, boolean superClass) throws Exception {
             if (!superClass) {
@@ -195,19 +258,6 @@ public class LeafletMapExampleMarshaller_Helper extends bz.davide.dmxmljson.mars
                structure.close();
          }
       });
-      this.putClassMarshaller("bz.davide.dmweb.shared.view.AbstractHtmlElementView$InitParameters", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
-         @Override public void marshall(Object obj, String compileTimeClassName, bz.davide.dmxmljson.marshalling.Structure structure, java.util.IdentityHashMap<Object, bz.davide.dmxmljson.marshalling.Structure> identities, long[] seq, boolean superClass) throws Exception {
-            if (!superClass) {
-               if (isReference(structure, obj, identities, seq))
-                  return;
-               identities.put(obj, structure);
-               structure.open(shortName(compileTimeClassName), shortName(obj.getClass().getName()), null);
-            }
-            Object value;
-            if (!superClass)
-               structure.close();
-         }
-      });
       this.putClassMarshaller("bz.davide.dmweb.shared.view.AbstractHtmlElementView", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
          @Override public void marshall(Object obj, String compileTimeClassName, bz.davide.dmxmljson.marshalling.Structure structure, java.util.IdentityHashMap<Object, bz.davide.dmxmljson.marshalling.Structure> identities, long[] seq, boolean superClass) throws Exception {
             if (!superClass) {
@@ -277,6 +327,77 @@ public class LeafletMapExampleMarshaller_Helper extends bz.davide.dmxmljson.mars
             else
             {
                     structure.property("id").string((String)value);                          
+            }
+            if (!superClass)
+               structure.close();
+         }
+      });
+      this.putClassMarshaller("bz.davide.dmweb.shared.view.AbstractHtmlElementView$InitParameters", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
+         @Override public void marshall(Object obj, String compileTimeClassName, bz.davide.dmxmljson.marshalling.Structure structure, java.util.IdentityHashMap<Object, bz.davide.dmxmljson.marshalling.Structure> identities, long[] seq, boolean superClass) throws Exception {
+            if (!superClass) {
+               if (isReference(structure, obj, identities, seq))
+                  return;
+               identities.put(obj, structure);
+               structure.open(shortName(compileTimeClassName), shortName(obj.getClass().getName()), null);
+            }
+            Object value;
+            if (!superClass)
+               structure.close();
+         }
+      });
+      this.putClassMarshaller("bz.davide.dmweb.shared.view.FormView", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
+         @Override public void marshall(Object obj, String compileTimeClassName, bz.davide.dmxmljson.marshalling.Structure structure, java.util.IdentityHashMap<Object, bz.davide.dmxmljson.marshalling.Structure> identities, long[] seq, boolean superClass) throws Exception {
+            if (!superClass) {
+               if (isReference(structure, obj, identities, seq))
+                  return;
+               identities.put(obj, structure);
+               structure.open(shortName(compileTimeClassName), shortName(obj.getClass().getName()), null);
+            }
+            internalMarschall(obj, "bz.davide.dmweb.shared.view.AbstractHtmlElementView", "N/A",structure, identities, seq, true);
+            Object value;
+            if (!superClass)
+               structure.close();
+         }
+      });
+      this.putClassMarshaller("bz.davide.dmweb.shared.view.InputView", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
+         @Override public void marshall(Object obj, String compileTimeClassName, bz.davide.dmxmljson.marshalling.Structure structure, java.util.IdentityHashMap<Object, bz.davide.dmxmljson.marshalling.Structure> identities, long[] seq, boolean superClass) throws Exception {
+            if (!superClass) {
+               if (isReference(structure, obj, identities, seq))
+                  return;
+               identities.put(obj, structure);
+               structure.open(shortName(compileTimeClassName), shortName(obj.getClass().getName()), null);
+            }
+            internalMarschall(obj, "bz.davide.dmweb.shared.view.AbstractHtmlElementView", "N/A",structure, identities, seq, true);
+            Object value;
+            // focusHandlers
+            value = ((bz.davide.dmweb.shared.view.InputView)obj).focusHandlers;
+            if (value == null)
+               structure.property("focusHandlers").nullValue();
+            else
+            {
+               java.util.ArrayList arrayList = (java.util.ArrayList)value;                        
+               bz.davide.dmxmljson.marshalling.Array array = structure.property("focusHandlers").array(arrayList.size());        
+               for (Object o: arrayList) {                                    
+                  if (o == null)                                              
+                     array.item().nullValue();                                
+                  else                                                        
+                     internalMarschall(o, o.getClass().getName(), "bz.davide.dmweb.shared.view.DMFocusHandler", array.item().structure(), identities, seq, false);
+               }                                                              
+            }
+            // keyUpHandlers
+            value = ((bz.davide.dmweb.shared.view.InputView)obj).keyUpHandlers;
+            if (value == null)
+               structure.property("keyUpHandlers").nullValue();
+            else
+            {
+               java.util.ArrayList arrayList = (java.util.ArrayList)value;                        
+               bz.davide.dmxmljson.marshalling.Array array = structure.property("keyUpHandlers").array(arrayList.size());        
+               for (Object o: arrayList) {                                    
+                  if (o == null)                                              
+                     array.item().nullValue();                                
+                  else                                                        
+                     internalMarschall(o, o.getClass().getName(), "bz.davide.dmweb.shared.view.DMKeyUpHandler", array.item().structure(), identities, seq, false);
+               }                                                              
             }
             if (!superClass)
                structure.close();

@@ -21,6 +21,7 @@ package bz.davide.dmweb.shared.view.example;
 
 import bz.davide.dmweb.shared.view.ButtonView;
 import bz.davide.dmweb.shared.view.DivView;
+import bz.davide.dmweb.shared.view.LeafletMapView;
 import bz.davide.dmweb.shared.view.SpanView;
 
 public class BasicWidgetsExample extends DivView
@@ -46,7 +47,24 @@ public class BasicWidgetsExample extends DivView
          buttonGroup.appendChild(button);
       }
       this.appendChild(buttonGroup);
-      this.appendChild(new SignInView(new SignInView.InitParameters()));
+
+      SignInViewOnLoginClick onLoginClick = new SignInViewOnLoginClick(this);
+      SignInView signInView = new SignInView(new SignInView.InitParameters(onLoginClick));
+      onLoginClick.signInView = signInView;
+      this.appendChild(signInView);
+
+      LeafletMapExample.InitParameters parameters = new LeafletMapExample.InitParameters();
+      parameters.map = new LeafletMapView.InitParameters();
+      parameters.map.setWidth(300);
+      parameters.map.setHeight(300);
+      parameters.map.setInitialLat(46);
+      parameters.map.setInitialLon(11);
+      parameters.map.setInitialZoom(11);
+
+      parameters.pois = new POI[] { new POI("Davide", 46, 11) };
+
+      LeafletMapExample leafletMapExample = new LeafletMapExample(parameters);
+      this.appendChild(leafletMapExample);
 
    }
 
