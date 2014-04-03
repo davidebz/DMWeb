@@ -298,6 +298,108 @@ public class LeafletMapExampleUnmarshaller_Helper extends bz.davide.dmweb.shared
             structure.close();
          }
       });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.view.example.SignInView$InitParameters", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.view.example.SignInView.InitParameters>() {
+         @Override public void check(bz.davide.dmweb.shared.view.example.SignInView.InitParameters  ret){
+            // onclick
+            if (ret.onclick != null)
+               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.view.example.SignInView$InitParameters.onclick");
+            emptyObjectCheck.get("bz.davide.dmweb.shared.view.FormView$InitParameters").check(ret);
+         }
+      });
+      this.putInstanceFactory("bz.davide.dmweb.shared.view.example.SignInView$InitParameters", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
+         @Override public Object newInstance() throws Exception {
+            bz.davide.dmweb.shared.view.example.SignInView.InitParameters ret = new bz.davide.dmweb.shared.view.example.SignInView.InitParameters();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.view.example.SignInView$InitParameters").check(ret);
+            return ret;
+         }
+      });
+
+      this.putClassUnmarshaller("bz.davide.dmweb.shared.view.example.SignInView$InitParameters", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
+         @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
+            internalUnmarschall(structure, "bz.davide.dmweb.shared.view.FormView$InitParameters", obj, identities);
+            structure.open();
+            String id = structure.getId();
+            if (id != null)
+               identities.put(id, obj);
+            bz.davide.dmxmljson.unmarshalling.Value value;
+            // onclick
+            if ((value = structure.property("onclick")) != null)
+               if (value.isNull())
+                  ((bz.davide.dmweb.shared.view.example.SignInView.InitParameters)obj).onclick = null;
+               else
+               {
+                  String refid = value.structure().getRefId();    
+                  if (refid != null)                              
+                     ((bz.davide.dmweb.shared.view.example.SignInView.InitParameters)obj).onclick = (bz.davide.dmweb.shared.view.DMClickHandler)identities.get(refid);
+                  else {
+                     Object o = newInstance(value.structure().getRuntimeClassName("DMClickHandler"));              
+                     internalUnmarschall(value.structure(), o.getClass().getName(), o, identities); 
+                     ((bz.davide.dmweb.shared.view.example.SignInView.InitParameters)obj).onclick = (bz.davide.dmweb.shared.view.DMClickHandler)o;
+                  }
+               }
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.view.example.SignInView", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.view.example.SignInView>() {
+         @Override public void check(bz.davide.dmweb.shared.view.example.SignInView  ret){
+            // pass
+            if (ret.pass != null)
+               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.view.example.SignInView.pass");
+            // user
+            if (ret.user != null)
+               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.view.example.SignInView.user");
+            emptyObjectCheck.get("bz.davide.dmweb.shared.view.FormView").check(ret);
+         }
+      });
+      this.putInstanceFactory("bz.davide.dmweb.shared.view.example.SignInView", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
+         @Override public Object newInstance() throws Exception {
+            bz.davide.dmweb.shared.view.example.SignInView ret = new bz.davide.dmweb.shared.view.example.SignInView();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.view.example.SignInView").check(ret);
+            return ret;
+         }
+      });
+
+      this.putClassUnmarshaller("bz.davide.dmweb.shared.view.example.SignInView", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
+         @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
+            internalUnmarschall(structure, "bz.davide.dmweb.shared.view.FormView", obj, identities);
+            structure.open();
+            String id = structure.getId();
+            if (id != null)
+               identities.put(id, obj);
+            bz.davide.dmxmljson.unmarshalling.Value value;
+            // pass
+            if ((value = structure.property("pass")) != null)
+               if (value.isNull())
+                  ((bz.davide.dmweb.shared.view.example.SignInView)obj).pass = null;
+               else
+               {
+                  String refid = value.structure().getRefId();    
+                  if (refid != null)                              
+                     ((bz.davide.dmweb.shared.view.example.SignInView)obj).pass = (bz.davide.dmweb.shared.view.InputView)identities.get(refid);
+                  else {
+                     Object o = newInstance(value.structure().getRuntimeClassName("InputView"));              
+                     internalUnmarschall(value.structure(), o.getClass().getName(), o, identities); 
+                     ((bz.davide.dmweb.shared.view.example.SignInView)obj).pass = (bz.davide.dmweb.shared.view.InputView)o;
+                  }
+               }
+            // user
+            if ((value = structure.property("user")) != null)
+               if (value.isNull())
+                  ((bz.davide.dmweb.shared.view.example.SignInView)obj).user = null;
+               else
+               {
+                  String refid = value.structure().getRefId();    
+                  if (refid != null)                              
+                     ((bz.davide.dmweb.shared.view.example.SignInView)obj).user = (bz.davide.dmweb.shared.view.InputView)identities.get(refid);
+                  else {
+                     Object o = newInstance(value.structure().getRuntimeClassName("InputView"));              
+                     internalUnmarschall(value.structure(), o.getClass().getName(), o, identities); 
+                     ((bz.davide.dmweb.shared.view.example.SignInView)obj).user = (bz.davide.dmweb.shared.view.InputView)o;
+                  }
+               }
+            structure.close();
+         }
+      });
       this.emptyObjectCheck.put("bz.davide.dmweb.shared.view.example.ComplexForm", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.view.example.ComplexForm>() {
          @Override public void check(bz.davide.dmweb.shared.view.example.ComplexForm  ret){
             emptyObjectCheck.get("bz.davide.dmweb.shared.view.DivView").check(ret);
@@ -373,66 +475,6 @@ public class LeafletMapExampleUnmarshaller_Helper extends bz.davide.dmweb.shared
                else
                {
                   ((bz.davide.dmweb.shared.view.example.POI)obj).name = value.string();
-               }
-            structure.close();
-         }
-      });
-      this.emptyObjectCheck.put("bz.davide.dmweb.shared.view.example.SignInView", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.view.example.SignInView>() {
-         @Override public void check(bz.davide.dmweb.shared.view.example.SignInView  ret){
-            // pass
-            if (ret.pass != null)
-               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.view.example.SignInView.pass");
-            // user
-            if (ret.user != null)
-               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.view.example.SignInView.user");
-            emptyObjectCheck.get("bz.davide.dmweb.shared.view.FormView").check(ret);
-         }
-      });
-      this.putInstanceFactory("bz.davide.dmweb.shared.view.example.SignInView", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
-         @Override public Object newInstance() throws Exception {
-            bz.davide.dmweb.shared.view.example.SignInView ret = new bz.davide.dmweb.shared.view.example.SignInView();
-            emptyObjectCheck.get("bz.davide.dmweb.shared.view.example.SignInView").check(ret);
-            return ret;
-         }
-      });
-
-      this.putClassUnmarshaller("bz.davide.dmweb.shared.view.example.SignInView", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
-         @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
-            internalUnmarschall(structure, "bz.davide.dmweb.shared.view.FormView", obj, identities);
-            structure.open();
-            String id = structure.getId();
-            if (id != null)
-               identities.put(id, obj);
-            bz.davide.dmxmljson.unmarshalling.Value value;
-            // pass
-            if ((value = structure.property("pass")) != null)
-               if (value.isNull())
-                  ((bz.davide.dmweb.shared.view.example.SignInView)obj).pass = null;
-               else
-               {
-                  String refid = value.structure().getRefId();    
-                  if (refid != null)                              
-                     ((bz.davide.dmweb.shared.view.example.SignInView)obj).pass = (bz.davide.dmweb.shared.view.InputView)identities.get(refid);
-                  else {
-                     Object o = newInstance(value.structure().getRuntimeClassName("InputView"));              
-                     internalUnmarschall(value.structure(), o.getClass().getName(), o, identities); 
-                     ((bz.davide.dmweb.shared.view.example.SignInView)obj).pass = (bz.davide.dmweb.shared.view.InputView)o;
-                  }
-               }
-            // user
-            if ((value = structure.property("user")) != null)
-               if (value.isNull())
-                  ((bz.davide.dmweb.shared.view.example.SignInView)obj).user = null;
-               else
-               {
-                  String refid = value.structure().getRefId();    
-                  if (refid != null)                              
-                     ((bz.davide.dmweb.shared.view.example.SignInView)obj).user = (bz.davide.dmweb.shared.view.InputView)identities.get(refid);
-                  else {
-                     Object o = newInstance(value.structure().getRuntimeClassName("InputView"));              
-                     internalUnmarschall(value.structure(), o.getClass().getName(), o, identities); 
-                     ((bz.davide.dmweb.shared.view.example.SignInView)obj).user = (bz.davide.dmweb.shared.view.InputView)o;
-                  }
                }
             structure.close();
          }

@@ -332,7 +332,7 @@ public class LeafletMapExampleMarshaller_Helper extends bz.davide.dmxmljson.mars
                structure.close();
          }
       });
-      this.putClassMarshaller("bz.davide.dmweb.shared.view.AbstractHtmlElementView$InitParameters", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
+      this.putClassMarshaller("bz.davide.dmweb.shared.view.FormView$InitParameters", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
          @Override public void marshall(Object obj, String compileTimeClassName, bz.davide.dmxmljson.marshalling.Structure structure, java.util.IdentityHashMap<Object, bz.davide.dmxmljson.marshalling.Structure> identities, long[] seq, boolean superClass) throws Exception {
             if (!superClass) {
                if (isReference(structure, obj, identities, seq))
@@ -340,6 +340,7 @@ public class LeafletMapExampleMarshaller_Helper extends bz.davide.dmxmljson.mars
                identities.put(obj, structure);
                structure.open(shortName(compileTimeClassName), shortName(obj.getClass().getName()), null);
             }
+            internalMarschall(obj, "bz.davide.dmweb.shared.view.AbstractHtmlElementView$InitParameters", "N/A",structure, identities, seq, true);
             Object value;
             if (!superClass)
                structure.close();
@@ -399,6 +400,19 @@ public class LeafletMapExampleMarshaller_Helper extends bz.davide.dmxmljson.mars
                      internalMarschall(o, o.getClass().getName(), "bz.davide.dmweb.shared.view.DMKeyUpHandler", array.item().structure(), identities, seq, false);
                }                                                              
             }
+            if (!superClass)
+               structure.close();
+         }
+      });
+      this.putClassMarshaller("bz.davide.dmweb.shared.view.AbstractHtmlElementView$InitParameters", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
+         @Override public void marshall(Object obj, String compileTimeClassName, bz.davide.dmxmljson.marshalling.Structure structure, java.util.IdentityHashMap<Object, bz.davide.dmxmljson.marshalling.Structure> identities, long[] seq, boolean superClass) throws Exception {
+            if (!superClass) {
+               if (isReference(structure, obj, identities, seq))
+                  return;
+               identities.put(obj, structure);
+               structure.open(shortName(compileTimeClassName), shortName(obj.getClass().getName()), null);
+            }
+            Object value;
             if (!superClass)
                structure.close();
          }

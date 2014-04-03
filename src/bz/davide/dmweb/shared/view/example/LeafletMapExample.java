@@ -28,10 +28,9 @@ public class LeafletMapExample extends DivView
 
    public static class InitParameters extends DivView.InitParameters
    {
-
-      String                        title;
-      LeafletMapView.InitParameters map;
-      POI[]                         pois;
+      public String                        title;
+      public LeafletMapView.InitParameters map;
+      public POI[]                         pois;
    }
 
    public LeafletMapExample(InitParameters initParameters)

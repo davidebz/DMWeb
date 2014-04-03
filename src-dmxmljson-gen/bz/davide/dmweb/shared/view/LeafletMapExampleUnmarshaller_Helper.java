@@ -573,18 +573,22 @@ public class LeafletMapExampleUnmarshaller_Helper extends bz.davide.dmxmljson.un
             structure.close();
          }
       });
-      this.emptyObjectCheck.put("bz.davide.dmweb.shared.view.AbstractHtmlElementView$InitParameters", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.view.AbstractHtmlElementView.InitParameters>() {
-         @Override public void check(bz.davide.dmweb.shared.view.AbstractHtmlElementView.InitParameters  ret){
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.view.FormView$InitParameters", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.view.FormView.InitParameters>() {
+         @Override public void check(bz.davide.dmweb.shared.view.FormView.InitParameters  ret){
+            emptyObjectCheck.get("bz.davide.dmweb.shared.view.AbstractHtmlElementView$InitParameters").check(ret);
          }
       });
-      this.putInstanceFactory("bz.davide.dmweb.shared.view.AbstractHtmlElementView$InitParameters", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
+      this.putInstanceFactory("bz.davide.dmweb.shared.view.FormView$InitParameters", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
-            return null;
+            bz.davide.dmweb.shared.view.FormView.InitParameters ret = new bz.davide.dmweb.shared.view.FormView.InitParameters();
+            emptyObjectCheck.get("bz.davide.dmweb.shared.view.FormView$InitParameters").check(ret);
+            return ret;
          }
       });
 
-      this.putClassUnmarshaller("bz.davide.dmweb.shared.view.AbstractHtmlElementView$InitParameters", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
+      this.putClassUnmarshaller("bz.davide.dmweb.shared.view.FormView$InitParameters", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
          @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
+            internalUnmarschall(structure, "bz.davide.dmweb.shared.view.AbstractHtmlElementView$InitParameters", obj, identities);
             structure.open();
             String id = structure.getId();
             if (id != null)
@@ -700,6 +704,26 @@ public class LeafletMapExampleUnmarshaller_Helper extends bz.davide.dmxmljson.un
                   arr.close();        
                   ((bz.davide.dmweb.shared.view.InputView)obj).keyUpHandlers = arrayList;
                }
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.dmweb.shared.view.AbstractHtmlElementView$InitParameters", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.view.AbstractHtmlElementView.InitParameters>() {
+         @Override public void check(bz.davide.dmweb.shared.view.AbstractHtmlElementView.InitParameters  ret){
+         }
+      });
+      this.putInstanceFactory("bz.davide.dmweb.shared.view.AbstractHtmlElementView$InitParameters", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
+         @Override public Object newInstance() throws Exception {
+            return null;
+         }
+      });
+
+      this.putClassUnmarshaller("bz.davide.dmweb.shared.view.AbstractHtmlElementView$InitParameters", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
+         @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
+            structure.open();
+            String id = structure.getId();
+            if (id != null)
+               identities.put(id, obj);
+            bz.davide.dmxmljson.unmarshalling.Value value;
             structure.close();
          }
       });

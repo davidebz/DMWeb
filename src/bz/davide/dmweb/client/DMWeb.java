@@ -45,6 +45,14 @@ public class DMWeb implements EntryPoint
    public void onModuleLoad()
    {
       start(new LeafletMapExampleUnmarshaller());
+
+      /*
+      SignInView signInView = new SignInView(new SignInView.InitParameters());
+
+      Element mainDiv = Document.get().getElementById("main");
+      mainDiv.appendChild(signInView.getElement());
+      AbstractHtmlElementView.notifyAttachRecursive(signInView);
+      */
    }
 
    public static void start(Unmarshaller widgetUnmarshaller)
