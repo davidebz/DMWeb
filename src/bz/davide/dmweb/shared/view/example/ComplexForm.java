@@ -27,26 +27,17 @@ import bz.davide.dmweb.shared.view.SpanView;
 
 public class ComplexForm extends DivView
 {
-   public static class InitParameters extends DivView.InitParameters
-   {
-
-   }
-
-   public ComplexForm(InitParameters initParameters)
-   {
-      super(initParameters);
-      this.setStyleName(".container");
-      FormView formView = new FormView(new FormView.InitParameters());
-      DivView formGroup1 = new DivView(new DivView.InitParameters("form-group has-success has-feedback"));
-      formGroup1.appendChild(new LabelView(new LabelView.InitParameters("Input name", "control-label")));
-      formGroup1.appendChild(new InputView(new InputView.InitParameters("Davide", "form-control")));
-      formGroup1.appendChild(new SpanView(new SpanView.InitParameters("",
-                                                                      "glyphicon glyphicon-ok form-control-feedback")));
-      formView.appendChild(formGroup1);
-      this.appendChild(formView);
-   }
 
    protected ComplexForm()
    {
+      super();
+      this.setStyleName(".container");
+      FormView formView = new FormView();
+      DivView formGroup1 = new DivView("form-group has-success has-feedback");
+      formGroup1.appendChild(new LabelView("Input name", "control-label"));
+      formGroup1.appendChild(new InputView("Davide", "form-control"));
+      formGroup1.appendChild(new SpanView("", "glyphicon glyphicon-ok form-control-feedback"));
+      formView.appendChild(formGroup1);
+      this.appendChild(formView);
    }
 }

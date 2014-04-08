@@ -25,21 +25,9 @@ package bz.davide.dmweb.shared.view;
 public class FormView extends AbstractHtmlElementView implements DivViewChild
 {
 
-   public static class InitParameters extends AbstractHtmlElementView.InitParameters
+   public FormView()
    {
-      public InitParameters()
-      {
-         super("form");
-      }
-   }
-
-   public FormView(InitParameters initParameters)
-   {
-      super(initParameters);
-   }
-
-   protected FormView()
-   {
+      super("form");
    }
 
    public void appendChild(DivViewChild node)

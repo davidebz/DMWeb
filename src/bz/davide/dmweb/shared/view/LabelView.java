@@ -25,45 +25,21 @@ package bz.davide.dmweb.shared.view;
 public class LabelView extends AbstractHtmlElementView implements DivViewChild, BoldViewChild, StrongViewChild
 {
 
-   public static class InitParameters extends AbstractHtmlElementView.InitParameters
+   public LabelView()
    {
-      String text;
-      String className;
-
-      public InitParameters()
-      {
-         this(null, null);
-      }
-
-      public InitParameters(String text)
-      {
-         this(text, null);
-      }
-
-      public InitParameters(String text, String className)
-      {
-         super("label");
-         this.text = text;
-         this.className = className;
-      }
-
+      super("label");
    }
 
-   public LabelView(InitParameters initParameters)
+   public LabelView(String text)
    {
-      super(initParameters);
-      if (initParameters.text != null)
-      {
-         this.setText(initParameters.text);
-      }
-      if (initParameters.className != null)
-      {
-         this.setStyleName(initParameters.className);
-      }
+      this();
+      this.setText(text);
    }
 
-   protected LabelView()
+   public LabelView(String text, String styleName)
    {
+      this(text);
+      this.setStyleName(styleName);
    }
 
    public void setText(String text)

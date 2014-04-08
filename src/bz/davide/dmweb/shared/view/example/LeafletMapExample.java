@@ -26,7 +26,7 @@ import bz.davide.dmweb.shared.view.SpanView;
 public class LeafletMapExample extends DivView
 {
 
-   public static class InitParameters extends DivView.InitParameters
+   public static class InitParameters
    {
       public String                        title;
       public LeafletMapView.InitParameters map;
@@ -35,7 +35,8 @@ public class LeafletMapExample extends DivView
 
    public LeafletMapExample(InitParameters initParameters)
    {
-      super(initParameters);
+
+      super();
       this.setStyleName("leaflet-map-example");
       if (initParameters.map.getWidth() != 0)
       {
@@ -47,13 +48,13 @@ public class LeafletMapExample extends DivView
       {
          title = initParameters.title;
       }
-      this.appendChild(new SpanView(new SpanView.InitParameters(title, "title")));
+      this.appendChild(new SpanView(title, "title"));
       this.appendChild(leafletMapView);
 
       this.addAttachHandler(new LeafletMapExampleAttachListener(leafletMapView, initParameters.pois));
-
    }
 
+   @Deprecated
    protected LeafletMapExample()
    {
    }

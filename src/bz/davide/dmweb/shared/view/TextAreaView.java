@@ -27,25 +27,16 @@ import com.google.gwt.dom.client.TextAreaElement;
 public class TextAreaView extends AbstractHtmlElementView implements DivViewChild
 {
 
-   public static class InitParameters extends AbstractHtmlElementView.InitParameters
+   public TextAreaView()
    {
-      int rows;
-      int cols;
-
-      public InitParameters(int rows, int cols)
-      {
-         super("textarea");
-         this.rows = rows;
-         this.cols = cols;
-      }
-
+      super("textarea");
    }
 
-   public TextAreaView(InitParameters initParameters)
+   public TextAreaView(int rows, int cols)
    {
-      super(initParameters);
-      this.setElementAttribute("rows", String.valueOf(initParameters.rows));
-      this.setElementAttribute("cols", String.valueOf(initParameters.cols));
+      this();
+      this.setElementAttribute("rows", String.valueOf(rows));
+      this.setElementAttribute("cols", String.valueOf(cols));
    }
 
    public void setText(String value)

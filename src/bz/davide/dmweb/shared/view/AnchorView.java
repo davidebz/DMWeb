@@ -25,66 +25,49 @@ package bz.davide.dmweb.shared.view;
 public class AnchorView extends AbstractHtmlElementView implements DivViewChildElement, LiViewChild
 {
 
-   public static class InitParameters extends AbstractHtmlElementView.InitParameters
+   public AnchorView()
    {
-      private String href;
-      private String text;
-      private String target;
-
-      public InitParameters()
-      {
-         this("#", "-Link-", null);
-      }
-
-      public InitParameters(String href, String text)
-      {
-         this(href, text, null);
-      }
-
-      public InitParameters(String href, String text, String target)
-      {
-         super("a");
-         this.href = href;
-         this.text = text;
-         this.target = target;
-      }
-
+      this("#", "-Link-");
    }
 
-   public AnchorView(InitParameters initParameters)
+   public AnchorView(String href, String text)
    {
-      super(initParameters);
-      if (initParameters.href != null)
-      {
-         this.setHref(initParameters.href);
-      }
-      if (initParameters.text != null)
-      {
-         this.setText(initParameters.text);
-      }
-      if (initParameters.target != null)
-      {
-         this.setTarget(initParameters.target);
-      }
+      super("a");
+      this.setHref(href);
+      this.setText(text);
    }
 
-   protected AnchorView()
+   public AnchorView(String href, String text, String target)
    {
+      this(href, text);
+      this.setTarget(target);
    }
 
    public void setHref(String href)
    {
+      if (href == null || href.trim().length() == 0)
+      {
+         throw new IllegalArgumentException("href can't be null/empty");
+      }
       this.setElementAttribute("href", href);
    }
 
    public void setText(String text)
    {
+      if (text == null || text.trim().length() == 0)
+      {
+         throw new IllegalArgumentException("text can't be null/empty");
+      }
       this.clear();
       this.appendChild(new TextNodeView(text));
    }
 
    public void setTarget(String target)
    {
+      if (target == null || target.trim().length() == 0)
+      {
+         throw new IllegalArgumentException("target can't be null/empty");
+      }
       this.setElementAttribute("target", target);
    }
 

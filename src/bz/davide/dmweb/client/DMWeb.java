@@ -59,12 +59,17 @@ public class DMWeb implements EntryPoint
    {
       try
       {
+         // During de-serialization avoid to create dom elements in default constructors
+         AbstractHtmlElementView.clientSide = false;
+
          JSONObject jsonObject = new JSONObject(readSerializationData());
          GWTStructure gwtStructure = new GWTStructure(jsonObject);
 
          DMWidgetSerializationData serializationData = (DMWidgetSerializationData) widgetUnmarshaller.newInstance("DMWidgetSerializationData");
          widgetUnmarshaller.unmarschall(gwtStructure, serializationData);
          AbstractHtmlElementView.clientSideIdSeq = serializationData.getIdseq();
+
+         AbstractHtmlElementView.clientSide = true;
 
          for (AttachListener attachHandler : serializationData.getDomReady())
          {

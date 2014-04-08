@@ -22,12 +22,7 @@
 </head>
 <dmweb:body marshallerUnmarshallerPrefix="bz.davide.dmweb.shared.view.example.LeafletMapExample">
 	
-	<%--
-	<dmweb:fragment viewclass="bz.davide.dmweb.shared.view.example.SignInView">
-		<initParameters> 
-		</initParameters>
-	</dmweb:fragment> 
-	 --%>
+	<dmweb:fragment viewclass="bz.davide.dmweb.shared.view.example.SignInView"/> 
 	 
 	 <div id="main"></div>
 	 

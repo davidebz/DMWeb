@@ -53,17 +53,7 @@ public abstract class AbstractHtmlElementView implements HtmlElementView
 
    final static String                   ELEMENTID_PREFIX    = "dmweb_";
 
-   public static abstract class InitParameters
-   {
-      transient private String tagName;
-
-      public InitParameters(String tagName)
-      {
-         this.tagName = tagName;
-      }
-   }
-
-   protected AbstractHtmlElementView(InitParameters parameters)
+   protected AbstractHtmlElementView(String tagName)
    {
       this.attachHandlers = new ArrayList<AttachListener>();
       this.clickHandlers = new ArrayList<DMClickHandler>();
@@ -71,19 +61,15 @@ public abstract class AbstractHtmlElementView implements HtmlElementView
 
       if (clientSide)
       {
-         this.clientSideElement__ = DOM.createElement(parameters.tagName);
+         this.clientSideElement__ = DOM.createElement(tagName);
          this.id = ELEMENTID_PREFIX + clientSideIdSeq;
          clientSideIdSeq++;
          this.clientSideElement__.setId(this.id);
       }
       else
       {
-         this.serverSideElement = new DMServerSideElement(parameters.tagName);
+         this.serverSideElement = new DMServerSideElement(tagName);
       }
-   }
-
-   protected AbstractHtmlElementView()
-   {
    }
 
    @Override

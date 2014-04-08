@@ -19,23 +19,14 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 
 package bz.davide.dmweb.shared.view;
 
-
 /**
  * @author Davide Montesin <d@vide.bz>
  */
 public class UlView extends AbstractHtmlElementView implements DivViewChildElement, LiViewChild
 {
-   public static class InitParameters extends AbstractHtmlElementView.InitParameters
+   public UlView()
    {
-      public InitParameters()
-      {
-         super("ul");
-      }
-   }
-
-   public UlView(InitParameters initParameters)
-   {
-      super(initParameters);
+      super("ul");
    }
 
    public void appendChild(UlViewChild node)

@@ -56,55 +56,55 @@ public class Html5ParserGwt
          }
          else if (node instanceof B)
          {
-            BoldView boldView = new BoldView(new BoldView.InitParameters());
+            BoldView boldView = new BoldView();
             e.appendChild(boldView);
             richText(boldView, ((B) node).getChildNodes());
          }
          else if (node instanceof Strong)
          {
-            StrongView strongView = new StrongView(new StrongView.InitParameters());
+            StrongView strongView = new StrongView();
             e.appendChild(strongView);
             richText(strongView, ((Strong) node).getChildNodes());
          }
          else if (node instanceof Span)
          {
-            SpanView view = new SpanView(new SpanView.InitParameters());
+            SpanView view = new SpanView();
             e.appendChild(view);
             richText(view, ((Span) node).getChildNodes());
          }
          else if (node instanceof Div)
          {
-            DivView view = new DivView(new DivView.InitParameters());
+            DivView view = new DivView();
             e.appendChild(view);
             richText(view, ((Div) node).getChildNodes());
          }
          else if (node instanceof A)
          {
-            AnchorView view = new AnchorView(new AnchorView.InitParameters());
+            AnchorView view = new AnchorView();
             view.setHref(((A) node).getHref());
             e.appendChild(view);
             richText(view, ((A) node).getChildNodes());
          }
          else if (node instanceof Br)
          {
-            BrView brView = new BrView(new BrView.InitParameters());
+            BrView brView = new BrView();
             e.appendChild(brView);
          }
          else if (node instanceof Img)
          {
-            ImgView view = new ImgView(new ImgView.InitParameters());
+            ImgView view = new ImgView();
             e.appendChild(view);
             view.setSrc(((Img) node).getSrc());
          }
          else if (node instanceof Ul)
          {
-            UlView view = new UlView(new UlView.InitParameters());
+            UlView view = new UlView();
             e.appendChild(view);
             for (Node child : ((Ul) node).getChildNodes())
             {
                if (child instanceof Li)
                {
-                  LiView liView = new LiView(new LiView.InitParameters());
+                  LiView liView = new LiView();
                   view.appendChild(liView);
                   richText(liView, ((Li) child).getChildNodes());
                }
@@ -127,13 +127,13 @@ public class Html5ParserGwt
          }
          else if (node instanceof Ul)
          {
-            UlView view = new UlView(new UlView.InitParameters());
+            UlView view = new UlView();
             e.appendChild(view);
             for (Node child : ((Ul) node).getChildNodes())
             {
                if (child instanceof Li)
                {
-                  LiView liView = new LiView(new LiView.InitParameters());
+                  LiView liView = new LiView();
                   view.appendChild(liView);
                   richText(liView, ((Li) child).getChildNodes());
                }
@@ -171,7 +171,7 @@ public class Html5ParserGwt
       {
          if (node instanceof TextNode)
          {
-            e.appendChild(new SpanView(new SpanView.InitParameters(((TextNode) node).value)));
+            e.appendChild(new SpanView(((TextNode) node).value));
          }
       }
    }
@@ -182,7 +182,7 @@ public class Html5ParserGwt
       {
          if (node instanceof TextNode)
          {
-            e.appendChild(new SpanView(new SpanView.InitParameters(((TextNode) node).value)));
+            e.appendChild(new SpanView(((TextNode) node).value));
          }
       }
    }

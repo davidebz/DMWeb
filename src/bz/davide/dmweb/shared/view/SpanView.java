@@ -25,45 +25,21 @@ package bz.davide.dmweb.shared.view;
 public class SpanView extends AbstractHtmlElementView implements DivViewChild, BoldViewChild, StrongViewChild
 {
 
-   public static class InitParameters extends AbstractHtmlElementView.InitParameters
+   public SpanView()
    {
-      String text;
-      String className;
-
-      public InitParameters()
-      {
-         this(null, null);
-      }
-
-      public InitParameters(String text)
-      {
-         this(text, null);
-      }
-
-      public InitParameters(String text, String className)
-      {
-         super("span");
-         this.text = text;
-         this.className = className;
-      }
-
+      super("span");
    }
 
-   public SpanView(InitParameters initParameters)
+   public SpanView(String text)
    {
-      super(initParameters);
-      if (initParameters.text != null)
-      {
-         this.setText(initParameters.text);
-      }
-      if (initParameters.className != null)
-      {
-         this.setStyleName(initParameters.className);
-      }
+      this();
+      this.setText(text);
    }
 
-   protected SpanView()
+   public SpanView(String text, String styleName)
    {
+      this(text);
+      this.setStyleName(styleName);
    }
 
    public void setText(String text)

@@ -24,34 +24,16 @@ package bz.davide.dmweb.shared.view;
  */
 public class ButtonView extends AbstractHtmlElementView implements DivViewChild
 {
-   public static class InitParameters extends AbstractHtmlElementView.InitParameters
+
+   public ButtonView()
    {
-      private String label;
-
-      public InitParameters()
-      {
-         this(null);
-      }
-
-      public InitParameters(String label)
-      {
-         super("button");
-         this.label = label;
-      }
-
+      super("button");
    }
 
-   public ButtonView(InitParameters initParameters)
+   public ButtonView(String label)
    {
-      super(initParameters);
-      if (initParameters.label != null)
-      {
-         this.setLabel(initParameters.label);
-      }
-   }
-
-   protected ButtonView()
-   {
+      this();
+      this.setLabel(label);
    }
 
    public void setLabel(String text)

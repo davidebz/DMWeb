@@ -28,54 +28,38 @@ import bz.davide.dmweb.shared.view.SpanView;
 
 public class SignInView extends FormView
 {
-   InputView user;
-   InputView pass;
+   InputView  user;
+   InputView  pass;
+   ButtonView login;
 
-   public static class InitParameters extends FormView.InitParameters
+   public SignInView()
    {
-      DMClickHandler onclick;
-
-      public InitParameters()
-      {
-         this(null);
-      }
-
-      public InitParameters(DMClickHandler onclick)
-      {
-         super();
-         this.onclick = onclick;
-      }
-
-   }
-
-   public SignInView(InitParameters initParameters)
-   {
-      super(initParameters);
+      super();
       this.setStyleName("form-signin");
-      SpanView heading = new SpanView(new SpanView.InitParameters("Please log in"));
+      SpanView heading = new SpanView("Please log in");
       this.appendChild(heading);
-      this.user = new InputView(new InputView.InitParameters());
+      this.user = new InputView();
       this.user.setStyleName("form-control");
-      this.pass = new InputView(new InputView.InitParameters());
+      this.pass = new InputView();
       this.pass.setStyleName("form-control");
-      LabelView labelView = new LabelView(new LabelView.InitParameters("Remember me", "checkbox"));
-      InputView remember = new InputView(new InputView.InitParameters());
+      LabelView labelView = new LabelView("Remember me", "checkbox");
+      InputView remember = new InputView();
       remember.setType("checkbox");
       labelView.appendChild(remember);
-      ButtonView login = new ButtonView(new ButtonView.InitParameters("Login"));
-      login.setStyleName("btn btn-lg btn-primary btn-block");
-      if (initParameters.onclick != null)
-      {
-         login.addClickHandler(initParameters.onclick);
-      }
+      this.login = new ButtonView("Login");
+      this.login.setStyleName("btn btn-lg btn-primary btn-block");
+
       this.appendChild(this.user);
       this.appendChild(this.pass);
       this.appendChild(labelView);
-      this.appendChild(login);
+      this.appendChild(this.login);
+
+      this.setLoginOnClick(new SignInViewOnLoginClick(this));
    }
 
-   protected SignInView()
+   public void setLoginOnClick(DMClickHandler loginOnClick)
    {
+      this.login.addClickHandler(loginOnClick);
    }
 
    public String getUser()

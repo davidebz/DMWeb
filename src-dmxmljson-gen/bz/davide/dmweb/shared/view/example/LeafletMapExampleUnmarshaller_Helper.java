@@ -11,124 +11,13 @@ public class LeafletMapExampleUnmarshaller_Helper extends bz.davide.dmweb.shared
 {
    protected LeafletMapExampleUnmarshaller_Helper()
    {
-      this.emptyObjectCheck.put("bz.davide.dmweb.shared.view.example.LeafletMapExample$InitParameters", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.view.example.LeafletMapExample.InitParameters>() {
-         @Override public void check(bz.davide.dmweb.shared.view.example.LeafletMapExample.InitParameters  ret){
-            // map
-            if (ret.map != null)
-               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.view.example.LeafletMapExample$InitParameters.map");
-            // pois
-            if (ret.pois != null)
-               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.view.example.LeafletMapExample$InitParameters.pois");
-            // title
-            if (ret.title != null)
-               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.view.example.LeafletMapExample$InitParameters.title");
-            emptyObjectCheck.get("bz.davide.dmweb.shared.view.DivView$InitParameters").check(ret);
-         }
-      });
-      this.putInstanceFactory("bz.davide.dmweb.shared.view.example.LeafletMapExample$InitParameters", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
-         @Override public Object newInstance() throws Exception {
-            bz.davide.dmweb.shared.view.example.LeafletMapExample.InitParameters ret = new bz.davide.dmweb.shared.view.example.LeafletMapExample.InitParameters();
-            emptyObjectCheck.get("bz.davide.dmweb.shared.view.example.LeafletMapExample$InitParameters").check(ret);
-            return ret;
-         }
-      });
-
-      this.putClassUnmarshaller("bz.davide.dmweb.shared.view.example.LeafletMapExample$InitParameters", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
-         @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
-            internalUnmarschall(structure, "bz.davide.dmweb.shared.view.DivView$InitParameters", obj, identities);
-            structure.open();
-            String id = structure.getId();
-            if (id != null)
-               identities.put(id, obj);
-            bz.davide.dmxmljson.unmarshalling.Value value;
-            // map
-            if ((value = structure.property("map")) != null)
-               if (value.isNull())
-                  ((bz.davide.dmweb.shared.view.example.LeafletMapExample.InitParameters)obj).map = null;
-               else
-               {
-                  String refid = value.structure().getRefId();    
-                  if (refid != null)                              
-                     ((bz.davide.dmweb.shared.view.example.LeafletMapExample.InitParameters)obj).map = (bz.davide.dmweb.shared.view.LeafletMapView.InitParameters)identities.get(refid);
-                  else {
-                     Object o = newInstance(value.structure().getRuntimeClassName("LeafletMapView$InitParameters"));              
-                     internalUnmarschall(value.structure(), o.getClass().getName(), o, identities); 
-                     ((bz.davide.dmweb.shared.view.example.LeafletMapExample.InitParameters)obj).map = (bz.davide.dmweb.shared.view.LeafletMapView.InitParameters)o;
-                  }
-               }
-            // pois
-            if ((value = structure.property("pois")) != null)
-               if (value.isNull())
-                  ((bz.davide.dmweb.shared.view.example.LeafletMapExample.InitParameters)obj).pois = null;
-               else
-               {
-                  bz.davide.dmxmljson.unmarshalling.Array arr = value.array();        
-                  arr.open();        
-                  bz.davide.dmweb.shared.view.example.POI[] arrayList = new bz.davide.dmweb.shared.view.example.POI[arr.length()];       
-                  for (int i = 0; i < arrayList.length; i++) {                       
-                     value = arr.nextItem();                                       
-                     if (value.isNull())                                           
-                        arrayList[i] = null;                                       
-                     else                                                          
-                     {                                                                   
-                        bz.davide.dmxmljson.unmarshalling.Structure tmpStructure = value.structure();
-                        String refid = tmpStructure.getRefId();    
-                        if (refid != null)                              
-                           arrayList[i] = (bz.davide.dmweb.shared.view.example.POI)(identities.get(refid));                                                
-                        else {
-                           Object o = newInstance(tmpStructure.getRuntimeClassName("POI"));              
-                           internalUnmarschall(tmpStructure, o.getClass().getName(), o, identities); 
-                           arrayList[i] = (bz.davide.dmweb.shared.view.example.POI)(o);                                                
-                        }
-                     }                                                                   
-                  }                                                                   
-                  arr.close();        
-                  ((bz.davide.dmweb.shared.view.example.LeafletMapExample.InitParameters)obj).pois = arrayList;
-               }
-            // title
-            if ((value = structure.property("title")) != null)
-               if (value.isNull())
-                  ((bz.davide.dmweb.shared.view.example.LeafletMapExample.InitParameters)obj).title = null;
-               else
-               {
-                  ((bz.davide.dmweb.shared.view.example.LeafletMapExample.InitParameters)obj).title = value.string();
-               }
-            structure.close();
-         }
-      });
-      this.emptyObjectCheck.put("bz.davide.dmweb.shared.view.example.BasicWidgetsExample$InitParameters", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.view.example.BasicWidgetsExample.InitParameters>() {
-         @Override public void check(bz.davide.dmweb.shared.view.example.BasicWidgetsExample.InitParameters  ret){
-            emptyObjectCheck.get("bz.davide.dmweb.shared.view.DivView$InitParameters").check(ret);
-         }
-      });
-      this.putInstanceFactory("bz.davide.dmweb.shared.view.example.BasicWidgetsExample$InitParameters", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
-         @Override public Object newInstance() throws Exception {
-            bz.davide.dmweb.shared.view.example.BasicWidgetsExample.InitParameters ret = new bz.davide.dmweb.shared.view.example.BasicWidgetsExample.InitParameters();
-            emptyObjectCheck.get("bz.davide.dmweb.shared.view.example.BasicWidgetsExample$InitParameters").check(ret);
-            return ret;
-         }
-      });
-
-      this.putClassUnmarshaller("bz.davide.dmweb.shared.view.example.BasicWidgetsExample$InitParameters", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
-         @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
-            internalUnmarschall(structure, "bz.davide.dmweb.shared.view.DivView$InitParameters", obj, identities);
-            structure.open();
-            String id = structure.getId();
-            if (id != null)
-               identities.put(id, obj);
-            bz.davide.dmxmljson.unmarshalling.Value value;
-            structure.close();
-         }
-      });
       this.emptyObjectCheck.put("bz.davide.dmweb.shared.view.example.BasicWidgetsExample", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.view.example.BasicWidgetsExample>() {
          @Override public void check(bz.davide.dmweb.shared.view.example.BasicWidgetsExample  ret){
-            emptyObjectCheck.get("bz.davide.dmweb.shared.view.DivView").check(ret);
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.view.example.BasicWidgetsExample", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
             bz.davide.dmweb.shared.view.example.BasicWidgetsExample ret = new bz.davide.dmweb.shared.view.example.BasicWidgetsExample();
-            emptyObjectCheck.get("bz.davide.dmweb.shared.view.example.BasicWidgetsExample").check(ret);
             return ret;
          }
       });
@@ -146,13 +35,11 @@ public class LeafletMapExampleUnmarshaller_Helper extends bz.davide.dmweb.shared
       });
       this.emptyObjectCheck.put("bz.davide.dmweb.shared.view.example.LeafletMapExample", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.view.example.LeafletMapExample>() {
          @Override public void check(bz.davide.dmweb.shared.view.example.LeafletMapExample  ret){
-            emptyObjectCheck.get("bz.davide.dmweb.shared.view.DivView").check(ret);
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.view.example.LeafletMapExample", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
             bz.davide.dmweb.shared.view.example.LeafletMapExample ret = new bz.davide.dmweb.shared.view.example.LeafletMapExample();
-            emptyObjectCheck.get("bz.davide.dmweb.shared.view.example.LeafletMapExample").check(ret);
             return ret;
          }
       });
@@ -181,7 +68,6 @@ public class LeafletMapExampleUnmarshaller_Helper extends bz.davide.dmweb.shared
       this.putInstanceFactory("bz.davide.dmweb.shared.view.example.LeafletMapExampleAttachListener", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
             bz.davide.dmweb.shared.view.example.LeafletMapExampleAttachListener ret = new bz.davide.dmweb.shared.view.example.LeafletMapExampleAttachListener();
-            emptyObjectCheck.get("bz.davide.dmweb.shared.view.example.LeafletMapExampleAttachListener").check(ret);
             return ret;
          }
       });
@@ -242,9 +128,6 @@ public class LeafletMapExampleUnmarshaller_Helper extends bz.davide.dmweb.shared
       });
       this.emptyObjectCheck.put("bz.davide.dmweb.shared.view.example.SignInViewOnLoginClick", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.view.example.SignInViewOnLoginClick>() {
          @Override public void check(bz.davide.dmweb.shared.view.example.SignInViewOnLoginClick  ret){
-            // mainDiv
-            if (ret.mainDiv != null)
-               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.view.example.SignInViewOnLoginClick.mainDiv");
             // signInView
             if (ret.signInView != null)
                throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.view.example.SignInViewOnLoginClick.signInView");
@@ -253,7 +136,6 @@ public class LeafletMapExampleUnmarshaller_Helper extends bz.davide.dmweb.shared
       this.putInstanceFactory("bz.davide.dmweb.shared.view.example.SignInViewOnLoginClick", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
             bz.davide.dmweb.shared.view.example.SignInViewOnLoginClick ret = new bz.davide.dmweb.shared.view.example.SignInViewOnLoginClick();
-            emptyObjectCheck.get("bz.davide.dmweb.shared.view.example.SignInViewOnLoginClick").check(ret);
             return ret;
          }
       });
@@ -265,21 +147,6 @@ public class LeafletMapExampleUnmarshaller_Helper extends bz.davide.dmweb.shared
             if (id != null)
                identities.put(id, obj);
             bz.davide.dmxmljson.unmarshalling.Value value;
-            // mainDiv
-            if ((value = structure.property("mainDiv")) != null)
-               if (value.isNull())
-                  ((bz.davide.dmweb.shared.view.example.SignInViewOnLoginClick)obj).mainDiv = null;
-               else
-               {
-                  String refid = value.structure().getRefId();    
-                  if (refid != null)                              
-                     ((bz.davide.dmweb.shared.view.example.SignInViewOnLoginClick)obj).mainDiv = (bz.davide.dmweb.shared.view.DivView)identities.get(refid);
-                  else {
-                     Object o = newInstance(value.structure().getRuntimeClassName("DivView"));              
-                     internalUnmarschall(value.structure(), o.getClass().getName(), o, identities); 
-                     ((bz.davide.dmweb.shared.view.example.SignInViewOnLoginClick)obj).mainDiv = (bz.davide.dmweb.shared.view.DivView)o;
-                  }
-               }
             // signInView
             if ((value = structure.property("signInView")) != null)
                if (value.isNull())
@@ -298,63 +165,22 @@ public class LeafletMapExampleUnmarshaller_Helper extends bz.davide.dmweb.shared
             structure.close();
          }
       });
-      this.emptyObjectCheck.put("bz.davide.dmweb.shared.view.example.SignInView$InitParameters", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.view.example.SignInView.InitParameters>() {
-         @Override public void check(bz.davide.dmweb.shared.view.example.SignInView.InitParameters  ret){
-            // onclick
-            if (ret.onclick != null)
-               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.view.example.SignInView$InitParameters.onclick");
-            emptyObjectCheck.get("bz.davide.dmweb.shared.view.FormView$InitParameters").check(ret);
-         }
-      });
-      this.putInstanceFactory("bz.davide.dmweb.shared.view.example.SignInView$InitParameters", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
-         @Override public Object newInstance() throws Exception {
-            bz.davide.dmweb.shared.view.example.SignInView.InitParameters ret = new bz.davide.dmweb.shared.view.example.SignInView.InitParameters();
-            emptyObjectCheck.get("bz.davide.dmweb.shared.view.example.SignInView$InitParameters").check(ret);
-            return ret;
-         }
-      });
-
-      this.putClassUnmarshaller("bz.davide.dmweb.shared.view.example.SignInView$InitParameters", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
-         @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
-            internalUnmarschall(structure, "bz.davide.dmweb.shared.view.FormView$InitParameters", obj, identities);
-            structure.open();
-            String id = structure.getId();
-            if (id != null)
-               identities.put(id, obj);
-            bz.davide.dmxmljson.unmarshalling.Value value;
-            // onclick
-            if ((value = structure.property("onclick")) != null)
-               if (value.isNull())
-                  ((bz.davide.dmweb.shared.view.example.SignInView.InitParameters)obj).onclick = null;
-               else
-               {
-                  String refid = value.structure().getRefId();    
-                  if (refid != null)                              
-                     ((bz.davide.dmweb.shared.view.example.SignInView.InitParameters)obj).onclick = (bz.davide.dmweb.shared.view.DMClickHandler)identities.get(refid);
-                  else {
-                     Object o = newInstance(value.structure().getRuntimeClassName("DMClickHandler"));              
-                     internalUnmarschall(value.structure(), o.getClass().getName(), o, identities); 
-                     ((bz.davide.dmweb.shared.view.example.SignInView.InitParameters)obj).onclick = (bz.davide.dmweb.shared.view.DMClickHandler)o;
-                  }
-               }
-            structure.close();
-         }
-      });
       this.emptyObjectCheck.put("bz.davide.dmweb.shared.view.example.SignInView", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.view.example.SignInView>() {
          @Override public void check(bz.davide.dmweb.shared.view.example.SignInView  ret){
+            // login
+            if (ret.login != null)
+               throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.view.example.SignInView.login");
             // pass
             if (ret.pass != null)
                throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.view.example.SignInView.pass");
             // user
             if (ret.user != null)
                throw new RuntimeException("The constructor initialized the field bz.davide.dmweb.shared.view.example.SignInView.user");
-            emptyObjectCheck.get("bz.davide.dmweb.shared.view.FormView").check(ret);
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.view.example.SignInView", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
             bz.davide.dmweb.shared.view.example.SignInView ret = new bz.davide.dmweb.shared.view.example.SignInView();
-            emptyObjectCheck.get("bz.davide.dmweb.shared.view.example.SignInView").check(ret);
             return ret;
          }
       });
@@ -367,6 +193,21 @@ public class LeafletMapExampleUnmarshaller_Helper extends bz.davide.dmweb.shared
             if (id != null)
                identities.put(id, obj);
             bz.davide.dmxmljson.unmarshalling.Value value;
+            // login
+            if ((value = structure.property("login")) != null)
+               if (value.isNull())
+                  ((bz.davide.dmweb.shared.view.example.SignInView)obj).login = null;
+               else
+               {
+                  String refid = value.structure().getRefId();    
+                  if (refid != null)                              
+                     ((bz.davide.dmweb.shared.view.example.SignInView)obj).login = (bz.davide.dmweb.shared.view.ButtonView)identities.get(refid);
+                  else {
+                     Object o = newInstance(value.structure().getRuntimeClassName("ButtonView"));              
+                     internalUnmarschall(value.structure(), o.getClass().getName(), o, identities); 
+                     ((bz.davide.dmweb.shared.view.example.SignInView)obj).login = (bz.davide.dmweb.shared.view.ButtonView)o;
+                  }
+               }
             // pass
             if ((value = structure.property("pass")) != null)
                if (value.isNull())
@@ -402,13 +243,11 @@ public class LeafletMapExampleUnmarshaller_Helper extends bz.davide.dmweb.shared
       });
       this.emptyObjectCheck.put("bz.davide.dmweb.shared.view.example.ComplexForm", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.dmweb.shared.view.example.ComplexForm>() {
          @Override public void check(bz.davide.dmweb.shared.view.example.ComplexForm  ret){
-            emptyObjectCheck.get("bz.davide.dmweb.shared.view.DivView").check(ret);
          }
       });
       this.putInstanceFactory("bz.davide.dmweb.shared.view.example.ComplexForm", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
             bz.davide.dmweb.shared.view.example.ComplexForm ret = new bz.davide.dmweb.shared.view.example.ComplexForm();
-            emptyObjectCheck.get("bz.davide.dmweb.shared.view.example.ComplexForm").check(ret);
             return ret;
          }
       });
@@ -440,7 +279,6 @@ public class LeafletMapExampleUnmarshaller_Helper extends bz.davide.dmweb.shared
       this.putInstanceFactory("bz.davide.dmweb.shared.view.example.POI", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
          @Override public Object newInstance() throws Exception {
             bz.davide.dmweb.shared.view.example.POI ret = new bz.davide.dmweb.shared.view.example.POI();
-            emptyObjectCheck.get("bz.davide.dmweb.shared.view.example.POI").check(ret);
             return ret;
          }
       });

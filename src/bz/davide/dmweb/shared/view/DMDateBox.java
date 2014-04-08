@@ -20,7 +20,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 package bz.davide.dmweb.shared.view;
 
 import java.util.Date;
-
 import com.google.gwt.user.datepicker.client.DateBox;
 
 /**
@@ -32,13 +31,9 @@ public class DMDateBox extends DMGwtWidgetHost
    long              timestamp = 0;
    String            format    = "yyyy-MM-dd HH:mm:ss";
 
-   public static class InitParameters extends DMGwtWidgetHost.InitParameters
+   public DMDateBox()
    {
-   }
-
-   public DMDateBox(InitParameters initParameters)
-   {
-      super(initParameters);
+      super();
       this.setStyleName("dm-date-box");
       this.addDMGwtWidgetHostFactory(new DMDateBoxFactory(this));
    }

@@ -21,28 +21,21 @@ package bz.davide.dmweb.shared.view.example;
 
 import bz.davide.dmweb.shared.view.DMClickEvent;
 import bz.davide.dmweb.shared.view.DMClickHandler;
-import bz.davide.dmweb.shared.view.DivView;
 import com.google.gwt.user.client.Window;
 
 public class SignInViewOnLoginClick implements DMClickHandler
 {
 
-   DivView    mainDiv;
    SignInView signInView;
 
-   public SignInViewOnLoginClick(DivView mainDiv)
+   public SignInViewOnLoginClick(SignInView signInView)
    {
       super();
-      this.mainDiv = mainDiv;
+      this.signInView = signInView;
    }
 
    SignInViewOnLoginClick()
    {
-   }
-
-   public void setSignInView(SignInView signInView)
-   {
-      this.signInView = signInView;
    }
 
    @Override
@@ -51,7 +44,5 @@ public class SignInViewOnLoginClick implements DMClickHandler
       event.preventDefault();
       event.stopPropagation();
       Window.alert("Logged with: " + this.signInView.getUser() + ":" + this.signInView.getPassword());
-      this.mainDiv.clear();
-      this.mainDiv.appendChild(new ComplexForm(new ComplexForm.InitParameters()));
    }
 }

@@ -26,30 +26,28 @@ import bz.davide.dmweb.shared.view.SpanView;
 
 public class BasicWidgetsExample extends DivView
 {
-   public static class InitParameters extends DivView.InitParameters
-   {
-   }
 
-   public BasicWidgetsExample(InitParameters initParameters)
+   BasicWidgetsExample()
    {
-      super(initParameters);
+      super();
       this.setStyleName("basic-widgets-example");
-      ButtonView button = new ButtonView(new ButtonView.InitParameters("A button"));
+      ButtonView button = new ButtonView("A button");
       this.appendChild(button);
-      SpanView spanView = new SpanView(new SpanView.InitParameters("This is a text"));
+      SpanView spanView = new SpanView("This is a text");
       this.appendChild(spanView);
 
-      DivView buttonGroup = new DivView(new DivView.InitParameters("btn-group"));
+      DivView buttonGroup = new DivView("btn-group");
       for (int i = 0; i < 10; i++)
       {
-         button = new ButtonView(new ButtonView.InitParameters("A button"));
+         button = new ButtonView("A button");
          button.setStyleName("btn btn-default");
          buttonGroup.appendChild(button);
       }
       this.appendChild(buttonGroup);
 
-      SignInViewOnLoginClick onLoginClick = new SignInViewOnLoginClick(this);
-      SignInView signInView = new SignInView(new SignInView.InitParameters(onLoginClick));
+      SignInView signInView = new SignInView();
+      SignInViewOnLoginClick onLoginClick = new SignInViewOnLoginClick(signInView);
+      signInView.setLoginOnClick(onLoginClick);
       onLoginClick.signInView = signInView;
       this.appendChild(signInView);
 
@@ -65,10 +63,5 @@ public class BasicWidgetsExample extends DivView
 
       LeafletMapExample leafletMapExample = new LeafletMapExample(parameters);
       this.appendChild(leafletMapExample);
-
-   }
-
-   BasicWidgetsExample()
-   {
    }
 }

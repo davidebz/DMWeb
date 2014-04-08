@@ -28,7 +28,7 @@ public class LeafletMapView extends DivView
 {
    InitParameters initParameters;
 
-   public static class InitParameters extends DivView.InitParameters
+   public static class InitParameters
    {
       int    width;
       int    height;
@@ -88,7 +88,7 @@ public class LeafletMapView extends DivView
 
    public LeafletMapView(InitParameters initParameters)
    {
-      super(initParameters);
+      super();
       this.initParameters = initParameters;
       this.setStyleName("leaflet-map-widget");
       if (initParameters.width != 0 && initParameters.height != 0)

@@ -24,15 +24,6 @@ package bz.davide.dmweb.shared.view;
  */
 public class DMGwtWidgetHost extends DivView
 {
-   public static class InitParameters extends DivView.InitParameters
-   {
-   }
-
-   public DMGwtWidgetHost(InitParameters initParameters)
-   {
-      super(initParameters);
-   }
-
    public void addDMGwtWidgetHostFactory(DMGwtWidgetHostFactory factory)
    {
       this.addAttachHandler(new DMGwtWidgetHostAttachHandler(this, factory));

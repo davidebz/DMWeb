@@ -20,7 +20,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 package bz.davide.dmweb.shared.view;
 
 import java.util.ArrayList;
-
 import com.google.gwt.user.client.History;
 
 /**
@@ -32,27 +31,14 @@ public class DMHashNavigationPanel extends DivView
    ArrayList<PageChangeHandler>   changeHandlers;
    int                            index;
 
-   public static class InitParameters extends DivView.InitParameters
+   public DMHashNavigationPanel(String styleName, DivViewChildElement initialContent)
    {
-      DivViewChildElement initialContent;
-
-      public InitParameters(String styleName, DivViewChildElement initialContent)
-      {
-         super(styleName);
-         this.initialContent = initialContent;
-      }
-
-   }
-
-   public DMHashNavigationPanel(InitParameters initParameters)
-   {
-      super(initParameters);
-
+      super(styleName);
       this.pages = new ArrayList<DivViewChildElement>();
       this.changeHandlers = new ArrayList<PageChangeHandler>();
       this.index = -1;
       this.addAttachHandler(new DMHashNavigationPanelAttachHandler(this));
-      this.newPage(initParameters.initialContent, false);
+      this.newPage(initialContent, false);
    }
 
    protected DMHashNavigationPanel()

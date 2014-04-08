@@ -33,6 +33,8 @@ public class DMWebFragmentTagLibrary extends BodyTagSupport
 
    String viewclass;
 
+   String bodyContainsParameters;
+
    public void setViewclass(String viewclass)
    {
       this.viewclass = viewclass;
@@ -43,6 +45,16 @@ public class DMWebFragmentTagLibrary extends BodyTagSupport
       return this.viewclass;
    }
 
+   public void setBodyContainsParameters(String bodyContainsParameters)
+   {
+      this.bodyContainsParameters = bodyContainsParameters;
+   }
+
+   public String getBodyContainsParameters()
+   {
+      return this.bodyContainsParameters;
+   }
+
    @Override
    public int doEndTag() throws JspException
    {
@@ -51,42 +63,55 @@ public class DMWebFragmentTagLibrary extends BodyTagSupport
          DMWebFragmentBodyTagLibrary container = (DMWebFragmentBodyTagLibrary) BodyTagSupport.findAncestorWithClass(this,
                                                                                                                     DMWebFragmentBodyTagLibrary.class);
 
-         BodyContent bc = this.getBodyContent();
-         String body = bc.getString();
-
          Class clazz = Class.forName(this.viewclass);
-         Constructor initConstructor = null;
-         for (Constructor constructor : clazz.getConstructors())
-         {
-            if (constructor.getParameterTypes().length == 1)
-            {
-               initConstructor = constructor;
-            }
-         }
 
-         Object initParameters = initConstructor.getParameterTypes()[0].newInstance();
-
-         W3CXMLStructure w3cxmlStructure = new W3CXMLStructure(new ByteArrayInputStream(body.getBytes("UTF-8")));
-         container.unmarshaller.unmarschall(w3cxmlStructure, initParameters);
-
-         Object viewObject = initConstructor.newInstance(initParameters);
          AbstractHtmlElementView[] views;
-         if (viewObject instanceof ArrayList)
+
+         BodyContent bc = this.getBodyContent();
+         if (bc != null)
          {
-            views = ((ArrayList<AbstractHtmlElementView>) viewObject).toArray(new AbstractHtmlElementView[0]);
+            String body = bc.getString();
+
+            Constructor initConstructor = null;
+            for (Constructor constructor : clazz.getConstructors())
+            {
+               if (constructor.getParameterTypes().length == 1)
+               {
+                  initConstructor = constructor;
+               }
+            }
+
+            Object initParameters = initConstructor.getParameterTypes()[0].newInstance();
+
+            W3CXMLStructure w3cxmlStructure = new W3CXMLStructure(new ByteArrayInputStream(body.getBytes("UTF-8")));
+            container.unmarshaller.unmarschall(w3cxmlStructure, initParameters);
+
+            Object viewObject = initConstructor.newInstance(initParameters);
+
+            if (viewObject instanceof ArrayList)
+            {
+               views = ((ArrayList<AbstractHtmlElementView>) viewObject).toArray(new AbstractHtmlElementView[0]);
+            }
+            else
+            {
+               views = new AbstractHtmlElementView[] { (AbstractHtmlElementView) viewObject };
+            }
+
          }
          else
          {
-            views = new AbstractHtmlElementView[] { (AbstractHtmlElementView) viewObject };
+            views = new AbstractHtmlElementView[] { (AbstractHtmlElementView) clazz.newInstance() };
          }
 
          StringBuffer generatedHtml = new StringBuffer();
+
          for (AbstractHtmlElementView view : views)
          {
             AbstractHtmlElementView.generateServerSideHtml(container.serializationData, view, generatedHtml);
          }
 
          this.pageContext.getOut().print(generatedHtml.toString());
+
          return BodyTagSupport.EVAL_PAGE;
       }
       catch (Exception exxx)

@@ -58,7 +58,7 @@ public class LeafletMapExampleAttachListener implements AttachListener
                @Override
                public void onEvent()
                {
-                  DivView popupContent = new DivView(new DivView.InitParameters("popup-content"));
+                  DivView popupContent = new DivView("popup-content");
                   popupContent.appendChild(new TextNodeView(poi.name));
                   LeafletMapExampleAttachListener.this.leafletMap.getLeafletMap().openPopup(popupContent.getElement(),
                                                                                             latLng);
