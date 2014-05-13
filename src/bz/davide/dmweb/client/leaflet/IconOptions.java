@@ -37,6 +37,21 @@ public class IconOptions
 		this.@bz.davide.dmweb.client.leaflet.IconOptions::jsOptions.iconUrl = url;
    }-*/;
 
+   public native void setIconSize(int w, int h)/*-{
+		this.@bz.davide.dmweb.client.leaflet.IconOptions::jsOptions.iconSize = [
+				w, h ];
+   }-*/;
+
+   public native void setIconAnchor(int x, int y)/*-{
+		this.@bz.davide.dmweb.client.leaflet.IconOptions::jsOptions.iconAnchor = [
+				x, y ];
+   }-*/;
+
+   public native void setPopupAnchor(int x, int y)/*-{
+		this.@bz.davide.dmweb.client.leaflet.IconOptions::jsOptions.popupAnchor = [
+				x, y ];
+   }-*/;
+
    static native JavaScriptObject newIconOptions()/*-{
 		return {};
    }-*/;
